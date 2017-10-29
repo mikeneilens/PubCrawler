@@ -19,8 +19,8 @@ struct K {
     static let maxLat = 60.9
     static let minLng = -10.7
     static let maxLng = 1.9
-    static let defaultSearch = "St Helens"
-    static let usingDefaultSearchWarningMessage = "Your location is outside of United Kingdom so showing pubs near " + defaultSearch
+    static let defaultSearch = "London"
+    static let usingDefaultSearchWarningMessage = "Your location is outside of United Kingdom so showing pubs in " + defaultSearch
     static let nearMeSearchText = "nearby"
     static let shortPubSearchText="Town, pub or postcode"
     static let shortPubCrawlSearchText="Name of pub crawl"
