@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PubCrawlDetailTableViewController.swift"
-            timestampString = "530878794.514046"
+            timestampString = "530980528.12217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "524"
@@ -26,13 +26,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PubCrawlDetailTableViewController.swift"
-            timestampString = "530878794.514449"
+            timestampString = "530980528.122856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "529"
             endingLineNumber = "529"
             landmarkName = "finishedCreating(listOfPubHeaders:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PubCrawl.swift"
+            timestampString = "530980781.552265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "init(fromJson:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pubCrawler.PubCrawl.init(fromJson: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; pubCrawler.PubCrawl"
+                  moduleName = "pubCrawler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/Documents/GitHub/PubCrawler/pubCrawler/PubCrawl.swift"
+                  timestampString = "530980782.047716"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "9928">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #12 : @autoclosure () throws -&gt; Swift.String in pubCrawler.PubCrawl.init(fromJson: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; pubCrawler.PubCrawl"
+                  moduleName = "pubCrawler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/Documents/GitHub/PubCrawler/pubCrawler/PubCrawl.swift"
+                  timestampString = "530980782.049376"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

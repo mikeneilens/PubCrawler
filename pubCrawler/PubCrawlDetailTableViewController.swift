@@ -513,7 +513,7 @@ extension PubCrawlDetailTableViewController { //datasource methods
 extension PubCrawlDetailTableViewController:ListOfPubsCreatorDelegate { //delegate methods for listOfPubHeadersCreator
     func startCreatingListOfPubs()  {
         self.startActivityIndicator()
-        ListOfPubsCreator(withDelegate:self, listOfPubs:self.listOfPubHeaders).createList(usingPubCrawl:self.pubCrawl)
+        ListOfPubsCreator(withDelegate:self).createList(usingPubCrawl:self.pubCrawl)
     }
     
     func finishedCreating(listOfPubHeaders:ListOfPubs) {
