@@ -21,30 +21,7 @@ class PubDetailTableViewController: AbstractTableViewController {
     var showAllAbout = false
     
     var headings=[String]()
-    let nameHeading="Name"
-    let addressHeading="Address"
-    let telephoneHeading="Telephone"
-    let openingTimeHeading="Opening Times"
-    let foodHygieneRatingHeading="Local Food Hygiene Ratings"
-    let mealTimeHeading="Meal Times"
-    let ownerHeading="Owner"
-    let aboutHeading="About"
-    let beersHeading="Regular Beers"
-    let guestsHeading="Guest Beers"
-    let featuresHeading="Features"
-    let facilitiesHeading="Facilities"
-    let visitHistoryHeading="Visit history"
-    let pubCrawlHeading="On Pub Crawls"
-    
-    //Address section rows
-    let addressNdx = 0
-    let mapNdx = 1
-    let pictureNdx = 2
-    //Visit History section rows
-    let visitedNdx = 0
-    let likedNdx = 1
     fileprivate var pictureCell=PictureTableViewCell()
-
     fileprivate var hygieneRatings=ListOfFoodHygieneRatings()
     fileprivate var editButton=UIBarButtonItem()
     fileprivate var cancelButton=UIBarButtonItem()
@@ -120,19 +97,19 @@ class PubDetailTableViewController: AbstractTableViewController {
         
         var newHeadings = [String]()
         //The order that headings are added to the array determines the order that they are displayed
-        if self.pub.address.isNotEmpty        {newHeadings.append(addressHeading)}
-        if self.pub.pubHeader.name.isNotEmpty {newHeadings.append(pubCrawlHeading)}
-        if self.pub.about.isNotEmpty          {newHeadings.append(aboutHeading)}
-        if self.pub.telephone.isNotEmpty      {newHeadings.append(telephoneHeading)}
-        if self.pub.openingTimes.isNotEmpty   {newHeadings.append(openingTimeHeading)}
-        if self.pub.address.isNotEmpty        {newHeadings.append(foodHygieneRatingHeading)}
-        if self.pub.mealTimes.isNotEmpty      {newHeadings.append(mealTimeHeading)}
-        if self.pub.owner.isNotEmpty          {newHeadings.append(ownerHeading)}
-        if self.pub.beer.isNotEmpty           {newHeadings.append(beersHeading)}
-        if self.pub.guest.isNotEmpty          {newHeadings.append(guestsHeading)}
-        if ( ((pub.address.isNotEmpty) && (pub.pubsNearByIsAvailable)) || (pub.feature.isNotEmpty)) {newHeadings.append(featuresHeading)}
-        if self.pub.facility.isNotEmpty       {newHeadings.append(facilitiesHeading)}
-        if self.pub.pubHeader.name.isNotEmpty {newHeadings.append(visitHistoryHeading)}
+        if self.pub.address.isNotEmpty        {newHeadings.append(K.PubHeadings.address)}
+        if self.pub.pubHeader.name.isNotEmpty {newHeadings.append(K.PubHeadings.pubCrawls)}
+        if self.pub.about.isNotEmpty          {newHeadings.append(K.PubHeadings.about)}
+        if self.pub.telephone.isNotEmpty      {newHeadings.append(K.PubHeadings.telephone)}
+        if self.pub.openingTimes.isNotEmpty   {newHeadings.append(K.PubHeadings.openingTime)}
+        if self.pub.address.isNotEmpty        {newHeadings.append(K.PubHeadings.foodHygieneRating)}
+        if self.pub.mealTimes.isNotEmpty      {newHeadings.append(K.PubHeadings.mealTime)}
+        if self.pub.owner.isNotEmpty          {newHeadings.append(K.PubHeadings.owner)}
+        if self.pub.beer.isNotEmpty           {newHeadings.append(K.PubHeadings.beersHeading)}
+        if self.pub.guest.isNotEmpty          {newHeadings.append(K.PubHeadings.guests)}
+        if ( ((pub.address.isNotEmpty) && (pub.pubsNearByIsAvailable)) || (pub.feature.isNotEmpty)) {newHeadings.append(K.PubHeadings.features)}
+        if self.pub.facility.isNotEmpty       {newHeadings.append(K.PubHeadings.facilities)}
+        if self.pub.pubHeader.name.isNotEmpty {newHeadings.append(K.PubHeadings.visitHistory)}
         return newHeadings
     }
     
@@ -192,23 +169,21 @@ extension PubDetailTableViewController:FoodHygieneRatingsCreatorDelegate { //del
     }
 }
 
-
-
 extension PubDetailTableViewController { //tableViewDelegate methods
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let viewHeight = Double(K.headingHeight)
+        let viewHeight = Double(K.PubHeadings.height)
         let headingFrame = CGRect(x:0.0 , y: 0.0, width: Double(self.view.frame.size.width.native), height: viewHeight)
         let headingView = UIView(frame: headingFrame)
-        headingView.backgroundColor = K.headingBackgroundColor
+        headingView.backgroundColor = K.PubHeadings.backgroundColor
         
         let leftMargin:Double = 8.0
         let rightMargin:Double = 8.0
         let labelWidth = Double(headingFrame.size.width.native) - leftMargin - rightMargin
         let labelFrame = CGRect(x:leftMargin, y:0.0, width:labelWidth, height:viewHeight)
         let headingLabel = UILabel(frame: labelFrame)
-        headingLabel.backgroundColor = K.headingBackgroundColor
-        headingLabel.textColor = K.headingFontColor
+        headingLabel.backgroundColor = K.PubHeadings.backgroundColor
+        headingLabel.textColor = K.PubHeadings.fontColor
         headingLabel.text = self.headings[section]
         
         headingView.addSubview(headingLabel)
@@ -216,21 +191,21 @@ extension PubDetailTableViewController { //tableViewDelegate methods
         return headingView
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return K.headingHeight
+        return K.PubHeadings.height
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (row, section) = indexPath.rowAndSection
         
         switch self.headings[section] {
-        case self.aboutHeading:
+        case K.PubHeadings.about:
             self.showAllAbout = !self.showAllAbout
             self.tableView.reloadData()
-        case self.pubCrawlHeading:
+        case K.PubHeadings.pubCrawls:
             if row == self.pub.listOfPubCrawls.count {
                 self.showPubCrawls()
             }
-        case self.telephoneHeading:
+        case K.PubHeadings.telephone:
             self.callNumber(phoneNumber: self.pub.telephone)
         default:
             break
@@ -242,7 +217,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
         
         let heading = self.headings[section]
         
-        if heading == self.pubCrawlHeading {
+        if heading == K.PubHeadings.pubCrawls {
             if  row < self.pub.listOfPubCrawls.count {
                 let pubCrawl = self.pub.listOfPubCrawls[row]
                 if pubCrawl.canRemovePubcrawl {
@@ -260,7 +235,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
             
             let heading = self.headings[section]
             
-            if heading == self.pubCrawlHeading {
+            if heading == K.PubHeadings.pubCrawls {
                 let pubCrawl = self.pub.listOfPubCrawls[row]
                 self.remove(pubCrawl:pubCrawl)
             }
@@ -284,15 +259,15 @@ extension PubDetailTableViewController { //tableViewDelegate methods
         }
     }
 }
-extension PubDetailTableViewController:ItemSwitchCellDelegate {
+extension PubDetailTableViewController:ItemSwitchCellDelegate { //delegate that deals with visited or liked switch being changed
     
     func buttonPressed(ndx:Int, switchOn:Bool) {
         
         switch ndx {
-        case self.visitedNdx:
+        case K.PubHeadings.visitedRow:
             self.startActivityIndicator()
             PubUpdater(pub: self.pub, withDelegate: self).updateVisit()
-        case self.likedNdx:
+        case K.PubHeadings.likedRow:
             self.startActivityIndicator()
             PubUpdater(pub: self.pub, withDelegate: self).updateLiked( )
         default:
@@ -411,26 +386,26 @@ extension PubDetailTableViewController { //datasource
         var rows=1
         switch self.headings[section]
         {
-        case self.beersHeading:
+        case K.PubHeadings.beersHeading:
             rows = self.pub.beer.count
-        case self.addressHeading:
+        case K.PubHeadings.address:
             if self.pub.photoURL.isNotEmpty {
                 rows = 3
             } else {
                 rows = 2
             }
-        case self.guestsHeading:
+        case K.PubHeadings.guests:
             rows =  self.pub.guest.count
-        case self.featuresHeading:
+        case K.PubHeadings.features:
             rows = self.pub.feature.count
             if self.pub.pubsNearByIsAvailable { rows += 1 }
-        case self.facilitiesHeading:
+        case K.PubHeadings.facilities:
             rows = self.pub.facility.count
-        case self.pubCrawlHeading:
+        case K.PubHeadings.pubCrawls:
             rows = self.pub.listOfPubCrawls.count + 1
-        case self.foodHygieneRatingHeading:
+        case K.PubHeadings.foodHygieneRating:
             rows = self.hygieneRatings.foodHygieneRatings.count
-        case self.visitHistoryHeading:
+        case K.PubHeadings.visitHistory:
             rows = 2
         default:
             rows = 1
@@ -445,48 +420,46 @@ extension PubDetailTableViewController { //datasource
         
         switch self.headings[section]
         {
-        case self.nameHeading:
-            pubDetailcell.textLabel!.text = self.pub.pubHeader.name
-        case self.addressHeading:
+        case K.PubHeadings.address:
             switch row {
-            case addressNdx:
+            case K.PubHeadings.addressRow:
                 return self.createAddressCell(tableView, indexPath: indexPath)
-            case mapNdx:
+            case K.PubHeadings.mapRow:
                 return tableView.dequeueReusableCell(withIdentifier: "pubShowOnMapCell", for: indexPath)
-            case pictureNdx:
+            case K.PubHeadings.pictureRow:
                 return self.createPictureCell(tableView, indexPath:indexPath)
             default:
                 break
             }
-        case self.telephoneHeading:
+        case K.PubHeadings.telephone:
             let telephoneCell = tableView.dequeueReusableCell(withIdentifier: "telephoneCell", for: indexPath)
             telephoneCell.textLabel!.text = self.pub.telephone
             return telephoneCell
-        case self.openingTimeHeading:
+        case K.PubHeadings.openingTime:
             pubDetailcell.textLabel!.text = self.pub.openingTimes
-        case self.mealTimeHeading:
+        case K.PubHeadings.mealTime:
             pubDetailcell.textLabel!.text = self.pub.mealTimes
-        case self.ownerHeading:
+        case K.PubHeadings.owner:
             pubDetailcell.textLabel!.text = self.pub.owner
-        case self.aboutHeading:
+        case K.PubHeadings.about:
             if (showAllAbout) {
                 return self.createLongAboutCell(tableView, withMultiLine:true, indexPath:indexPath)
             } else {
                 return self.createShortAboutCell(tableView, indexPath:indexPath)
             }
-        case self.beersHeading:
+        case K.PubHeadings.beersHeading:
             pubDetailcell.textLabel!.text = textIn(pubArray:self.pub.beer, atNdx: row)
-        case self.guestsHeading:
+        case K.PubHeadings.guests:
             pubDetailcell.textLabel!.text = textIn(pubArray:self.pub.guest, atNdx: row)
-        case self.featuresHeading:
+        case K.PubHeadings.features:
             return self.createFeaturesCell(tableView, indexPath: indexPath)
-        case self.facilitiesHeading:
+        case K.PubHeadings.facilities:
             pubDetailcell.textLabel!.text = textIn(pubArray:self.pub.facility, atNdx: row)
-        case self.pubCrawlHeading:
+        case K.PubHeadings.pubCrawls:
             return self.createPubCrawlCell(tableView, indexPath: indexPath)
-        case self.foodHygieneRatingHeading:
+        case K.PubHeadings.foodHygieneRating:
             return self.createFoodHygieneRatingCell(tableView, indexPath: indexPath)
-        case self.visitHistoryHeading:
+        case K.PubHeadings.visitHistory:
             return self.createVisitHistoryCell(tableView, indexPath: indexPath)
         default:
             pubDetailcell.textLabel!.text = "n/a"
@@ -582,13 +555,13 @@ extension PubDetailTableViewController { //datasource
         let row = indexPath.row
         let itemSwitchCell =  tableView.dequeueReusableCell(withIdentifier: "itemSwitchCell", for: indexPath)
         switch row {
-        case visitedNdx:
+        case K.PubHeadings.visitedRow:
             let pubItemSwitchCell = itemSwitchCell as! ItemSwitchCell
-            pubItemSwitchCell.initialValues(text:"Visited?:", isOn:self.pub.visited, trueText:"Yes", falseText:"No", ndx:visitedNdx, delegate:self)
+            pubItemSwitchCell.initialValues(text:"Visited?:", isOn:self.pub.visited, trueText:"Yes", falseText:"No", ndx:K.PubHeadings.visitedRow, delegate:self)
             return pubItemSwitchCell
-        case likedNdx:
+        case K.PubHeadings.likedRow:
             let pubItemSwitchCell = itemSwitchCell as! ItemSwitchCell
-            pubItemSwitchCell.initialValues(text:"Like it?:", isOn:self.pub.liked, trueText:"Yes", falseText:"No", ndx:likedNdx, delegate:self)
+            pubItemSwitchCell.initialValues(text:"Like it?:", isOn:self.pub.liked, trueText:"Yes", falseText:"No", ndx:K.PubHeadings.likedRow, delegate:self)
             return pubItemSwitchCell
         default:
             return tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)

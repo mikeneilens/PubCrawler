@@ -9,7 +9,7 @@
 import UIKit
 
 extension UILabel {
-    
+    //determine whether the text within a label has been truncated due to lack of space.
     func isTruncated() -> Bool {
         
         if let string = self.text {

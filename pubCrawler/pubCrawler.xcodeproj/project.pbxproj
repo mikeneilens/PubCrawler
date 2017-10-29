@@ -57,8 +57,6 @@
 		FB6C97C11E17DE9500642861 /* phone-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BE1E17DE9500642861 /* phone-72.png */; };
 		FB77C2A91D34143C00B91E43 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77C2A81D34143C00B91E43 /* StringExtensions.swift */; };
 		FB77C2AB1D34145E00B91E43 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77C2AA1D34145E00B91E43 /* DictionaryExtensions.swift */; };
-		FB77C2AD1D35227100B91E43 /* TableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77C2AC1D35227100B91E43 /* TableViewCellExtensions.swift */; };
-		FB77C2B51D36B95A00B91E43 /* BoolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77C2B41D36B95A00B91E43 /* BoolExtensions.swift */; };
 		FB77C2B71D36D02900B91E43 /* ItemSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77C2B61D36D02900B91E43 /* ItemSwitchCell.swift */; };
 		FB864B751D4146BC00FB7F30 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB864B741D4146BC00FB7F30 /* NSURLExtensions.swift */; };
 		FB8A67331E6A03B6000EE992 /* PubImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A67321E6A03B6000EE992 /* PubImageView.swift */; };
@@ -204,8 +202,6 @@
 		FB6C97BE1E17DE9500642861 /* phone-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-72.png"; sourceTree = SOURCE_ROOT; };
 		FB77C2A81D34143C00B91E43 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		FB77C2AA1D34145E00B91E43 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
-		FB77C2AC1D35227100B91E43 /* TableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellExtensions.swift; sourceTree = "<group>"; };
-		FB77C2B41D36B95A00B91E43 /* BoolExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolExtensions.swift; sourceTree = "<group>"; };
 		FB77C2B61D36D02900B91E43 /* ItemSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSwitchCell.swift; sourceTree = "<group>"; };
 		FB864B741D4146BC00FB7F30 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLExtensions.swift; sourceTree = "<group>"; };
 		FB8A67321E6A03B6000EE992 /* PubImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubImageView.swift; sourceTree = "<group>"; };
@@ -420,8 +416,6 @@
 				FB77C2A81D34143C00B91E43 /* StringExtensions.swift */,
 				FB3156BC1DAE99DA005A867D /* IndexPathExtensions.swift */,
 				FB77C2AA1D34145E00B91E43 /* DictionaryExtensions.swift */,
-				FB77C2AC1D35227100B91E43 /* TableViewCellExtensions.swift */,
-				FB77C2B41D36B95A00B91E43 /* BoolExtensions.swift */,
 				FB0651601DBAAE41009B0A51 /* LabelViewExtensions.swift */,
 				FB864B741D4146BC00FB7F30 /* NSURLExtensions.swift */,
 				FBE820321F816D5400098082 /* SearchBarExtension.swift */,
@@ -630,7 +624,6 @@
 				FB9A3AD31DB28F3A008AB628 /* HygieneRatingCell.swift in Sources */,
 				FBAF88AF1C8781260043A612 /* SettingsTableViewController.swift in Sources */,
 				FBF2AC791C7BADA500B7A7DF /* PubCrawl.swift in Sources */,
-				FB77C2AD1D35227100B91E43 /* TableViewCellExtensions.swift in Sources */,
 				FB0651671DC65CE6009B0A51 /* HygieneHelpViewController.swift in Sources */,
 				FB950E601DD89A5700B86AB3 /* Location.swift in Sources */,
 				FB3156C11DB14636005A867D /* FoodHygieneRating.swift in Sources */,
@@ -653,7 +646,6 @@
 				FB0651631DBAC3A8009B0A51 /* AddressTableViewCell.swift in Sources */,
 				FB28F5E81D4CC2CB003475DC /* ListAlertViewController.swift in Sources */,
 				FB77C2A91D34143C00B91E43 /* StringExtensions.swift in Sources */,
-				FB77C2B51D36B95A00B91E43 /* BoolExtensions.swift in Sources */,
 				FBE820331F816D5400098082 /* SearchBarExtension.swift in Sources */,
 				FB0651651DC4EE16009B0A51 /* CollectionExtensions.swift in Sources */,
 				FBCDC7C91C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift in Sources */,

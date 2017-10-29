@@ -71,9 +71,40 @@ struct K {
             static let search="search"
         }
     }
-    static let headingBackgroundColor = UIColor.black
-    static let headingFontColor = UIColor.white
-    static let headingHeight:CGFloat = 25.0
+    struct PubHeadings {
+        static let address="Address"
+        static let telephone="Telephone"
+        static let openingTime="Opening Times"
+        static let foodHygieneRating="Local Food Hygiene Ratings"
+        static let mealTime="Meal Times"
+        static let owner="Owner"
+        static let about="About"
+        static let beersHeading="Regular Beers"
+        static let guests="Guest Beers"
+        static let features="Features"
+        static let facilities="Facilities"
+        static let visitHistory="Visit history"
+        static let pubCrawls="On Pub Crawls"
+        //Address section rows
+        static let addressRow = 0
+        static let mapRow = 1
+        static let pictureRow = 2
+        //Visit History section rows
+        static let visitedRow = 0
+        static let likedRow = 1
+        
+        static let backgroundColor = UIColor.black
+        static let fontColor = UIColor.white
+        static let height:CGFloat = 25.0
+    }
+    struct PubCrawlHeadings {
+        static let crawlName="Name"
+        static let newCrawlName="Please enter a pub crawl name"
+        static let pubs="Pubs"
+        static let noPubs="No pubs on this pub crawl"
+        static let setting="Pub Crawl Settings"
+    }
+    
     struct PubJsonName {
         static let pub = "Pub"
         static let name = "Name"

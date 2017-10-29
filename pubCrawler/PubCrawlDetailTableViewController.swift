@@ -37,12 +37,6 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     fileprivate var pubCrawlNameTableViewCell:PubCrawlNameTableViewCell?
     fileprivate var pubCrawlSettingTableViewCell:PubCrawlSettingTableViewCell?
 
-    let crawlNameHeading="Name"
-    let newCrawlNameHeading="Please enter a pub crawl name"
-    let pubsHeading="Pubs"
-    let noPubsHeading="No pubs on this pub crawl"
-    let settingHeading="Pub Crawl Settings"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (self.pubCrawl.name.isEmpty)  {
@@ -55,7 +49,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
         
         self.mapButton.isEnabled = false
         
-        self.headings = [self.newCrawlNameHeading]
+        self.headings = [K.PubCrawlHeadings.newCrawlName]
         self.isPublic = self.pubCrawl.isPublic
         
         self.startCreatingListOfPubs()
@@ -292,7 +286,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         let section = indexPath.section
         
-        if self.headings[section] == self.pubsHeading {
+        if self.headings[section] == K.PubCrawlHeadings.pubs {
             return true
         }
         return false
@@ -404,15 +398,15 @@ extension PubCrawlDetailTableViewController { //datasource methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = 0
         switch self.headings[section] {
-        case  self.crawlNameHeading:
+        case  K.PubCrawlHeadings.crawlName:
             rows = 1
-        case self.newCrawlNameHeading:
+        case K.PubCrawlHeadings.newCrawlName:
             rows = 1
-        case self.pubsHeading:
+        case K.PubCrawlHeadings.pubs:
             rows = self.listOfPubHeaders.count
-        case self.noPubsHeading:
+        case K.PubCrawlHeadings.noPubs:
             rows = 0
-        case self.settingHeading:
+        case K.PubCrawlHeadings.setting:
             rows = 1
         default:
             break
@@ -422,13 +416,13 @@ extension PubCrawlDetailTableViewController { //datasource methods
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let heading = UILabel()
-        heading.backgroundColor = K.headingBackgroundColor
-        heading.textColor = K.headingFontColor
+        heading.backgroundColor = K.PubHeadings.backgroundColor
+        heading.textColor = K.PubHeadings.fontColor
         heading.text = self.headings[section]
         return heading
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return K.headingHeight
+        return K.PubHeadings.height
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -436,26 +430,27 @@ extension PubCrawlDetailTableViewController { //datasource methods
         let cell = UITableViewCell()
         
         switch self.headings[section] {
-        case  self.crawlNameHeading:
+        case  K.PubCrawlHeadings.crawlName:
             self.pubCrawlNameTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlNameTableViewCell") as? PubCrawlNameTableViewCell
             self.pubCrawlNameTableViewCell!.pubCrawlNameText.text = self.pubCrawl.name
             self.pubCrawlNameTableViewCell!.pubCrawlNameText.isEnabled = false
             self.pubCrawlNameTableViewCell!.delegate = self
             
             return self.pubCrawlNameTableViewCell!
-        case self.newCrawlNameHeading:
+        case K.PubCrawlHeadings.newCrawlName:
             self.pubCrawlNameTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlNameTableViewCell") as? PubCrawlNameTableViewCell
             self.pubCrawlNameTableViewCell!.pubCrawlNameText.isEnabled = true
             self.pubCrawlNameTableViewCell!.delegate = self
             
             return self.pubCrawlNameTableViewCell!
-        case self.pubsHeading:
+        case K.PubCrawlHeadings.pubs:
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubNameTableViewCell") as! PubNameTableViewCell
             cell.textLabel!.text = self.listOfPubHeaders[row].name
             cell.detailTextLabel!.text = self.listOfPubHeaders.distanceToPreveiousPubText(atIndex:row)
-            cell.showDisclosureIndicator()
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.selectionStyle = .default
             return cell
-        case self.settingHeading:
+        case K.PubCrawlHeadings.setting:
             self.pubCrawlSettingTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlSettingTableViewCell") as? PubCrawlSettingTableViewCell
             self.pubCrawlSettingTableViewCell!.settingSwitch.isEnabled = self.isEditing
             if self.pubCrawl.isPublic  {
@@ -479,11 +474,11 @@ extension PubCrawlDetailTableViewController { //datasource methods
         let heading = self.headings[section]
         
         switch heading {
-        case self.crawlNameHeading:
+        case K.PubCrawlHeadings.crawlName:
             return self.pubCrawl.canRemove
-        case self.settingHeading:
+        case K.PubCrawlHeadings.setting:
             return false
-        case self.pubsHeading:
+        case K.PubCrawlHeadings.pubs:
             return self.listOfPubHeaders.pubHeaders[row].canRemovePub
         default:
             return true
@@ -496,9 +491,9 @@ extension PubCrawlDetailTableViewController { //datasource methods
         if editingStyle == .delete {
             
             switch self.headings[section] {
-            case self.crawlNameHeading:
+            case K.PubCrawlHeadings.crawlName:
                  self.deletePubCrawl()
-            case self.pubsHeading:
+            case K.PubCrawlHeadings.pubs:
                 let pubHeader = self.listOfPubHeaders[row]
                 self.removePub(withPubHeader: pubHeader)
             default:
@@ -522,12 +517,12 @@ extension PubCrawlDetailTableViewController:ListOfPubsCreatorDelegate { //delega
         self.listOfPubHeaders = listOfPubHeaders
 
         if listOfPubHeaders.isNotEmpty {
-            self.headings = [self.crawlNameHeading, self.pubsHeading]
+            self.headings = [K.PubCrawlHeadings.crawlName, K.PubCrawlHeadings.pubs]
         } else {
-            self.headings = [self.crawlNameHeading, self.noPubsHeading]
+            self.headings = [K.PubCrawlHeadings.crawlName, K.PubCrawlHeadings.noPubs]
         }
         if self.pubCrawl.canUpdateSetting {
-            self.headings.append(self.settingHeading)
+            self.headings.append(K.PubCrawlHeadings.setting)
         }
         
         self.showDefaultButtons()

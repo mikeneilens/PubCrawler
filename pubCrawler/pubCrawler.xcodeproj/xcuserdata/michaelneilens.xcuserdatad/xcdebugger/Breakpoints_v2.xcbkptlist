@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PubCrawlDetailTableViewController.swift"
-            timestampString = "530981921.728673"
+            timestampString = "530993850.706716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "finishedCreating(listOfPubHeaders:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PubCrawlDetailTableViewController.swift"
-            timestampString = "530981921.728778"
+            timestampString = "530993850.706829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "finishedCreating(listOfPubHeaders:)"
             landmarkType = "7">
          </BreakpointContent>
