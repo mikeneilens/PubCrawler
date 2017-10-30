@@ -90,6 +90,7 @@
 		FBAF88FB1C943F410043A612 /* bug-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FBAF88F91C943F410043A612 /* bug-72.png */; };
 		FBBB0F291FA61C3A004E9D95 /* MNWebServiceCall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBBB0F261FA61C1C004E9D95 /* MNWebServiceCall.framework */; };
 		FBBB0F2A1FA61C3A004E9D95 /* MNWebServiceCall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FBBB0F261FA61C1C004E9D95 /* MNWebServiceCall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FBBB0F2F1FA7C7C2004E9D95 /* pubCrawl.png in Resources */ = {isa = PBXBuildFile; fileRef = FBBB0F2E1FA7C7C2004E9D95 /* pubCrawl.png */; };
 		FBCDC7C51C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */; };
 		FBCDC7C91C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */; };
 		FBCDC7CC1C81CD0B00A74ABA /* PubNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */; };
@@ -235,6 +236,7 @@
 		FBAF88F81C943F410043A612 /* bug-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-50.png"; sourceTree = SOURCE_ROOT; };
 		FBAF88F91C943F410043A612 /* bug-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-72.png"; sourceTree = SOURCE_ROOT; };
 		FBBB0F201FA61C1C004E9D95 /* MNWebServiceCall.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MNWebServiceCall.xcodeproj; path = ../../MNWebServiceCall/MNWebServiceCall/MNWebServiceCall.xcodeproj; sourceTree = "<group>"; };
+		FBBB0F2E1FA7C7C2004E9D95 /* pubCrawl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pubCrawl.png; sourceTree = SOURCE_ROOT; };
 		FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlDetailTableViewController.swift; path = ../PubCrawlDetailTableViewController.swift; sourceTree = "<group>"; };
 		FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlNameTableViewCell.swift; path = ../PubCrawlNameTableViewCell.swift; sourceTree = "<group>"; };
 		FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubNameTableViewCell.swift; path = ../PubNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				FBAF88F21C943E270043A612 /* bug-29.png */,
 				FBAF88F81C943F410043A612 /* bug-50.png */,
 				FBAF88F91C943F410043A612 /* bug-72.png */,
+				FBBB0F2E1FA7C7C2004E9D95 /* pubCrawl.png */,
 				FB6C97BC1E17DE9500642861 /* phone-29.png */,
 				FB6C97BD1E17DE9500642861 /* phone-50.png */,
 				FB6C97BE1E17DE9500642861 /* phone-72.png */,
@@ -561,6 +564,7 @@
 				FB3675FC1C944FFF008EFD3C /* help-50.png in Resources */,
 				FBAF88F01C934F820043A612 /* CrossHair-40.png in Resources */,
 				FB3676151C945A36008EFD3C /* copy-72.png in Resources */,
+				FBBB0F2F1FA7C7C2004E9D95 /* pubCrawl.png in Resources */,
 				FBAF88F11C934F820043A612 /* CrossHair-Small.png in Resources */,
 				FBAF88E41C90C7D40043A612 /* Icon-Small@2x.png in Resources */,
 				FB36761E1C94BF06008EFD3C /* email-72.png in Resources */,

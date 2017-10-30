@@ -98,7 +98,7 @@ struct K {
         static let height:CGFloat = 25.0
     }
     struct PubCrawlHeadings {
-        static let crawlName="Name"
+        static let crawlName="Pub Crawl"
         static let newCrawlName="Please enter a pub crawl name"
         static let pubs="Pubs"
         static let noPubs="No pubs on this pub crawl"
