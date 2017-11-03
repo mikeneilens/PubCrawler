@@ -91,8 +91,14 @@ class PubCrawlMapViewController: AbstractViewController {
 
 extension PubCrawlMapViewController:PubCreatorDelegate {
     func getPubLocations() {
-        for pubHeader in self.listOfPubHeaders.pubHeaders {
-            PubCreator(withDelegate: self, forPubHeader: pubHeader).createPub()
+        for (ndx, pubHeader) in self.listOfPubHeaders.pubHeaders.enumerated() {
+            if ndx < 21 {
+                PubCreator(withDelegate: self, forPubHeader: pubHeader).createPub()
+            } else {
+                if ndx == 21 {
+                    self.showErrorMessage(withMessage: "Only showing first 20 pubs", withTitle:"Warning")
+                }
+            }
         }
     }
     
@@ -101,7 +107,7 @@ extension PubCrawlMapViewController:PubCreatorDelegate {
         self.newListOfPubHeaders.append(pub.pubHeader)
         self.listOfPubHeaders = ListOfPubs(using:newListOfPubHeaders, existingList:self.listOfPubHeaders)
         
-        if self.listOfPubHeaders.count == 1  {
+        if self.listOfPubHeaders.count == 1 || self.listOfPubHeaders.count == 10  {
             self.setUpMap()
         }
     }
