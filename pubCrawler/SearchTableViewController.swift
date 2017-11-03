@@ -14,10 +14,15 @@ class SearchTableViewController: AbstractTableViewController {
 
     @IBOutlet weak var nearMeButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
-
+    @IBOutlet weak var showMapButton: UIBarButtonItem!
+    
     let locationManager = CLLocationManager()
     var pub=Pub() //set this to get pubs near to a pub
-    var listOfPubHeaders = ListOfPubs()
+    var listOfPubHeaders = ListOfPubs() { //always refresh headings if pub data changed
+        didSet {
+            self.updateMapButtonState()
+        }
+    }
     fileprivate var userId=UId()
     fileprivate var currentLocation=Location()
     
@@ -51,6 +56,9 @@ class SearchTableViewController: AbstractTableViewController {
         self.getPubsNearBy()
     }
     
+    private func updateMapButtonState() {
+        self.showMapButton.isEnabled = self.listOfPubHeaders.isNotEmpty
+    }
     @objc func getPubsNearBy() {
         if currentLocation.isOutsideUK {
             self.showErrorMessage(withMessage: K.usingDefaultSearchWarningMessage , withTitle: "Warning")
@@ -61,13 +69,21 @@ class SearchTableViewController: AbstractTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.SegueId.showDetail  {
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+        case K.SegueId.showDetail:
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 if let pubDetailTableViewController = segue.destination as? PubDetailTableViewController  {
                     let pubHeader = self.listOfPubHeaders[indexPath.row]
                     pubDetailTableViewController.pubHeader = pubHeader
                 }
             }
+        case K.SegueId.showSearchOnMap:
+            if let pubCrawlMapViewController = segue.destination as? PubCrawlMapViewController {
+                pubCrawlMapViewController.listOfPubHeaders = self.listOfPubHeaders
+            }
+        default:
+            break
         }
     }
 

@@ -37,6 +37,7 @@ struct K {
         static let showPubsNearby = "showPubsNearby"
         static let showCreatePubCrawl = "showCreatePubCrawl"
         static let showPubCrawlForPub = "showPubCrawlForPub"
+        static let showSearchOnMap = "showSearchOnMap"
     }
     struct DefaultKey {
         struct SearchOption {
