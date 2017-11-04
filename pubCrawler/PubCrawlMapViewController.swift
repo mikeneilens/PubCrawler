@@ -93,7 +93,7 @@ extension PubCrawlMapViewController:PubCreatorDelegate {
     func getPubLocations() {
         for (ndx, pubHeader) in self.listOfPubHeaders.pubHeaders.enumerated() {
             if ndx < 21 {
-                PubCreator(withDelegate: self, forPubHeader: pubHeader).createPub()
+                PubCreator(withDelegate:self, forPubHeader: pubHeader).createPub()
             } else {
                 if ndx == 21 {
                     self.showErrorMessage(withMessage: "Only showing first 20 pubs", withTitle:"Warning")
@@ -112,3 +112,4 @@ extension PubCrawlMapViewController:PubCreatorDelegate {
         }
     }
 }
+

@@ -150,12 +150,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="longAboutCell" rowHeight="72" id="gf3-M1-Mg3" customClass="LongAboutTableViewCell" customModule="pubCrawler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="204" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="gf3-M1-Mg3" id="Y37-OM-Mtn">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gf3-M1-Mg3" id="Y37-OM-Mtn">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="About..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWk-9P-PGN">
-                                            <rect key="frame" x="16" y="11" width="335" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="About..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWk-9P-PGN">
+                                            <rect key="frame" x="16" y="8.5" width="335" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="whj-GH-klH"/>
                                             </constraints>
@@ -163,8 +163,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkY-fB-Fqt">
-                                            <rect key="frame" x="24" y="34.5" width="327" height="26"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkY-fB-Fqt">
+                                            <rect key="frame" x="24" y="32" width="327" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="26" id="yxG-fO-ahc"/>
                                             </constraints>
@@ -174,14 +174,13 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ZkY-fB-Fqt" firstAttribute="top" secondItem="fWk-9P-PGN" secondAttribute="bottom" constant="3" id="1Jm-pC-RyH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZkY-fB-Fqt" secondAttribute="bottom" constant="3" id="1Hh-0q-dmT"/>
+                                        <constraint firstItem="ZkY-fB-Fqt" firstAttribute="top" secondItem="fWk-9P-PGN" secondAttribute="bottom" constant="3" id="4Dk-3l-8SE"/>
                                         <constraint firstItem="fWk-9P-PGN" firstAttribute="leading" secondItem="Y37-OM-Mtn" secondAttribute="leadingMargin" id="9MQ-DQ-Tgq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ZkY-fB-Fqt" secondAttribute="bottom" constant="3" id="G1s-0N-hEC"/>
-                                        <constraint firstItem="fWk-9P-PGN" firstAttribute="top" secondItem="Y37-OM-Mtn" secondAttribute="topMargin" constant="3" id="epC-1W-nN7"/>
                                         <constraint firstItem="ZkY-fB-Fqt" firstAttribute="leading" secondItem="Y37-OM-Mtn" secondAttribute="leadingMargin" constant="8" id="fPl-xL-GVP"/>
+                                        <constraint firstItem="fWk-9P-PGN" firstAttribute="top" secondItem="Y37-OM-Mtn" secondAttribute="top" constant="8.5" id="oTK-ty-Ska"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ZkY-fB-Fqt" secondAttribute="trailing" constant="8" id="rH4-9T-iYF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="fWk-9P-PGN" secondAttribute="trailing" constant="8" id="yUu-1C-g1M"/>
-                                        <constraint firstItem="ZkY-fB-Fqt" firstAttribute="top" secondItem="fWk-9P-PGN" secondAttribute="bottom" constant="3" id="z5l-zJ-gU6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
