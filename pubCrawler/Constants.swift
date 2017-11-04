@@ -170,11 +170,14 @@ struct K {
         static let ratingKey = "RatingKey"
         static let ratingDate = "RatingDate"
     }
-    
     struct Message {
         static let status = "Status"
         static let text = "Text"
     }
     static let message = "Message"
+    struct MapView {
+        static let minSpan = 0.005
+        static let maxPubsToFetch = 20
+    }
 
 }

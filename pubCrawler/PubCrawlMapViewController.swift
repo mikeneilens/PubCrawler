@@ -43,7 +43,7 @@ class PubCrawlMapViewController: AbstractViewController {
             case 0:
                 return MKCoordinateRegion()
             case 1:
-                let span = MKCoordinateSpanMake(0.005, 0.005)
+                let span = MKCoordinateSpanMake(K.MapView.minSpan, K.MapView.minSpan)
                 let startLocation = CLLocationCoordinate2D( latitude:listOfPubs.pubHeaders[0].location.lat, longitude:listOfPubs.pubHeaders[0].location.lng )
                 return MKCoordinateRegion(center: startLocation, span: span)
             default:
@@ -92,11 +92,11 @@ class PubCrawlMapViewController: AbstractViewController {
 extension PubCrawlMapViewController:PubCreatorDelegate {
     func getPubLocations() {
         for (ndx, pubHeader) in self.listOfPubHeaders.pubHeaders.enumerated() {
-            if ndx < 21 {
+            if ndx <= K.MapView.maxPubsToFetch {
                 PubCreator(withDelegate:self, forPubHeader: pubHeader).createPub()
             } else {
-                if ndx == 21 {
-                    self.showErrorMessage(withMessage: "Only showing first 20 pubs", withTitle:"Warning")
+                if ndx == (K.MapView.maxPubsToFetch + 1) {
+                    self.showErrorMessage(withMessage: "Only showing first \(K.MapView.maxPubsToFetch) pubs", withTitle:"Warning")
                 }
             }
         }
