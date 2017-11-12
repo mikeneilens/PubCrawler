@@ -177,7 +177,7 @@ struct K {
     static let message = "Message"
     struct MapView {
         static let minSpan = 0.005
-        static let maxPubsToFetch = 20
+        static let maxPubsToFetch = 30
     }
 
 }

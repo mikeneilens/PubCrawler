@@ -37,6 +37,7 @@ class SearchTableViewController: AbstractTableViewController {
             self.locationManager.delegate = self
             self.locationManager.requestWhenInUseAuthorization()
         } else {
+            self.navigationItem.leftBarButtonItem = nil
             self.updateListOfPubs(forPub:pub)
         }
         
@@ -57,15 +58,22 @@ class SearchTableViewController: AbstractTableViewController {
     }
     
     private func updateMapButtonState() {
-        self.showMapButton.isEnabled = self.listOfPubHeaders.isNotEmpty
+        if let showMapButton = self.showMapButton {
+            showMapButton.isEnabled = self.listOfPubHeaders.isNotEmpty
+        }
     }
     @objc func getPubsNearBy() {
+        self.clearSearchString()
         if currentLocation.isOutsideUK {
             self.showErrorMessage(withMessage: K.usingDefaultSearchWarningMessage , withTitle: "Warning")
             self.updateListOfPubs(forSearchString: K.defaultSearch)
         } else {
             self.updateListOfPubs(forSearchString: K.nearMeSearchText)
         }
+    }
+    func clearSearchString() {
+        guard let searchBar = self.searchBar else {return}
+        searchBar.text = ""
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -148,13 +156,13 @@ extension SearchTableViewController: CLLocationManagerDelegate { //delegat metho
     
     func locationManager(_ manager:CLLocationManager, didChangeAuthorization status:CLAuthorizationStatus) {
         if ((status == .authorizedAlways) || (status == .authorizedWhenInUse)) {
-            self.nearMeButton.isEnabled = true
+            self.enableNearMeButton(true)
             self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             self.locationManager.startUpdatingLocation()
             //allow a half a second before attempting to get pubs near current location to allow for geolocation updating.
             Timer.scheduledTimer(timeInterval: 0.5, target:self, selector: #selector(self.getPubsNearBy), userInfo: nil, repeats: false)
         } else {
-            self.nearMeButton.isEnabled = false
+            self.enableNearMeButton(false)
         }
     }
     
@@ -162,7 +170,10 @@ extension SearchTableViewController: CLLocationManagerDelegate { //delegat metho
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         self.currentLocation = Location(fromCoordinate:locValue)
     }
-   
+    func enableNearMeButton(_ enabled:Bool) {
+        guard let nearMeButton = self.nearMeButton else {return}
+        nearMeButton.isEnabled = enabled
+    }
 }
 
 extension SearchTableViewController {
