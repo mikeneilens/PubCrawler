@@ -20,16 +20,21 @@ class TabBarController: UITabBarController {
  
     @objc func switchToPubCrawls() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        guard let viewControllers = self.viewControllers else {return}
         
         if appDelegate.crawlId.isNotEmpty {
             self.selectedIndex = 1
-            let navController = self.viewControllers![1] as! UINavigationController
-            navController.popToRootViewController(animated: false)
-            
-            if let pubCrawlsTVC = navController.viewControllers.first as? PubCrawlsTableViewController {
-                pubCrawlsTVC.getPubCrawl(forCrawlId:appDelegate.crawlId)
-                appDelegate.crawlId=""
-            }
+            showPubCrawlViewController(viewControllers:viewControllers, appDelegate:appDelegate)
+        }
+    }
+    private func showPubCrawlViewController(viewControllers:[UIViewController], appDelegate:AppDelegate) {
+        if viewControllers.count < 2 { return }
+        guard let navController = viewControllers[1] as? UINavigationController else { return }
+
+        navController.popToRootViewController(animated: false)
+        if let pubCrawlsTVC = navController.viewControllers.first as? PubCrawlsTableViewController {
+            pubCrawlsTVC.getPubCrawl(forCrawlId:appDelegate.crawlId)
+            appDelegate.crawlId=""
         }
     }
 }

@@ -17,6 +17,7 @@ class AbstractViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(activityView)
         if let title = self.navigationItem.title {
             self.originalTitle = title
         }
@@ -27,23 +28,9 @@ class AbstractViewController: UIViewController {
         self.navigationItem.title  = self.originalTitle
     }
     
-    func startActivityIndicator()
-    {
-        self.view.addSubview(activityView)
-        activityView.activityIndicatorViewStyle = .whiteLarge
-        activityView.hidesWhenStopped = true;
-        
-        // Center
-        let viewFrame=self.view.frame
-        let x = viewFrame.size.width/2 //UIScreen.mainScreen.applicationFrame.size.width/2;
-        let y = UIScreen.main.bounds.size.height/2;
-        
-        activityView.frame = CGRect(x:x,y:y,width:0,height:0)
-        
-        activityView.color = UIColor.black
-        
-        activityView.isHidden = false
-        activityView.startAnimating()
+    func startActivityIndicator()  {
+        self.setActivityViewProperties()
+        self.repositionActivityView()
         
         activities+=1;
         
@@ -60,6 +47,22 @@ class AbstractViewController: UIViewController {
         }
         
     }
+    private func repositionActivityView() {
+        // Center
+        let viewFrame=self.view.frame
+        let x = viewFrame.size.width/2 //UIScreen.mainScreen.applicationFrame.size.width/2;
+        let y = UIScreen.main.bounds.size.height/2;
+        activityView.frame = CGRect(x:x,y:y,width:0,height:0)
+    }
+    
+    private func setActivityViewProperties() {
+        activityView.activityIndicatorViewStyle = .whiteLarge
+        activityView.hidesWhenStopped = true;
+        activityView.isHidden = false
+        activityView.startAnimating()
+        activityView.color = UIColor.black
+    }
+    
     func stopActivityIndicator(withMessage message:String, withTitle:String)
     {
         self.stopActivityIndicator()
@@ -68,7 +71,7 @@ class AbstractViewController: UIViewController {
     func stopActivityIndicator()
     {
         if (activities>0) {
-            activities=activities-1
+            activities -= 1
         }
         
         if (activities==0) {

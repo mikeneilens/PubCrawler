@@ -19,28 +19,39 @@ class AbstractTableViewController: UITableViewController {
     private var rightButtonState=false
     private var activityView = UIActivityIndicatorView()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.addSubview(self.activityView)
+        self.activityView.isHidden = true
+    }
+    
     func startActivityIndicator()  {
-        self.tableView.addSubview(activityView)
-        activityView.activityIndicatorViewStyle = .whiteLarge
-        activityView.hidesWhenStopped = true;
+        self.setActivityViewProperties()
+        self.repositionActivityView()
 
-    // Center
-        let viewFrame=self.view.frame
-        let x = viewFrame.size.width/2 //UIScreen.mainScreen.applicationFrame.size.width/2;
-        let y = UIScreen.main.bounds.size.height/2;
-    // Offset. If tableView has been scrolled
-        let yOffset = self.tableView.contentOffset.y
-        activityView.frame = CGRect(x: x, y: y + yOffset, width: 0, height: 0)
-        activityView.color = UIColor.black
-    
-        activityView.isHidden = false
-        activityView.startAnimating()
-    
         activities += 1;
-
+        
         self.removeRightButton()
         self.disableView()
     }
+    
+    private func repositionActivityView() {
+        // Center
+        let viewFrame=self.view.frame
+        let x = viewFrame.size.width/2 //UIScreen.mainScreen.applicationFrame.size.width/2;
+        let y = UIScreen.main.bounds.size.height/2;
+        // Offset. If tableView has been scrolled
+        let yOffset = self.tableView.contentOffset.y
+        activityView.frame = CGRect(x: x, y: y + yOffset, width: 0, height: 0)
+        activityView.color = UIColor.black
+    }
+    private func setActivityViewProperties() {
+        activityView.activityIndicatorViewStyle = .whiteLarge
+        activityView.hidesWhenStopped = true;
+        activityView.isHidden = false
+        activityView.startAnimating()
+    }
+    
     func stopActivityIndicator(withMessage message:String, withTitle:String) {
         self.stopActivityIndicator()
         self.showErrorMessage(withMessage:message, withTitle:withTitle)
@@ -48,7 +59,7 @@ class AbstractTableViewController: UITableViewController {
     
     func stopActivityIndicator()  {
         if self.activities > 0 {
-            self.activities=self.activities-1
+            self.activities -= 1
         }
         
         if self.activities == 0 {

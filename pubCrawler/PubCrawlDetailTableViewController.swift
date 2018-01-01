@@ -338,9 +338,20 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     
     @IBAction func copyButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = self.createCopyAlert()
+        self.present(alert, animated: true)
+    }
+    func createCopyAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "Copy pub crawl", message: "Are you sure you want top copy this pub crawl?", preferredStyle: .alert)
+        let cancelCopy = (UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
+        let confirmCopy = (UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: self.copyConfirmed))
+        alert.addAction(cancelCopy)
+        alert.addAction(confirmCopy)
+        return alert
+    }
+    func copyConfirmed(alert:UIAlertAction) {
         self.copyPubCrawl()
     }
-    
     func copyPubCrawl() {
         self.startActivityIndicator()
         PubCrawlCreator(withDelegate: .copy(self)).copy(pubCrawl:self.pubCrawl)
