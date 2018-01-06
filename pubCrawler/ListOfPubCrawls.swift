@@ -107,20 +107,20 @@ struct ListOfPubCrawlsCreator:JSONResponseDelegate {
     }
     
     private func createList(withUrlString urlPath:String) {
-        WebService(delegate:self).getJson(urlString: urlPath)
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func update(pubCrawl:PubCrawl, newName:String) {
-        let service = pubCrawl.updateService + newName.cleanQString
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubCrawl.updateService + newName.cleanQString
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     func updateSetting(forPubCrawl pubCrawl:PubCrawl) {
-        let service = pubCrawl.updateSettingsService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubCrawl.updateSettingsService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     func addUser(toPubCrawl pubCrawl:PubCrawl ) {
-        let service = pubCrawl.addUserService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubCrawl.addUserService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {

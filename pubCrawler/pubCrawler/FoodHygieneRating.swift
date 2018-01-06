@@ -85,7 +85,7 @@ struct FoodHygieneRatingsCreator: JSONResponseDelegate {
     
     func createListOfFoodHygieneRatings(forPub pub:Pub) {
         let urlPath = pub.hygieneRatingService
-        WebService(delegate:self).getJson(urlString: urlPath)
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {

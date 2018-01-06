@@ -91,17 +91,17 @@ struct PubCrawlCreator:JSONResponseDelegate {
     }
 
     func create(forListOfPubCrawls listOfPubCrawls:ListOfPubCrawls, name:String) {
-        let service = listOfPubCrawls.createPubCrawlService + name.cleanQString
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = listOfPubCrawls.createPubCrawlService + name.cleanQString
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     func create(name:String) {
-        let service =  pub.createPubCrawlService + name.cleanQString
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath =  pub.createPubCrawlService + name.cleanQString
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func copy(pubCrawl:PubCrawl) {
-        let service = pubCrawl.copyService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubCrawl.copyService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -157,8 +157,8 @@ struct PubCrawlUpdater:JSONResponseDelegate {
     }
     
     func remove(pubHeader:PubHeader) {
-        let service = pubHeader.removePubService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubHeader.removePubService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func resequence(pubCrawl:PubCrawl, listOfPubHeaders:ListOfPubs) {
@@ -173,8 +173,8 @@ struct PubCrawlUpdater:JSONResponseDelegate {
                 }
             }
         }
-        let service = pubCrawl.sequencePubsService + csv
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubCrawl.sequencePubsService + csv
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -230,8 +230,8 @@ struct PubCrawlDestroyer:JSONResponseDelegate {
     }
     
     func remove() {
-        let service = self.pubCrawl.removeService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = self.pubCrawl.removeService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -266,8 +266,8 @@ struct EmailCreator:JSONResponseDelegate {
     }
     
     func getEmailText() {
-        let service = self.pubCrawl.emailTextService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = self.pubCrawl.emailTextService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
 
     func finishedGetting(json:[String:Any]) {

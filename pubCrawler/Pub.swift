@@ -138,7 +138,7 @@ struct PubCreator: JSONResponseDelegate {
     
     func createPub() {
         let urlPath = self.pubHeader.pubService
-        WebService(delegate:self).getJson(urlString: urlPath)
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
 
     func finishedGetting(json:[String:Any]) {
@@ -172,23 +172,23 @@ struct PubUpdater:JSONResponseDelegate {
     }
     
     func add(pubCrawlAtNdx ndx:Int ) {
-        let service = self.pub.listOfOtherPubCrawls.pubCrawls[ndx].addPubCrawlService
-        WebService(delegate:self).getJson(urlString:service)
+        let urlPath = self.pub.listOfOtherPubCrawls.pubCrawls[ndx].addPubCrawlService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func remove(pubCrawl:PubCrawl) {
-        let service = pubCrawl.removePubCrawlService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pubCrawl.removePubCrawlService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func updateVisit() {
-        let service = self.pub.changeVisitedService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = self.pub.changeVisitedService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func updateLiked() {
-        let service = pub.changeLikedService
-        WebService(delegate:self).getJson(urlString: service)
+        let urlPath = pub.changeLikedService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {

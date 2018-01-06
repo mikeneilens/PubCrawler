@@ -171,7 +171,7 @@ struct ListOfPubsCreator: JSONResponseDelegate {
     }
 
     private func requestList(usingURLString urlPath:String) {
-        WebService(delegate:self).getJson(urlString: urlPath)
+        WebServieCaller().call(withDelegate: self, url: urlPath)
     }
 
     func finishedGetting(json:[String:Any]) {
