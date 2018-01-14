@@ -130,6 +130,7 @@ struct K {
         static let changeLikedService = "ChangeLikedService"
         static let pubsNearbyService = "NearByService"
         static let hygieneRatingService = "HygieneRatingService"
+        static let nextPubService = "NextPubService"
     }
     struct PubListJsonName {
         static let pubs = "Pubs"

@@ -24,6 +24,7 @@ class PubDetailTableViewController: AbstractTableViewController {
     fileprivate var pictureCell=PictureTableViewCell()
     fileprivate var hygieneRatings=ListOfFoodHygieneRatings()
     fileprivate var editButton=UIBarButtonItem()
+    fileprivate var nextButton=UIBarButtonItem()
     fileprivate var cancelButton=UIBarButtonItem()
     fileprivate var dataSourceNeedsUpdating=false
     
@@ -40,7 +41,8 @@ class PubDetailTableViewController: AbstractTableViewController {
         
         self.editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(PubDetailTableViewController.editPressed))
         self.cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PubDetailTableViewController.cancelPressed))
-        
+        self.nextButton = UIBarButtonItem(title:"Next", style:.plain ,target: self, action: #selector(PubDetailTableViewController.nextPressed))
+
         NotificationCenter.addObserverPubCrawlRemoved(self, selector: #selector(self.pubCrawlRemovedNotification) )
         NotificationCenter.addObserverPubCrawlChanged(self,selector: #selector(self.pubCrawlChangedNotification ) )
         NotificationCenter.addObserverPubChanged(self,selector: #selector(self.pubChangedNotification ) )
@@ -121,6 +123,9 @@ class PubDetailTableViewController: AbstractTableViewController {
         self.isEditing = false
         self.navigationItem.rightBarButtonItem = self.editButton
     }
+    @objc func nextPressed() {
+        self.startCreatingNext(pub:self.pub)
+    }
 
 }
 
@@ -129,23 +134,43 @@ extension PubDetailTableViewController:PubCreatorDelegate { //delegate methods f
         self.startActivityIndicator()
         PubCreator(withDelegate: self, forPubHeader:pubHeader).createPub()
     }
+    func startCreatingNext(pub:Pub) {
+        self.startActivityIndicator()
+        PubCreator(withDelegate: self, forPubHeader:pub.pubHeader).createNext(pub:pub)
+    }
     
     func finishedCreating(newPub pub:Pub) {
         self.stopActivityIndicator()
         
         self.pubHeader = pub.pubHeader
-        
         self.pub = pub
 
-        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.title = self.pubHeader.name
+        self.setRightBarButton()
+        
         self.hygieneRatings = ListOfFoodHygieneRatings(withHygieneRating: FoodHygieneRating())
         self.tableView.reloadData()
-        if self.canRemovePubCrawl {
-            self.navigationItem.rightBarButtonItem = self.editButton
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
-        }
-        
+
         self.getFoodHygieneRatings(forPub: pub)
+    }
+    
+    private func setRightBarButton() {
+        self.navigationItem.rightBarButtonItem = nil
+        if self.isNextPub {
+            self.showNextButton()
+        } else {
+            if self.canRemovePubCrawl {
+                self.showEditButton()
+            }
+        }
+    }
+    private func showEditButton() {
+        self.navigationItem.rightBarButtonItem = self.editButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+    private func showNextButton() {
+        self.navigationItem.rightBarButtonItem = self.nextButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     var canRemovePubCrawl:Bool {
@@ -155,6 +180,9 @@ extension PubDetailTableViewController:PubCreatorDelegate { //delegate methods f
             }
         }
         return false
+    }
+    var isNextPub:Bool {
+        return self.pub.nextPubService.isNotEmpty
     }
 }
 

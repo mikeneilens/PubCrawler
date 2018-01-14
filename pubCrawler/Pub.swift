@@ -62,6 +62,7 @@ struct Pub {
     let createPubCrawlService:String
     let listOfPubCrawls:ListOfPubCrawls
     let listOfOtherPubCrawls:ListOfPubCrawls
+    let nextPubService:String
     
     var canCreatePubCrawl:Bool {return createPubCrawlService.isNotEmpty}
     var canChangeLiked:Bool {return changeLikedService.isNotEmpty}
@@ -97,6 +98,7 @@ struct Pub {
         self.changeLikedService = json[K.PubJsonName.changeLikedService] as? String ?? ""
         self.hygieneRatingService = json[K.PubJsonName.hygieneRatingService] as? String ?? ""
         self.pubsNearByService = json[K.PubJsonName.pubsNearbyService] as? String ?? ""
+        self.nextPubService = json[K.PubJsonName.nextPubService] as? String ?? ""
         
         let otherPubCrawlsJson = json.getValues(forKey: K.PubCrawlJsonName.otherPubCrawl, withDefault:[String:Any]())
         self.listOfOtherPubCrawls =  getPubCrawls(fromJson: otherPubCrawlsJson)
@@ -140,7 +142,10 @@ struct PubCreator: JSONResponseDelegate {
         let urlPath = self.pubHeader.pubService
         WebServieCaller().call(withDelegate: self, url: urlPath)
     }
-
+    func createNext(pub:Pub) {
+        let urlPath = pub.nextPubService
+        WebServieCaller().call(withDelegate: self, url: urlPath)
+    }
     func finishedGetting(json:[String:Any]) {
         let (status, errorText)=json.errorStatus
         switch status {
