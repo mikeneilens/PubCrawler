@@ -191,24 +191,35 @@ extension PubDetailTableViewController:FoodHygieneRatingsCreatorDelegate { //del
 extension PubDetailTableViewController { //tableViewDelegate methods
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let viewHeight = Double(K.PubHeadings.height)
-        let headingFrame = CGRect(x:0.0 , y: 0.0, width: Double(self.view.frame.size.width.native), height: viewHeight)
-        let headingView = UIView(frame: headingFrame)
-        headingView.backgroundColor = K.PubHeadings.backgroundColor
-        
-        let leftMargin:Double = 8.0
-        let rightMargin:Double = 8.0
-        let labelWidth = Double(headingFrame.size.width.native) - leftMargin - rightMargin
-        let labelFrame = CGRect(x:leftMargin, y:0.0, width:labelWidth, height:viewHeight)
-        let headingLabel = UILabel(frame: labelFrame)
-        headingLabel.backgroundColor = K.PubHeadings.backgroundColor
-        headingLabel.textColor = K.PubHeadings.fontColor
+        let headingView = self.createSectionHeadingView()
+        let headingLabel = self.createSectionHeadingLabel(headingView: headingView)
+
         headingLabel.text = self.headings[section]
-        
         headingView.addSubview(headingLabel)
         
         return headingView
     }
+    private func createSectionHeadingView() -> UIView {
+        let viewHeight = Double(K.PubHeadings.height)
+        let headingFrame = CGRect(x:0.0 , y: 0.0, width: Double(self.view.frame.size.width.native), height: viewHeight)
+        let headingView = UIView(frame: headingFrame)
+        headingView.backgroundColor = K.PubHeadings.backgroundColor
+        return headingView
+    }
+    private func createSectionHeadingLabel(headingView:UIView) -> UILabel {
+        let headingFrame = headingView.frame
+        let headingHeight = Double(headingFrame.size.height)
+
+        let leftMargin:Double = 8.0
+        let rightMargin:Double = 8.0
+        let labelWidth = Double(headingFrame.size.width.native) - leftMargin - rightMargin
+        let labelFrame = CGRect(x:leftMargin, y:0.0, width:labelWidth, height:headingHeight)
+        let headingLabel = UILabel(frame: labelFrame)
+        headingLabel.backgroundColor = K.PubHeadings.backgroundColor
+        headingLabel.textColor = K.PubHeadings.fontColor
+        return headingLabel
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return K.PubHeadings.height
     }
