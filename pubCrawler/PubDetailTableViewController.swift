@@ -43,21 +43,12 @@ class PubDetailTableViewController: AbstractTableViewController {
         self.cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PubDetailTableViewController.cancelPressed))
         self.nextButton = UIBarButtonItem(title:"Next", style:.plain ,target: self, action: #selector(PubDetailTableViewController.nextPressed))
 
-        NotificationCenter.addObserverPubCrawlRemoved(self, selector: #selector(self.pubCrawlRemovedNotification) )
-        NotificationCenter.addObserverPubCrawlChanged(self,selector: #selector(self.pubCrawlChangedNotification ) )
-        NotificationCenter.addObserverPubChanged(self,selector: #selector(self.pubChangedNotification ) )
-        
-        self.startCreating(pubWithPubHeader:self.pubHeader)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if self.dataSourceNeedsUpdating {
-            self.dataSourceNeedsUpdating = false
-            self.startCreating(pubWithPubHeader:self.pubHeader)
-        }
-        
+        self.startCreating(pubWithPubHeader:self.pubHeader)
         self.tableView.reloadData()
     }
     
@@ -231,7 +222,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
             self.tableView.reloadData()
         case K.PubHeadings.pubCrawls:
             if row == self.pub.listOfPubCrawls.count {
-                self.showPubCrawls()
+                self.createListOfPubCrawlsAndDisplayAlert()
             }
         case K.PubHeadings.telephone:
             self.callNumber(phoneNumber: self.pub.telephone)
@@ -269,16 +260,18 @@ extension PubDetailTableViewController { //tableViewDelegate methods
             }
         }
     }
-    private func showPubCrawls() {
-        
+    private func createListOfPubCrawlsAndDisplayAlert() {
+        let listOfItems = createListItemsForPubCrawls()
+        self.displayAddToPubCrawlAlert(forListOfItems:listOfItems)
+    }
+    private func createListItemsForPubCrawls() -> [ListItem] {
         var listOfItems=[ListItem]()
         
         for (ndx, pubCrawl) in self.pub.listOfOtherPubCrawls.pubCrawls.enumerated() {
             let listItem=ListItem(itemId:"", name:pubCrawl.name, ndx:ndx)
             listOfItems.append(listItem)
         }
-        self.displayListAlert(forListOfItems:listOfItems)
-        
+        return listOfItems
     }
 
     private func callNumber(phoneNumber:String) {
@@ -313,22 +306,19 @@ extension PubDetailTableViewController:UpdatePubDelegate { //delegate called any
     }
 }
 
-extension PubDetailTableViewController:ListAlertDelegate { //creates the listAlertViewController and contains delegates
+extension PubDetailTableViewController:AddToPubCrawlDelegate { //creates the listAlertViewController and contains delegates
 
-    func displayListAlert(forListOfItems listOfItems:[ListItem]) {
-        let listAlertViewController = ListAlertViewController(title: "", message: "", preferredStyle: .actionSheet)
-        listAlertViewController.delegate = self
-        listAlertViewController.listOfItems = listOfItems
-        listAlertViewController.createText="Create a Pub Crawl...."
-        listAlertViewController.emptyTitle="You have no Pub Crawls"
-        listAlertViewController.itemTitle="Select a Pub Crawl"
+    func displayAddToPubCrawlAlert(forListOfItems listOfItems:[ListItem]) {
+        let addToPubCrawlViewController = AddToPubCrawlViewController(title: "", message: "", preferredStyle: .actionSheet)
+        addToPubCrawlViewController.delegate = self
+        addToPubCrawlViewController.listOfItems = listOfItems
         
-        if let popoverController = listAlertViewController.popoverPresentationController { //needed for iPad
+        if let popoverController = addToPubCrawlViewController.popoverPresentationController { //needed for iPad
             popoverController.sourceView = self.tableView
             popoverController.sourceRect = CGRect(x: self.tableView.bounds.width / 4, y: self.tableView.bounds.height / 2, width: 1.0, height: 1.0)
         }
         
-        self.present(listAlertViewController, animated:true, completion:nil)
+        self.present(addToPubCrawlViewController, animated:true, completion:nil)
     }
 
     func itemAdded(listItem item:ListItem){
@@ -337,13 +327,13 @@ extension PubDetailTableViewController:ListAlertDelegate { //creates the listAle
     }
     
     func createNewItem(){
-        self.createNewPubCrawl()
+        self.displacyCreatePubCrawlViewController()
     }
 
 }
 
 extension PubDetailTableViewController { //method to create a new pub crawl
-    func createNewPubCrawl() {
+    func displacyCreatePubCrawlViewController() {
         let createPubCrawlVC = self.storyboard?.instantiateViewController(withIdentifier: "CreatePubCrawlViewController") as! CreatePubCrawlViewController
         createPubCrawlVC.pub = self.pub
         self.navigationController?.pushViewController(createPubCrawlVC, animated: true)
@@ -355,32 +345,6 @@ extension PubDetailTableViewController { //method for removing pub from a pub cr
         self.cancelPressed()
         self.startActivityIndicator()
         PubUpdater(pub: self.pub, withDelegate: self).remove(pubCrawl:pubCrawl)
-    }
-}
-
-extension PubDetailTableViewController { //deal with notificaitons
-    @objc func pubCrawlRemovedNotification(notification:Notification){
-        let deletedPubCrawl = notification.pubCrawl
-
-        if self.pub.listOfPubCrawls.contains(newPubCrawl:deletedPubCrawl) {
-            self.dataSourceNeedsUpdating = true
-        }
-    }
-    @objc func pubCrawlChangedNotification(notification:Notification) {
-        // if pubcrawl has been added to the pub, or pubCrawl name changed
-        let changedPubCrawl = notification.pubCrawl
-        let changedPubHeader = notification.pubHeader
-
-        if changedPubHeader.name == self.pubHeader.name {
-            self.dataSourceNeedsUpdating = true
-        } else {
-            if self.pub.listOfPubCrawls.contains(newPubCrawl:changedPubCrawl) {
-                self.dataSourceNeedsUpdating = true
-            }
-         }
-    }
-    @objc func pubChangedNotification(notification:Notification) {
-        self.pub  = Pub(fromNotification:notification)
     }
 }
 

@@ -16,19 +16,19 @@ struct ListItem {
     var ndx=0
 }
 
-protocol ListAlertDelegate {
+protocol AddToPubCrawlDelegate {
     func itemAdded(listItem:ListItem)
     func createNewItem()
 }
 
-class ListAlertViewController: UIAlertController {
+class AddToPubCrawlViewController: UIAlertController {
     
-    var delegate:ListAlertDelegate?
+    var delegate:AddToPubCrawlDelegate?
     var listOfItems=[ListItem]()
-    var emptyTitle="List is empty"
-    var itemTitle="Select an item"
-    var createText="Create a new item..."
-    
+    let emptyTitle="You have no Pub Crawls"
+    let itemTitle="Select a Pub Crawl"
+    let createText="Create a Pub Crawl...."
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

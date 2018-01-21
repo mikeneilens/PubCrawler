@@ -10,8 +10,7 @@ import UIKit
 import CoreLocation
 import MessageUI
 
-class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubCrawlDelegate, removePubCrawlDelegate, removePubFromPubCrawlDelegate, resequencePubsDelegate,addUsertoPubCrawlDelegate, copyPubCrawlDelegate, PubCrawlSettingTableViewCellDelegate, updatePubCrawlSettingDelegate, MFMailComposeViewControllerDelegate, getEmailTextDelegate  {
-   
+class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubCrawlDelegate, removePubCrawlDelegate, updatePubsInPubCrawlDelegate, copyPubCrawlDelegate, PubCrawlSettingTableViewCellDelegate, MFMailComposeViewControllerDelegate, getEmailTextDelegate  {
     
     @IBOutlet weak var mapButton: UIBarButtonItem!
     @IBOutlet weak var reOrderButton: UIBarButtonItem!
@@ -191,16 +190,14 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     
     func updatePubCrawl(name:String) {
         self.startActivityIndicator()
-        ListOfPubCrawlsCreator(delegate:.update(self)).update(pubCrawl: self.pubCrawl, newName: name)
+        ListOfPubCrawlsUpdater(delegate:self).update(pubCrawl: self.pubCrawl, newName: name)
     }
-    func finishedUpdatingPubCrawlName(listOfPubCrawls:ListOfPubCrawls) {
+    func finishedUpdatingPubCrawlIn(listOfPubCrawls:ListOfPubCrawls) {
         self.stopActivityIndicator()
 
         self.pubCrawl = listOfPubCrawls.pubCrawls[self.pubCrawlNdx]
         self.showDefaultButtons()
         self.tableView.reloadData()
-        
-        NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
         
         _ = self.navigationController?.popViewController(animated: true)
     }
@@ -208,33 +205,23 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     func finishedCreating(pubCrawl:PubCrawl) {
         self.stopActivityIndicator()
 
-        NotificationCenter.default.post(addedPubCrawl:pubCrawl)
-        
         _ = self.navigationController?.popViewController(animated: true)
 
     }
 
     func updatePubCrawlSetting() {
         self.startActivityIndicator()
-        ListOfPubCrawlsCreator(delegate: .updateSetting(self)).updateSetting(forPubCrawl: self.pubCrawl)
-    }
-    func finishedUpdatingPubCrawlSetting(listOfPubCrawls:ListOfPubCrawls) {
-        self.stopActivityIndicator()
-    
-        self.pubCrawl = listOfPubCrawls.pubCrawls[self.pubCrawlNdx]
-        self.showDefaultButtons()
-        self.tableView.reloadData()
-        
-        NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
+        ListOfPubCrawlsUpdater(delegate: self).updateSetting(forPubCrawl: self.pubCrawl)
     }
     
     func updatePubCrawlSequence() {
         self.startActivityIndicator()
-        PubCrawlUpdater(withDelegate: .resequence(self)).resequence(pubCrawl:self.pubCrawl, listOfPubHeaders: self.listOfPubHeaders)
-    }
-    func finishedResequencing(listOfPubHeaders:ListOfPubs) {
-        self.stopActivityIndicator()
         self.crawlSequenceChanged = false
+        PubCrawlUpdater(withDelegate: self).resequence(pubCrawl:self.pubCrawl, listOfPubHeaders: self.listOfPubHeaders)
+    }
+
+    func finishedUpdating(listOfPubHeaders: ListOfPubs) {
+        self.stopActivityIndicator()
         self.showDefaultButtons()
 
         self.listOfPubHeaders = listOfPubHeaders
@@ -246,34 +233,17 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
         PubCrawlDestroyer(withRemoveDelegate:self, pubCrawl:self.pubCrawl).remove()
     }
     
-    func finishedRemovingPubCrawl(fromPub pub: Pub) {
-        self.stopActivityIndicator()
-        self.listOfPubHeaders = self.listOfPubHeaders.remove(pubHeader:pub.pubHeader)
-        self.tableView.reloadData()
-        
-        NotificationCenter.default.post(changedPubCrawl: self.pubCrawl, with:pub.pubHeader)
-
-    }
-    
     func finishedRemovingPubCrawl(listOfPubCrawls:ListOfPubCrawls) {
         self.stopActivityIndicator()
    
-        NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
-        
         _ = self.navigationController?.popViewController(animated: true)
     }
     
     func removePub(withPubHeader pubHeader:PubHeader) {
         self.startActivityIndicator()
-        PubCrawlUpdater(withDelegate: .removePubFromPubCrawl(self)).remove(pubHeader: pubHeader)
+        PubCrawlUpdater(withDelegate:self).remove(pubHeader: pubHeader)
     }
-    
-    func finishedRemovingPubFromPubCrawl(listOfPubHeaders: ListOfPubs) {
-        self.stopActivityIndicator()
-        self.listOfPubHeaders = listOfPubHeaders
-        self.tableView.reloadData()
-    }
-   
+       
     // The array of pubHeaders is updated if cells are moved.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
     
@@ -296,16 +266,16 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
         self.joinPubCrawl()
     }
     func joinPubCrawl() {
-        ListOfPubCrawlsCreator(delegate: .addUser(self)).addUser(toPubCrawl: self.pubCrawl)
+        ListOfPubCrawlsUpdater(delegate: self).addUser(toPubCrawl: self.pubCrawl)
         self.startActivityIndicator()
-    }
+    }/*
     func finishedAddingUser(listOfPubCrawls:ListOfPubCrawls){
         stopActivityIndicator()
         joinButton.isEnabled = false
         
         NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
     }
-    
+    */
     @IBAction func actionButtonPressed(_ sender: AnyObject) {
         self.startActivityIndicator()
         self.emailPubCrawl()
@@ -358,7 +328,6 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     func finishedCopying(listOfPubCrawls:ListOfPubCrawls) {
         stopActivityIndicator()
-        NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
 
         if let navController = self.navigationController {
             navController.popViewController(animated: true)

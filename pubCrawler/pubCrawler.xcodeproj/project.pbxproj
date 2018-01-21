@@ -21,7 +21,7 @@
 		FB27F41B1CB95D2600C2F41A /* search-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FB27F4181CB95D2600C2F41A /* search-50.png */; };
 		FB27F41C1CB95D2600C2F41A /* search-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FB27F4191CB95D2600C2F41A /* search-72.png */; };
 		FB28F5CC1D4297AC003475DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB28F5CB1D4297AC003475DC /* TabBarController.swift */; };
-		FB28F5E81D4CC2CB003475DC /* ListAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB28F5E71D4CC2CB003475DC /* ListAlertViewController.swift */; };
+		FB28F5E81D4CC2CB003475DC /* AddToPubCrawlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB28F5E71D4CC2CB003475DC /* AddToPubCrawlViewController.swift */; };
 		FB2B77241E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B77231E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift */; };
 		FB2B77261E3240E700B4FEF9 /* AbstractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */; };
 		FB3156BD1DAE99DA005A867D /* IndexPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3156BC1DAE99DA005A867D /* IndexPathExtensions.swift */; };
@@ -63,7 +63,6 @@
 		FB8A67331E6A03B6000EE992 /* PubImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A67321E6A03B6000EE992 /* PubImageView.swift */; };
 		FB8A67351E6A1276000EE992 /* PictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A67341E6A1276000EE992 /* PictureTableViewCell.swift */; };
 		FB950E601DD89A5700B86AB3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB950E5F1DD89A5700B86AB3 /* Location.swift */; };
-		FB950E621DDCDFB700B86AB3 /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB950E611DDCDFB700B86AB3 /* NotificationCenterExtensions.swift */; };
 		FB9A3AD31DB28F3A008AB628 /* HygieneRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A3AD21DB28F3A008AB628 /* HygieneRatingCell.swift */; };
 		FB9A3AD71DB7FEE7008AB628 /* LongAboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A3AD61DB7FEE7008AB628 /* LongAboutTableViewCell.swift */; };
 		FBAF88A71C833FB90043A612 /* PubCrawlMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */; };
@@ -164,7 +163,7 @@
 		FB27F4181CB95D2600C2F41A /* search-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-50.png"; sourceTree = SOURCE_ROOT; };
 		FB27F4191CB95D2600C2F41A /* search-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-72.png"; sourceTree = SOURCE_ROOT; };
 		FB28F5CB1D4297AC003475DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		FB28F5E71D4CC2CB003475DC /* ListAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAlertViewController.swift; sourceTree = "<group>"; };
+		FB28F5E71D4CC2CB003475DC /* AddToPubCrawlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToPubCrawlViewController.swift; sourceTree = "<group>"; };
 		FB2B77231E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePubCrawlViewController.swift; sourceTree = "<group>"; };
 		FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
 		FB3156BC1DAE99DA005A867D /* IndexPathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexPathExtensions.swift; sourceTree = "<group>"; };
@@ -210,7 +209,6 @@
 		FB8A67321E6A03B6000EE992 /* PubImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubImageView.swift; sourceTree = "<group>"; };
 		FB8A67341E6A1276000EE992 /* PictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureTableViewCell.swift; sourceTree = "<group>"; };
 		FB950E5F1DD89A5700B86AB3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		FB950E611DDCDFB700B86AB3 /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtensions.swift; sourceTree = "<group>"; };
 		FB9A3AD21DB28F3A008AB628 /* HygieneRatingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HygieneRatingCell.swift; sourceTree = "<group>"; };
 		FB9A3AD61DB7FEE7008AB628 /* LongAboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongAboutTableViewCell.swift; sourceTree = "<group>"; };
 		FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlMapViewController.swift; path = ../PubCrawlMapViewController.swift; sourceTree = "<group>"; };
@@ -378,7 +376,7 @@
 				FBAF88AE1C8781260043A612 /* SettingsTableViewController.swift */,
 				FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */,
 				FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */,
-				FB28F5E71D4CC2CB003475DC /* ListAlertViewController.swift */,
+				FB28F5E71D4CC2CB003475DC /* AddToPubCrawlViewController.swift */,
 				FB3676171C94AD54008EFD3C /* HelpViewController.swift */,
 				FB0651661DC65CE6009B0A51 /* HygieneHelpViewController.swift */,
 				FB8A67301E6760E5000EE992 /* Models */,
@@ -426,7 +424,6 @@
 				FB864B741D4146BC00FB7F30 /* NSURLExtensions.swift */,
 				FBE820321F816D5400098082 /* SearchBarExtension.swift */,
 				FB0651641DC4EE16009B0A51 /* CollectionExtensions.swift */,
-				FB950E611DDCDFB700B86AB3 /* NotificationCenterExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -621,7 +618,6 @@
 				FB102CD91C78BD55007CC228 /* PubDetailTableViewController.swift in Sources */,
 				FBCDC7C51C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift in Sources */,
 				FB3156BD1DAE99DA005A867D /* IndexPathExtensions.swift in Sources */,
-				FB950E621DDCDFB700B86AB3 /* NotificationCenterExtensions.swift in Sources */,
 				FB2B77261E3240E700B4FEF9 /* AbstractViewController.swift in Sources */,
 				FB3676181C94AD54008EFD3C /* HelpViewController.swift in Sources */,
 				FBAF88A71C833FB90043A612 /* PubCrawlMapViewController.swift in Sources */,
@@ -651,7 +647,7 @@
 				FB27F3F21CAC3F0600C2F41A /* SearchTableViewController.swift in Sources */,
 				FB9A3AD71DB7FEE7008AB628 /* LongAboutTableViewCell.swift in Sources */,
 				FB0651631DBAC3A8009B0A51 /* AddressTableViewCell.swift in Sources */,
-				FB28F5E81D4CC2CB003475DC /* ListAlertViewController.swift in Sources */,
+				FB28F5E81D4CC2CB003475DC /* AddToPubCrawlViewController.swift in Sources */,
 				FB77C2A91D34143C00B91E43 /* StringExtensions.swift in Sources */,
 				FB0147F620011862005750BF /* CallWebService.swift in Sources */,
 				FBE820331F816D5400098082 /* SearchBarExtension.swift in Sources */,

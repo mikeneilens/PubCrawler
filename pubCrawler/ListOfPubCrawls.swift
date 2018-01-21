@@ -60,45 +60,21 @@ extension ListOfPubCrawls {
 protocol ListOfPubCrawlsCreatorListDelegate :CallWebServiceType  {
     func finishedCreating(listOfPubCrawls:ListOfPubCrawls)
 }
-protocol updatePubCrawlDelegate :CallWebServiceType {
-    func finishedUpdatingPubCrawlName(listOfPubCrawls:ListOfPubCrawls)
-}
-protocol updatePubCrawlSettingDelegate :CallWebServiceType{
-    func finishedUpdatingPubCrawlSetting(listOfPubCrawls:ListOfPubCrawls)
-}
-protocol addUsertoPubCrawlDelegate :CallWebServiceType{
-    func finishedAddingUser(listOfPubCrawls:ListOfPubCrawls)
-}
 
 struct ListOfPubCrawlsCreator:JSONResponseDelegate {
     
-    enum CreatorDelegate {
-        case list(ListOfPubCrawlsCreatorListDelegate)
-        case update(updatePubCrawlDelegate)
-        case updateSetting(updatePubCrawlSettingDelegate)
-        case addUser(addUsertoPubCrawlDelegate)
-    }
-    let delegate:CreatorDelegate
+    let delegate:ListOfPubCrawlsCreatorListDelegate
     
-    init (delegate:CreatorDelegate) {
-        switch delegate {
-            case .list(let listDelegate):
-                self.delegate = .list(listDelegate)
-            case .update(let updateDelegate):
-                self.delegate = .update(updateDelegate)
-            case .updateSetting(let updateSettingDelegate):
-                self.delegate = .updateSetting(updateSettingDelegate)
-            case .addUser(let addUserDelegate):
-                self.delegate = .addUser(addUserDelegate)
-        }
+    init (delegate:ListOfPubCrawlsCreatorListDelegate) {
+        self.delegate = delegate
     }
 
-    func createPubCrawl(forUId userId:UId) {
+    func createListOfPubCrawls(forUId userId:UId) {
         let paramDict = [K.QueryParm.function:K.QueryParm.Function.list, K.QueryParm.uId:userId.text]
         let urlPath = K.URL.pubCrawlURL.addParametersToURL(paramDict:paramDict)
         self.createList(withUrlString:urlPath)
     }
-
+    
     func searchForPubCrawls(withName search:String,forUId userId:UId) {
         
         let paramDict = [K.QueryParm.function:K.QueryParm.Function.search, K.QueryParm.search:search, K.QueryParm.uId:userId.text]
@@ -108,6 +84,35 @@ struct ListOfPubCrawlsCreator:JSONResponseDelegate {
     
     private func createList(withUrlString urlPath:String) {
         WebServieCaller().call(withDelegate: self, url: urlPath)
+    }
+
+    func finishedGetting(json:[String:Any]) {
+        
+        let (status, errorText)=json.errorStatus
+        switch status {
+        case 0:
+            let listOfPubCrawls = ListOfPubCrawls(fromJson:json)
+            self.delegate.finishedCreating(listOfPubCrawls: listOfPubCrawls)
+            
+        default:
+            self.delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not retrieve list of pub crawls")
+        }
+    }
+    func failedGettingJson(error:Error) {
+        self.delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not retrieve list of pub crawls")
+    }
+}
+
+protocol updatePubCrawlDelegate :CallWebServiceType {
+    func finishedUpdatingPubCrawlIn(listOfPubCrawls:ListOfPubCrawls)
+}
+
+struct ListOfPubCrawlsUpdater:JSONResponseDelegate {
+    
+    let delegate:updatePubCrawlDelegate
+    
+    init (delegate:updatePubCrawlDelegate) {
+        self.delegate = delegate
     }
     
     func update(pubCrawl:PubCrawl, newName:String) {
@@ -129,45 +134,13 @@ struct ListOfPubCrawlsCreator:JSONResponseDelegate {
         switch status {
         case 0:
             let listOfPubCrawls = ListOfPubCrawls(fromJson:json)
-
-            switch self.delegate {
-                case .list(let listDelegate):
-                    listDelegate.finishedCreating(listOfPubCrawls: listOfPubCrawls)
-            case .update(let delegate):
-                let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
-                delegate.finishedUpdatingPubCrawlName(listOfPubCrawls:listOfPubCrawls)
-            case .updateSetting(let delegate):
-                let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
-                delegate.finishedUpdatingPubCrawlSetting(listOfPubCrawls:listOfPubCrawls)
-            case .addUser(let delegate):
-                let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
-                delegate.finishedAddingUser(listOfPubCrawls:listOfPubCrawls)
-            }
+            delegate.finishedUpdatingPubCrawlIn(listOfPubCrawls:listOfPubCrawls)
         default:
-            switch delegate {
-            case .list(let delegate):
-                delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not retrieve list of pub crawls")
-            case .update(let delegate):
-                delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not update the pub crawl")
-            case .updateSetting(let delegate):
-                delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not update settings of the pub crawl")
-            case .addUser(let delegate):
-                delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not add user to the pub crawl")
-            }
+            delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not update pub crawl")
         }
     }
     func failedGettingJson(error:Error) {
-        switch delegate {
-        case .list(let delegate):
-            delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not retrieve list of pub crawls")
-        case .update(let delegate):
-            delegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not update the pub crawl")
-        case .updateSetting(let delegate):
-            delegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not update settings of the pub crawl")
-        case .addUser(let delegate):
-            delegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not add user to the pub crawl")
-
-        }
+        delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not update pub crawl")
     }
 }
 

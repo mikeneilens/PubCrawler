@@ -51,15 +51,8 @@ class CreatePubCrawlViewController: AbstractViewController, UITextFieldDelegate,
     }
     func finishedCreatingPubCrawl(listOfPubCrawls:ListOfPubCrawls, pub:Pub) {
         self.stopActivityIndicator()
-
-        if listOfPubCrawls.isNotEmpty {
-            NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
-        }
-        if pub.pubHeader.name.isNotEmpty {
-            NotificationCenter.default.post(changedPub:pub)
-        }
         
-        _ = self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
         
     }
 

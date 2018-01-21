@@ -94,6 +94,7 @@ struct PubCrawlCreator:JSONResponseDelegate {
         let urlPath = listOfPubCrawls.createPubCrawlService + name.cleanQString
         WebServieCaller().call(withDelegate: self, url: urlPath)
     }
+    
     func create(name:String) {
         let urlPath =  pub.createPubCrawlService + name.cleanQString
         WebServieCaller().call(withDelegate: self, url: urlPath)
@@ -137,22 +138,15 @@ struct PubCrawlCreator:JSONResponseDelegate {
     }
 }
 
-protocol removePubFromPubCrawlDelegate :CallWebServiceType{
-    func finishedRemovingPubFromPubCrawl(listOfPubHeaders:ListOfPubs)
-}
-protocol resequencePubsDelegate :CallWebServiceType{
-    func finishedResequencing(listOfPubHeaders:ListOfPubs)
+protocol updatePubsInPubCrawlDelegate :CallWebServiceType{
+    func finishedUpdating(listOfPubHeaders:ListOfPubs)
 }
 
 struct PubCrawlUpdater:JSONResponseDelegate {
     
-    enum ChangeDelegate {
-        case resequence(resequencePubsDelegate)
-        case removePubFromPubCrawl(removePubFromPubCrawlDelegate)
-    }
-    let delegate:ChangeDelegate
+    let delegate:updatePubsInPubCrawlDelegate
     
-    init(withDelegate delegate:ChangeDelegate) {
+    init(withDelegate delegate:updatePubsInPubCrawlDelegate) {
         self.delegate = delegate
     }
     
@@ -181,38 +175,19 @@ struct PubCrawlUpdater:JSONResponseDelegate {
         
         let (status, errorText)=json.errorStatus
         switch status {
-        case 0:
-            switch self.delegate {
-            case .resequence(let delegate):
-                let listOfPubs = ListOfPubs(fromJson: json)
-                delegate.finishedResequencing(listOfPubHeaders:listOfPubs)
-            case .removePubFromPubCrawl(let delegate):
-                let listOfPubs = ListOfPubs(fromJson: json)
-                delegate.finishedRemovingPubFromPubCrawl(listOfPubHeaders: listOfPubs)
-            }
             
+        case 0:
+            let listOfPubs = ListOfPubs(fromJson: json)
+            delegate.finishedUpdating(listOfPubHeaders:listOfPubs)
         default:
-            switch self.delegate {
-            case .resequence(let delegate):
-                delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not resequence the pub crawl")
-            case .removePubFromPubCrawl(let delegate):
-                delegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not remove pub from pub crawl")
-            }
+            delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not updaet the pub crawl")
         }
     }
     func failedGettingJson(error:Error) {
-        
-        switch self.delegate {
-        case .resequence(let delegate):
-            delegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not resequence the pub crawl")
-        case .removePubFromPubCrawl(let delegate):
-            delegate.requestFailed(error:JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not remove pub from pub crawl")
-        }
+        delegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not update the pub crawl")
     }
 
 }
-
-
 
 //Destroys pub crawls.
 protocol removePubCrawlDelegate :CallWebServiceType{

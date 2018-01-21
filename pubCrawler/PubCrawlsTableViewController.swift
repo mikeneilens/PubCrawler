@@ -18,7 +18,6 @@ class PubCrawlsTableViewController: AbstractTableViewController  {
     fileprivate var listOfpubCrawls = ListOfPubCrawls()
 
     fileprivate var lastSearch = ""
-    fileprivate var dataSourceNeedsUpdating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +27,6 @@ class PubCrawlsTableViewController: AbstractTableViewController  {
         self.navigationItem.title = "Pub Crawls"
         self.searchBar.delegate = self
         self.searchBar.setShortPlaceholder(using: K.shortPubCrawlSearchText)
-
-        NotificationCenter.addObserverListOfPubCrawlsChanged(self, selector: #selector(self.listOfPubCrawlsChangedNotification) )
-
     }
 
     func getPubCrawl(forCrawlId crawlId:String) {
@@ -45,12 +41,8 @@ class PubCrawlsTableViewController: AbstractTableViewController  {
 
         super.viewWillAppear(animated)
         
-        if ((self.listOfpubCrawls.isEmpty) || (dataSourceNeedsUpdating)) {
-            self.startCreatingListOfPubCrawls(withSearchText:self.lastSearch)
-            dataSourceNeedsUpdating = false
-        } else {
-            self.tableView.reloadData()
-        }
+        self.startCreatingListOfPubCrawls(withSearchText:self.lastSearch)
+        self.tableView.reloadData()
 
     }
    
@@ -122,9 +114,9 @@ extension PubCrawlsTableViewController:ListOfPubCrawlsCreatorListDelegate { //de
         self.startActivityIndicator()
         
         if search.isEmpty {
-            ListOfPubCrawlsCreator(delegate:.list(self)).createPubCrawl(forUId:userId)
+            ListOfPubCrawlsCreator(delegate:self).createListOfPubCrawls(forUId:userId)
         } else {
-            ListOfPubCrawlsCreator(delegate:.list(self)).searchForPubCrawls(withName: search, forUId:userId)
+            ListOfPubCrawlsCreator(delegate:self).searchForPubCrawls(withName: search, forUId:userId)
         }
         
         self.lastSearch = search
@@ -163,8 +155,3 @@ extension PubCrawlsTableViewController:UISearchBarDelegate {  //delegate methods
     }
 }
 
-extension PubCrawlsTableViewController { //listener for notifications of pubCrawl add or remove
-    @objc func listOfPubCrawlsChangedNotification(notification:Notification) {
-        self.dataSourceNeedsUpdating = true
-    }
-}

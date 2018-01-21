@@ -108,11 +108,7 @@ struct Pub {
     init() { //default initialise
         self = Pub(fromJson: [:])
     }
-    
-    init (fromNotification notification:Notification ) {
-        self = notification.pub
-    }
-    
+        
 }
 
 func getPubCrawls(fromJson pubCrawlsJson:[[String:Any]]) -> ListOfPubCrawls {
@@ -150,7 +146,7 @@ struct PubCreator: JSONResponseDelegate {
         let (status, errorText)=json.errorStatus
         switch status {
         case 0:
-            let pub=Pub(fromJson: json)
+            let pub = Pub(fromJson: json)
             self.delegate.finishedCreating(newPub:pub)
         default:
             self.delegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not retrieve pub")
