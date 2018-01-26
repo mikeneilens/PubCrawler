@@ -130,18 +130,22 @@ protocol ListOfPubsCreatorDelegate :CallWebServiceType {
     func finishedCreating(listOfPubHeaders:ListOfPubs)
 }
 
-struct ListOfPubsCreator: JSONResponseDelegate {
+struct ListOfPubsCreator: WebServiceCallerType {
     
     let delegate:ListOfPubsCreatorDelegate
     let listOfPubs:ListOfPubs
-    
-    init (withDelegate delegate:ListOfPubsCreatorDelegate) {
-        self = ListOfPubsCreator(withDelegate:delegate, listOfPubs:ListOfPubs())
-    }
+    let errorDelegate: CallWebServiceType
+    let serviceName = "update pub"
 
+    init (withDelegate delegate:ListOfPubsCreatorDelegate) {
+        self.delegate = delegate
+        self.listOfPubs = ListOfPubs()
+        self.errorDelegate = delegate
+    }
     init (withDelegate delegate:ListOfPubsCreatorDelegate, listOfPubs:ListOfPubs) {
         self.delegate = delegate
         self.listOfPubs = listOfPubs
+        self.errorDelegate = delegate
     }
     
     func createList(usingSearchString search:String, location:Location, options:[SearchOption], uId:UId)
@@ -171,7 +175,7 @@ struct ListOfPubsCreator: JSONResponseDelegate {
     }
 
     private func requestList(usingURLString urlPath:String) {
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
 
     func finishedGetting(json:[String:Any]) {
@@ -182,13 +186,9 @@ struct ListOfPubsCreator: JSONResponseDelegate {
             let listOfPubHeaders = ListOfPubs(fromJson:json, existingList:listOfPubs)
             self.delegate.finishedCreating(listOfPubHeaders: listOfPubHeaders)
         default:
-            self.delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not find any pubs")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
-    }
-    func failedGettingJson(error:Error) {
-        self.delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not retrieve pubs")
-    }
-    
+    }    
 }
 
 func convertToDictionary(searchOptions:[SearchOption]) -> [String:String] {

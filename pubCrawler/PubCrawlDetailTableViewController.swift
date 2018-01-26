@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MessageUI
 
-class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubCrawlDelegate, removePubCrawlDelegate, updatePubsInPubCrawlDelegate, copyPubCrawlDelegate, PubCrawlSettingTableViewCellDelegate, MFMailComposeViewControllerDelegate, getEmailTextDelegate  {
+class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubCrawlDelegate, removePubCrawlDelegate, updatePubsInPubCrawlDelegate, CopyPubCrawlDelegate, PubCrawlSettingTableViewCellDelegate, MFMailComposeViewControllerDelegate, getEmailTextDelegate  {
     
     @IBOutlet weak var mapButton: UIBarButtonItem!
     @IBOutlet weak var reOrderButton: UIBarButtonItem!
@@ -324,7 +324,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     func copyPubCrawl() {
         self.startActivityIndicator()
-        PubCrawlCreator(withDelegate: .copy(self)).copy(pubCrawl:self.pubCrawl)
+        PubCrawlCopier(withDelegate:self).copy(pubCrawl:self.pubCrawl)
     }
     func finishedCopying(listOfPubCrawls:ListOfPubCrawls) {
         stopActivityIndicator()

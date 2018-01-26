@@ -22,3 +22,22 @@ struct WebServieCaller {
     }
 }
 
+protocol WebServiceCallerType:JSONResponseDelegate {
+    var errorDelegate:CallWebServiceType {get} 
+    var serviceName:String {get}
+}
+extension WebServiceCallerType {
+    func call(withDelegate delegate:JSONResponseDelegate, url:String) {
+        let request = Request(urlString: url)
+        defaultWebService.getJson(forRequest:request, delegate:delegate)
+    }
+    func failedGettingJson(error:Error) {
+        errorDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not " + serviceName)
+    }
+    func failedGettingJson(error:JSONError, errorText:String) {
+        errorDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not" + serviceName)
+    }
+
+}
+
+

@@ -43,10 +43,10 @@ class CreatePubCrawlViewController: AbstractViewController, UITextFieldDelegate,
         self.startActivityIndicator()
 
         if let pub = self.pub {
-            PubCrawlCreator(withDelegate: .create(self), withPub:pub).create(name:name)
+            PubCrawlCreator(withDelegate:self, withPub:pub).create(name:name)
         } else
             if let listOfPubCrawls = self.listOfPubCrawls {
-                PubCrawlCreator(withDelegate: .create(self)).create(forListOfPubCrawls:listOfPubCrawls, name:name)
+                PubCrawlCreator(withDelegate:self).create(forListOfPubCrawls:listOfPubCrawls, name:name)
         }
     }
     func finishedCreatingPubCrawl(listOfPubCrawls:ListOfPubCrawls, pub:Pub) {

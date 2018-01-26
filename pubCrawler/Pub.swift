@@ -125,22 +125,25 @@ protocol PubCreatorDelegate :CallWebServiceType {
     func finishedCreating(newPub pub:Pub)
 }
 
-struct PubCreator: JSONResponseDelegate {
+struct PubCreator: WebServiceCallerType {
     let delegate:PubCreatorDelegate
     let pubHeader:PubHeader
+    let errorDelegate: CallWebServiceType
+    let serviceName = "retrieve pub"
     
     init (withDelegate delegate:PubCreatorDelegate, forPubHeader pubHeader:PubHeader) {
         self.delegate = delegate
+        self.errorDelegate = delegate
         self.pubHeader = pubHeader
     }
     
     func createPub() {
         let urlPath = self.pubHeader.pubService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     func createNext(pub:Pub) {
         let urlPath = pub.nextPubService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     func finishedGetting(json:[String:Any]) {
         let (status, errorText)=json.errorStatus
@@ -149,47 +152,46 @@ struct PubCreator: JSONResponseDelegate {
             let pub = Pub(fromJson: json)
             self.delegate.finishedCreating(newPub:pub)
         default:
-            self.delegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not retrieve pub")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
     }
-    func failedGettingJson(error:Error) {
-        self.delegate.requestFailed(error:JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not retrieve pub")
-    }
-    
 }
 
 protocol UpdatePubDelegate:CallWebServiceType  {
     func finishedUpdating(pub:Pub)
 }
 
-struct PubUpdater:JSONResponseDelegate {
+struct PubUpdater:WebServiceCallerType {
 
     let delegate:UpdatePubDelegate
     let pub:Pub
-    
+    let errorDelegate: CallWebServiceType
+    let serviceName = "update pub"
+
     init(pub:Pub, withDelegate delegate:UpdatePubDelegate) {
         self.pub = pub
         self.delegate = delegate
+        self.errorDelegate = delegate
     }
     
     func add(pubCrawlAtNdx ndx:Int ) {
         let urlPath = self.pub.listOfOtherPubCrawls.pubCrawls[ndx].addPubCrawlService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func remove(pubCrawl:PubCrawl) {
         let urlPath = pubCrawl.removePubCrawlService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func updateVisit() {
         let urlPath = self.pub.changeVisitedService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func updateLiked() {
         let urlPath = pub.changeLikedService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -200,12 +202,8 @@ struct PubUpdater:JSONResponseDelegate {
             let pub = Pub(fromJson: json)
             delegate.finishedUpdating(pub: pub)
         default:
-            delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not update pub")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
     }
     
-    func failedGettingJson(error:Error) {
-        delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not update pub")
-    }
-
 }

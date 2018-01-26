@@ -63,46 +63,66 @@ struct PubCrawl {
 protocol createPubCrawlDelegate :CallWebServiceType{
     func finishedCreatingPubCrawl(listOfPubCrawls:ListOfPubCrawls, pub:Pub)
 }
-protocol copyPubCrawlDelegate :CallWebServiceType{
-    func finishedCopying(listOfPubCrawls:ListOfPubCrawls)
-}
-//Creates new pub crawls
-struct PubCrawlCreator:JSONResponseDelegate {
+
+struct PubCrawlCreator:WebServiceCallerType {
     
-    enum CreatorDelegate {
-        case create(createPubCrawlDelegate)
-        case copy(copyPubCrawlDelegate)
-    }
-    
-    let delegate:CreatorDelegate
+    let delegate:createPubCrawlDelegate
     let pub:Pub
-    
-    init(withDelegate delegate:CreatorDelegate) {
-        self = PubCrawlCreator(withDelegate:delegate, withPub:Pub())
+    let errorDelegate: CallWebServiceType
+    let serviceName = "create the pub crawl"
+
+    init(withDelegate delegate:createPubCrawlDelegate) {
+        self.delegate = delegate
+        self.errorDelegate = delegate
+        self.pub = Pub()
     }
-    init(withDelegate delegate:CreatorDelegate, withPub pub:Pub) {
-        switch delegate {
-        case .create(let createPubCrawlDelegate):
-            self.delegate = .create(createPubCrawlDelegate)
-        case .copy(let copyPubCrawlDelegate):
-            self.delegate = .copy(copyPubCrawlDelegate)
-        }
+    init(withDelegate delegate:createPubCrawlDelegate, withPub pub:Pub) {
+        self.delegate = delegate
+        self.errorDelegate = delegate
         self.pub = pub
     }
 
     func create(forListOfPubCrawls listOfPubCrawls:ListOfPubCrawls, name:String) {
         let urlPath = listOfPubCrawls.createPubCrawlService + name.cleanQString
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func create(name:String) {
         let urlPath =  pub.createPubCrawlService + name.cleanQString
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
+    }
+    
+    func finishedGetting(json:[String:Any]) {
+        let (status, errorText)=json.errorStatus
+        switch status {
+        case 0:
+            let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
+            let pub = Pub(fromJson: json)
+            self.delegate.finishedCreatingPubCrawl(listOfPubCrawls:listOfPubCrawls, pub:pub)
+        default:
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
+        }
+    }
+}
+
+protocol CopyPubCrawlDelegate :CallWebServiceType{
+    func finishedCopying(listOfPubCrawls:ListOfPubCrawls)
+}
+
+struct PubCrawlCopier:WebServiceCallerType {
+        
+    let delegate:CopyPubCrawlDelegate
+    let errorDelegate: CallWebServiceType
+    let serviceName = "copy the pub crawl"
+
+    init(withDelegate delegate:CopyPubCrawlDelegate) {
+        self.delegate = delegate
+        self.errorDelegate = delegate
     }
     
     func copy(pubCrawl:PubCrawl) {
         let urlPath = pubCrawl.copyService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -110,30 +130,10 @@ struct PubCrawlCreator:JSONResponseDelegate {
         let (status, errorText)=json.errorStatus
         switch status {
         case 0:
-            switch self.delegate {
-            case .create(let createDelegate):
-                let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
-                let pub = Pub(fromJson: json)
-                createDelegate.finishedCreatingPubCrawl(listOfPubCrawls:listOfPubCrawls, pub:pub)
-            case .copy(let copyDelegate):
-                let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
-                copyDelegate.finishedCopying(listOfPubCrawls:listOfPubCrawls)
-            }
+            let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
+            self.delegate.finishedCopying(listOfPubCrawls:listOfPubCrawls)
         default:
-            switch self.delegate {
-            case .create(let createDelegate):
-                createDelegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not create the pub crawl")
-            case .copy(let copyDelegate):
-                copyDelegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not copy the pub crawl")
-            }
-        }
-    }
-    func failedGettingJson(error:Error) {
-        switch self.delegate {
-        case .create(let createDelegate):
-            createDelegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not create the pub crawl")
-        case .copy(let copyDelegate):
-            copyDelegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not copy the pub crawl")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
     }
 }
@@ -142,17 +142,20 @@ protocol updatePubsInPubCrawlDelegate :CallWebServiceType{
     func finishedUpdating(listOfPubHeaders:ListOfPubs)
 }
 
-struct PubCrawlUpdater:JSONResponseDelegate {
+struct PubCrawlUpdater:WebServiceCallerType {
     
     let delegate:updatePubsInPubCrawlDelegate
+    let errorDelegate: CallWebServiceType
+    let serviceName = "update the pub crawl"
     
     init(withDelegate delegate:updatePubsInPubCrawlDelegate) {
         self.delegate = delegate
+        self.errorDelegate = delegate
     }
     
     func remove(pubHeader:PubHeader) {
         let urlPath = pubHeader.removePubService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func resequence(pubCrawl:PubCrawl, listOfPubHeaders:ListOfPubs) {
@@ -180,13 +183,9 @@ struct PubCrawlUpdater:JSONResponseDelegate {
             let listOfPubs = ListOfPubs(fromJson: json)
             delegate.finishedUpdating(listOfPubHeaders:listOfPubs)
         default:
-            delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not updaet the pub crawl")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
     }
-    func failedGettingJson(error:Error) {
-        delegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not update the pub crawl")
-    }
-
 }
 
 //Destroys pub crawls.
@@ -194,35 +193,33 @@ protocol removePubCrawlDelegate :CallWebServiceType{
     func finishedRemovingPubCrawl(listOfPubCrawls:ListOfPubCrawls)
 }
 
-struct PubCrawlDestroyer:JSONResponseDelegate {
+struct PubCrawlDestroyer:WebServiceCallerType {
     
     let removeDelegate:removePubCrawlDelegate
     let pubCrawl:PubCrawl
+    let errorDelegate: CallWebServiceType
+    let serviceName = "remove the pub crawl"
 
     init(withRemoveDelegate delegate:removePubCrawlDelegate, pubCrawl:PubCrawl) {
         self.removeDelegate = delegate
+        self.errorDelegate = delegate
         self.pubCrawl = pubCrawl
     }
     
     func remove() {
         let urlPath = self.pubCrawl.removeService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
-        
         let (status, errorText)=json.errorStatus
         switch status {
         case 0:
             let listOfPubCrawls = ListOfPubCrawls(fromJson: json)
             self.removeDelegate.finishedRemovingPubCrawl(listOfPubCrawls:listOfPubCrawls)
-            
         default:
-            self.removeDelegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not remove the pub crawl")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
-    }
-    func failedGettingJson(error:Error) {
-        self.removeDelegate.requestFailed(error: JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not remove the pub crawl")
     }
     
 }
@@ -231,18 +228,21 @@ protocol getEmailTextDelegate :CallWebServiceType{
     func finishedGetting(emailText:String)
 }
 
-struct EmailCreator:JSONResponseDelegate {
+struct EmailCreator:WebServiceCallerType {
     let delegate:getEmailTextDelegate
     let pubCrawl:PubCrawl
-    
+    let errorDelegate: CallWebServiceType
+    let serviceName = "get email text"
+
     init(withDelegate delegate:getEmailTextDelegate, pubCrawl:PubCrawl) {
         self.delegate = delegate
+        self.errorDelegate = delegate
         self.pubCrawl = pubCrawl
     }
     
     func getEmailText() {
         let urlPath = self.pubCrawl.emailTextService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
 
     func finishedGetting(json:[String:Any]) {
@@ -252,12 +252,6 @@ struct EmailCreator:JSONResponseDelegate {
             let emailText = json[K.PubCrawlJsonName.emailText] as? String ?? ""
             self.delegate.finishedGetting(emailText: emailText)
         default:
-            self.delegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not get email text")
-        }
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)        }
     }
-    func failedGettingJson(error:Error) {
-        self.delegate.requestFailed(error:JSONError.NoData, errorText:"Error connecting to internet", errorTitle:"Could not get email text")
-    }
-
-
 }
