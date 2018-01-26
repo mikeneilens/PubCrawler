@@ -233,7 +233,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
             self.tableView.reloadData()
         case K.PubHeadings.pubCrawls:
             if row == self.pub.listOfPubCrawls.count {
-                self.createListOfPubCrawlsAndDisplayAlert()
+                self.displayAddToPubCrawlAlert()
             }
         case K.PubHeadings.telephone:
             self.callNumber(phoneNumber: self.pub.telephone)
@@ -271,19 +271,6 @@ extension PubDetailTableViewController { //tableViewDelegate methods
             }
         }
     }
-    private func createListOfPubCrawlsAndDisplayAlert() {
-        let listOfItems = createListItemsForPubCrawls()
-        self.displayAddToPubCrawlAlert(forListOfItems:listOfItems)
-    }
-    private func createListItemsForPubCrawls() -> [ListItem] {
-        var listOfItems=[ListItem]()
-        
-        for (ndx, pubCrawl) in self.pub.listOfOtherPubCrawls.pubCrawls.enumerated() {
-            let listItem=ListItem(itemId:"", name:pubCrawl.name, ndx:ndx)
-            listOfItems.append(listItem)
-        }
-        return listOfItems
-    }
 
     private func callNumber(phoneNumber:String) {
         if let url = URL(string:"telprompt://" + phoneNumber), UIApplication.shared.canOpenURL(url) {
@@ -319,10 +306,10 @@ extension PubDetailTableViewController:UpdatePubDelegate { //delegate called any
 
 extension PubDetailTableViewController:AddToPubCrawlDelegate { //creates the listAlertViewController and contains delegates
 
-    func displayAddToPubCrawlAlert(forListOfItems listOfItems:[ListItem]) {
+    func displayAddToPubCrawlAlert() {
         let addToPubCrawlViewController = AddToPubCrawlViewController(title: "", message: "", preferredStyle: .actionSheet)
         addToPubCrawlViewController.delegate = self
-        addToPubCrawlViewController.listOfItems = listOfItems
+        addToPubCrawlViewController.listOfPubCrawls = self.pub.listOfOtherPubCrawls
         
         if let popoverController = addToPubCrawlViewController.popoverPresentationController { //needed for iPad
             popoverController.sourceView = self.tableView
@@ -332,12 +319,12 @@ extension PubDetailTableViewController:AddToPubCrawlDelegate { //creates the lis
         self.present(addToPubCrawlViewController, animated:true, completion:nil)
     }
 
-    func itemAdded(listItem item:ListItem){
+    func pubCrawlAdded(atIndex ndx:Int){
         self.startActivityIndicator()
-        PubUpdater(pub: self.pub, withDelegate: self).add(pubCrawlAtNdx: item.ndx)
+        PubUpdater(pub: self.pub, withDelegate: self).add(pubCrawlAtNdx:ndx)
     }
     
-    func createNewItem(){
+    func createPubCrawl(){
         self.displacyCreatePubCrawlViewController()
     }
 

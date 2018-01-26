@@ -11,6 +11,16 @@ import MNWebServiceCall
 
 var defaultWebService:MNWebService = WebService()
 
+// A factory class or struct will call MNWebService.
+/* The factory is a WebServiceCallerType and therefore must have properties for:
+ errorDelegate: i.e. the delegate for an error message, usually in the view controller that wants a new or updated model object
+ serviceName: a string describing what the service does which is shown in the default error message
+ 
+ WebServiceCallerType has default implentations for:
+    call: this uses the getJson function within defaultWebService object, which is set to WebService()
+    faledGettingJson: this is part of JSONResponseDelegate and calls the errorDelegate. Thid could be overwritten if the factory wants to return a bespoke error message.
+ */
+
 protocol WebServiceDelegate {
     func requestFailed(error:JSONError, errorText:String, errorTitle:String)
 }

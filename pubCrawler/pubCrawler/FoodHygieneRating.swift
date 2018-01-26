@@ -104,5 +104,9 @@ struct FoodHygieneRatingsCreator: WebServiceCallerType {
         default:
             self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
-    }    
+    }
+    func failedGettingJson(error:Error) {
+        let listOfRatings=ListOfFoodHygieneRatings()
+        self.listDelegate.finishedCreating(listOfFoodHygieneRatings:listOfRatings)
+    }
 }
