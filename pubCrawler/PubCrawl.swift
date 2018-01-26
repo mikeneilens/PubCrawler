@@ -60,7 +60,7 @@ struct PubCrawl {
     
 }
 
-protocol createPubCrawlDelegate :CallWebServiceType{
+protocol createPubCrawlDelegate :WebServiceDelegate{
     func finishedCreatingPubCrawl(listOfPubCrawls:ListOfPubCrawls, pub:Pub)
 }
 
@@ -68,7 +68,7 @@ struct PubCrawlCreator:WebServiceCallerType {
     
     let delegate:createPubCrawlDelegate
     let pub:Pub
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "create the pub crawl"
 
     init(withDelegate delegate:createPubCrawlDelegate) {
@@ -105,14 +105,14 @@ struct PubCrawlCreator:WebServiceCallerType {
     }
 }
 
-protocol CopyPubCrawlDelegate :CallWebServiceType{
+protocol CopyPubCrawlDelegate :WebServiceDelegate{
     func finishedCopying(listOfPubCrawls:ListOfPubCrawls)
 }
 
 struct PubCrawlCopier:WebServiceCallerType {
         
     let delegate:CopyPubCrawlDelegate
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "copy the pub crawl"
 
     init(withDelegate delegate:CopyPubCrawlDelegate) {
@@ -138,14 +138,14 @@ struct PubCrawlCopier:WebServiceCallerType {
     }
 }
 
-protocol updatePubsInPubCrawlDelegate :CallWebServiceType{
+protocol updatePubsInPubCrawlDelegate :WebServiceDelegate{
     func finishedUpdating(listOfPubHeaders:ListOfPubs)
 }
 
 struct PubCrawlUpdater:WebServiceCallerType {
     
     let delegate:updatePubsInPubCrawlDelegate
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "update the pub crawl"
     
     init(withDelegate delegate:updatePubsInPubCrawlDelegate) {
@@ -171,7 +171,7 @@ struct PubCrawlUpdater:WebServiceCallerType {
             }
         }
         let urlPath = pubCrawl.sequencePubsService + csv
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -189,7 +189,7 @@ struct PubCrawlUpdater:WebServiceCallerType {
 }
 
 //Destroys pub crawls.
-protocol removePubCrawlDelegate :CallWebServiceType{
+protocol removePubCrawlDelegate :WebServiceDelegate{
     func finishedRemovingPubCrawl(listOfPubCrawls:ListOfPubCrawls)
 }
 
@@ -197,7 +197,7 @@ struct PubCrawlDestroyer:WebServiceCallerType {
     
     let removeDelegate:removePubCrawlDelegate
     let pubCrawl:PubCrawl
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "remove the pub crawl"
 
     init(withRemoveDelegate delegate:removePubCrawlDelegate, pubCrawl:PubCrawl) {
@@ -224,14 +224,14 @@ struct PubCrawlDestroyer:WebServiceCallerType {
     
 }
 
-protocol getEmailTextDelegate :CallWebServiceType{
+protocol getEmailTextDelegate :WebServiceDelegate{
     func finishedGetting(emailText:String)
 }
 
 struct EmailCreator:WebServiceCallerType {
     let delegate:getEmailTextDelegate
     let pubCrawl:PubCrawl
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "get email text"
 
     init(withDelegate delegate:getEmailTextDelegate, pubCrawl:PubCrawl) {

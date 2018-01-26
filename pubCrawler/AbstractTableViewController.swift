@@ -9,10 +9,6 @@
 import UIKit
 import MNWebServiceCall
 
-protocol CallWebServiceType {
-    func requestFailed(error:JSONError, errorText:String, errorTitle:String)
-}
-
 class AbstractTableViewController: UITableViewController {
 
     private var activities = 0

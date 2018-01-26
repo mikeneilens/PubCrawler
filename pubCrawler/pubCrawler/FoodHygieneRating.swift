@@ -72,24 +72,26 @@ struct ListOfFoodHygieneRatings {
     }
 }
 
-protocol FoodHygieneRatingsCreatorDelegate :CallWebServiceType  {
+protocol FoodHygieneRatingsCreatorDelegate :WebServiceDelegate  {
     func finishedCreating(listOfFoodHygieneRatings:ListOfFoodHygieneRatings)
 }
 
-struct FoodHygieneRatingsCreator: JSONResponseDelegate {
+struct FoodHygieneRatingsCreator: WebServiceCallerType {
     let listDelegate:FoodHygieneRatingsCreatorDelegate
-    
+    let errorDelegate: WebServiceDelegate
+    let serviceName = "retrieve hygiene rating"
+
     init (delegate:FoodHygieneRatingsCreatorDelegate) {
         self.listDelegate = delegate
+        self.errorDelegate = delegate
     }
     
     func createListOfFoodHygieneRatings(forPub pub:Pub) {
         let urlPath = pub.hygieneRatingService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
-        
         let (status, errorText)=json.errorStatus
         switch status {
         case 0:
@@ -99,13 +101,8 @@ struct FoodHygieneRatingsCreator: JSONResponseDelegate {
             let noHygieneRating=FoodHygieneRating()
             let listOfRatings = ListOfFoodHygieneRatings(withHygieneRating: noHygieneRating)
             self.listDelegate.finishedCreating(listOfFoodHygieneRatings:listOfRatings)
-
         default:
-            self.listDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not retrieve hygiene rating")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
-    }
-    func failedGettingJson(error:Error) {
-        self.listDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not retrieve hygiene rating")
-    }
-    
+    }    
 }

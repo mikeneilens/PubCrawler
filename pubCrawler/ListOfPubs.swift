@@ -126,7 +126,7 @@ extension ListOfPubs  {
 
  
 // ListOfPubCreator is a factory used to make a new ListOfPubs
-protocol ListOfPubsCreatorDelegate :CallWebServiceType {
+protocol ListOfPubsCreatorDelegate :WebServiceDelegate {
     func finishedCreating(listOfPubHeaders:ListOfPubs)
 }
 
@@ -134,7 +134,7 @@ struct ListOfPubsCreator: WebServiceCallerType {
     
     let delegate:ListOfPubsCreatorDelegate
     let listOfPubs:ListOfPubs
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "update pub"
 
     init (withDelegate delegate:ListOfPubsCreatorDelegate) {

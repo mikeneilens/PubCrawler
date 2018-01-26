@@ -11,21 +11,15 @@ import MNWebServiceCall
 
 var defaultWebService:MNWebService = WebService()
 
-struct WebServieCaller {
-    let webService:MNWebService
-    init() {
-        self.webService = defaultWebService
-    }
-    func call(withDelegate delegate:JSONResponseDelegate, url:String) {
-        let request = Request(urlString: url)
-        self.webService.getJson(forRequest:request, delegate:delegate)
-    }
+protocol WebServiceDelegate {
+    func requestFailed(error:JSONError, errorText:String, errorTitle:String)
 }
 
 protocol WebServiceCallerType:JSONResponseDelegate {
-    var errorDelegate:CallWebServiceType {get} 
+    var errorDelegate:WebServiceDelegate {get} 
     var serviceName:String {get}
 }
+
 extension WebServiceCallerType {
     func call(withDelegate delegate:JSONResponseDelegate, url:String) {
         let request = Request(urlString: url)

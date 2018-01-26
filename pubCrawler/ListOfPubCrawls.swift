@@ -57,16 +57,19 @@ extension ListOfPubCrawls {
     }
 }
 
-protocol ListOfPubCrawlsCreatorListDelegate :CallWebServiceType  {
+protocol ListOfPubCrawlsCreatorListDelegate :WebServiceDelegate  {
     func finishedCreating(listOfPubCrawls:ListOfPubCrawls)
 }
 
-struct ListOfPubCrawlsCreator:JSONResponseDelegate {
+struct ListOfPubCrawlsCreator:WebServiceCallerType {
     
     let delegate:ListOfPubCrawlsCreatorListDelegate
-    
+    let errorDelegate: WebServiceDelegate
+    let serviceName = "retrieve list of pub crawls"
+
     init (delegate:ListOfPubCrawlsCreatorListDelegate) {
         self.delegate = delegate
+        self.errorDelegate = delegate
     }
 
     func createListOfPubCrawls(forUId userId:UId) {
@@ -76,14 +79,13 @@ struct ListOfPubCrawlsCreator:JSONResponseDelegate {
     }
     
     func searchForPubCrawls(withName search:String,forUId userId:UId) {
-        
         let paramDict = [K.QueryParm.function:K.QueryParm.Function.search, K.QueryParm.search:search, K.QueryParm.uId:userId.text]
         let urlPath = K.URL.pubCrawlURL.addParametersToURL(paramDict:paramDict)
         self.createList(withUrlString: urlPath)
     }
     
     private func createList(withUrlString urlPath:String) {
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
 
     func finishedGetting(json:[String:Any]) {
@@ -93,39 +95,38 @@ struct ListOfPubCrawlsCreator:JSONResponseDelegate {
         case 0:
             let listOfPubCrawls = ListOfPubCrawls(fromJson:json)
             self.delegate.finishedCreating(listOfPubCrawls: listOfPubCrawls)
-            
         default:
-            self.delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not retrieve list of pub crawls")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
-    }
-    func failedGettingJson(error:Error) {
-        self.delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not retrieve list of pub crawls")
     }
 }
 
-protocol updatePubCrawlDelegate :CallWebServiceType {
+protocol updatePubCrawlDelegate :WebServiceDelegate {
     func finishedUpdatingPubCrawlIn(listOfPubCrawls:ListOfPubCrawls)
 }
 
-struct ListOfPubCrawlsUpdater:JSONResponseDelegate {
+struct ListOfPubCrawlsUpdater:WebServiceCallerType  {
     
     let delegate:updatePubCrawlDelegate
-    
+    let errorDelegate: WebServiceDelegate
+    let serviceName = "update pub crawl"
+
     init (delegate:updatePubCrawlDelegate) {
         self.delegate = delegate
+        self.errorDelegate = delegate
     }
     
     func update(pubCrawl:PubCrawl, newName:String) {
         let urlPath = pubCrawl.updateService + newName.cleanQString
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     func updateSetting(forPubCrawl pubCrawl:PubCrawl) {
         let urlPath = pubCrawl.updateSettingsService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     func addUser(toPubCrawl pubCrawl:PubCrawl ) {
         let urlPath = pubCrawl.addUserService
-        WebServieCaller().call(withDelegate: self, url: urlPath)
+        self.call(withDelegate: self, url: urlPath)
     }
     
     func finishedGetting(json:[String:Any]) {
@@ -136,11 +137,8 @@ struct ListOfPubCrawlsUpdater:JSONResponseDelegate {
             let listOfPubCrawls = ListOfPubCrawls(fromJson:json)
             delegate.finishedUpdatingPubCrawlIn(listOfPubCrawls:listOfPubCrawls)
         default:
-            delegate.requestFailed(error: JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not update pub crawl")
+            self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
-    }
-    func failedGettingJson(error:Error) {
-        delegate.requestFailed(error: JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not update pub crawl")
     }
 }
 

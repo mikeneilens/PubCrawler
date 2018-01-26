@@ -121,14 +121,14 @@ func getPubCrawls(fromJson pubCrawlsJson:[[String:Any]]) -> ListOfPubCrawls {
 }
 
 // PubCreator is used to make a new Pub
-protocol PubCreatorDelegate :CallWebServiceType {
+protocol PubCreatorDelegate :WebServiceDelegate {
     func finishedCreating(newPub pub:Pub)
 }
 
 struct PubCreator: WebServiceCallerType {
     let delegate:PubCreatorDelegate
     let pubHeader:PubHeader
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "retrieve pub"
     
     init (withDelegate delegate:PubCreatorDelegate, forPubHeader pubHeader:PubHeader) {
@@ -157,7 +157,7 @@ struct PubCreator: WebServiceCallerType {
     }
 }
 
-protocol UpdatePubDelegate:CallWebServiceType  {
+protocol UpdatePubDelegate:WebServiceDelegate  {
     func finishedUpdating(pub:Pub)
 }
 
@@ -165,7 +165,7 @@ struct PubUpdater:WebServiceCallerType {
 
     let delegate:UpdatePubDelegate
     let pub:Pub
-    let errorDelegate: CallWebServiceType
+    let errorDelegate: WebServiceDelegate
     let serviceName = "update pub"
 
     init(pub:Pub, withDelegate delegate:UpdatePubDelegate) {
