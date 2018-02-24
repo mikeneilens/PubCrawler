@@ -7,11 +7,27 @@
 //
 import Foundation
 
-enum SearchOption {
-    case realAle
-    case pubs
-    case memberDiscountScheme
+struct SearchTerm {
+    let qStringName:String
+    let key:String
+    let value:Bool
+    let text:String
+    var qStringValue:String {
+        if self.value {
+            return "yes"
+        } else {
+            return "no"
+        }
+    }
+    func update(value:Bool) -> SearchTerm {
+        return SearchTerm(qStringName: self.qStringName, key: key, value: value, text:self.text)
+    }
+    func write() {
+        let defaults: UserDefaults = UserDefaults.standard
+        defaults.set(self.value, forKey:self.key)
+    }
 }
+
 
 struct UId {
     var text=""
@@ -29,24 +45,20 @@ struct UId {
             self.text=string
             defaults.setString(self.text, forKey: K.DefaultKey.uId)
 
-            defaults.set(true, forKey: K.DefaultKey.SearchOption.onlyPubs)
-            defaults.set(true, forKey: K.DefaultKey.SearchOption.onlyRealAle)
-            defaults.set(false, forKey: K.DefaultKey.SearchOption.onlyMembersDiscount)
+            for searchTerm in K.DefaultKey.searchTerms {
+                searchTerm.write()
+            }
         }
         
     }
     
-    var searchOptions:[SearchOption] {
-        var searchOptions=[SearchOption]()
+    var searchOptions:[SearchTerm] {
+        var searchOptions=[SearchTerm]()
         let defaults: UserDefaults = UserDefaults.standard
-        if (defaults.bool(forKey: K.DefaultKey.SearchOption.onlyPubs))  {
-            searchOptions.append(SearchOption.pubs)
-        }
-        if (defaults.bool(forKey: K.DefaultKey.SearchOption.onlyRealAle))  {
-            searchOptions.append(SearchOption.realAle)
-        }
-        if (defaults.bool(forKey: K.DefaultKey.SearchOption.onlyMembersDiscount))  {
-            searchOptions.append(SearchOption.memberDiscountScheme)
+        
+        for searchTerm in K.DefaultKey.searchTerms {
+            let newSearchTerm = searchTerm.update(value: defaults.bool(forKey: searchTerm.key))
+            searchOptions.append(newSearchTerm)
         }
         return searchOptions
     }

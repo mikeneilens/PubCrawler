@@ -40,12 +40,14 @@ struct K {
         static let showSearchOnMap = "showSearchOnMap"
     }
     struct DefaultKey {
-        struct SearchOption {
-            static let onlyPubs = "Pubs"
-            static let onlyRealAle =  "RealAle"
-            static let onlyMembersDiscount = "MemberDiscountScheme"
-        }
         static let uId = "uId"
+        static let searchTerms = [SearchTerm(qStringName: "realAle", key: "RealAle", value: true, text:"Only find pubs selling real ale" )
+                                 ,SearchTerm(qStringName: "pubs", key: "Pubs", value: true, text:"Only find pubs" )
+                                 ,SearchTerm(qStringName: "garden", key: "Garden", value: false, text:"Only places with a garden")
+                                 ,SearchTerm(qStringName: "lmeals", key: "LunchtimeMeal", value: false, text:"Only places serving lunch")
+                                 ,SearchTerm(qStringName: "emeals", key: "EveningMeal", value: false, text:"Only places serving evening meals")
+                                 ,SearchTerm(qStringName: "memberDiscount", key: "MemberDiscountScheme", value: false, text:"Discount scheme")
+                                ]
     }
     struct URL {
         static let pubListURL="https://www.api.neilens.co.uk/ListOfPubs/?"

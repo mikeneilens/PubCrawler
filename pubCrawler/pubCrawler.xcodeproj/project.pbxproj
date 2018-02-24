@@ -72,7 +72,7 @@
 		FBAF88A91C876A610043A612 /* AbstractTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */; };
 		FBAF88AC1C8780500043A612 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */; };
 		FBAF88AD1C8780500043A612 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */; };
-		FBAF88AF1C8781260043A612 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88AE1C8781260043A612 /* SettingsTableViewController.swift */; };
+		FBAF88AF1C8781260043A612 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */; };
 		FBAF88B31C8B2B5B0043A612 /* UId.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88B21C8B2B5B0043A612 /* UId.swift */; };
 		FBAF88B51C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF88B41C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift */; };
 		FBAF88DB1C90C7D40043A612 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = FBAF88D01C90C7D40043A612 /* Icon-40.png */; };
@@ -221,7 +221,7 @@
 		FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractTableViewController.swift; path = ../AbstractTableViewController.swift; sourceTree = "<group>"; };
 		FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewCell.swift; path = ../SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsTableViewCell.xib; path = ../SettingsTableViewCell.xib; sourceTree = "<group>"; };
-		FBAF88AE1C8781260043A612 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
+		FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterTableViewController.swift; path = ../FilterTableViewController.swift; sourceTree = "<group>"; };
 		FBAF88B21C8B2B5B0043A612 /* UId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UId.swift; path = ../UId.swift; sourceTree = "<group>"; };
 		FBAF88B41C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlSettingTableViewCell.swift; path = ../PubCrawlSettingTableViewCell.swift; sourceTree = "<group>"; };
 		FBAF88D01C90C7D40043A612 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "../Icon-40.png"; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 				FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */,
 				FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */,
 				FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */,
-				FBAF88AE1C8781260043A612 /* SettingsTableViewController.swift */,
+				FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */,
 				FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */,
 				FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */,
 				FB28F5E71D4CC2CB003475DC /* AddToPubCrawlViewController.swift */,
@@ -637,7 +637,7 @@
 				FBCDC7CC1C81CD0B00A74ABA /* PubNameTableViewCell.swift in Sources */,
 				FBF2AC711C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift in Sources */,
 				FB9A3AD31DB28F3A008AB628 /* HygieneRatingCell.swift in Sources */,
-				FBAF88AF1C8781260043A612 /* SettingsTableViewController.swift in Sources */,
+				FBAF88AF1C8781260043A612 /* FilterTableViewController.swift in Sources */,
 				FBF2AC791C7BADA500B7A7DF /* PubCrawl.swift in Sources */,
 				FB0651671DC65CE6009B0A51 /* HygieneHelpViewController.swift in Sources */,
 				FB950E601DD89A5700B86AB3 /* Location.swift in Sources */,

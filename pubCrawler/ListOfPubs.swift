@@ -148,7 +148,7 @@ struct ListOfPubsCreator: WebServiceCallerType {
         self.errorDelegate = delegate
     }
     
-    func createList(usingSearchString search:String, location:Location, options:[SearchOption], uId:UId)
+    func createList(usingSearchString search:String, location:Location, options:[SearchTerm], uId:UId)
     {
         let paramDict = [K.QueryParm.search:search, K.QueryParm.page:"1", K.QueryParm.lat:String(location.lat), K.QueryParm.lng:String(location.lng), K.QueryParm.uId:uId.text]
         let urlPath = K.URL.pubListURL.addParametersToURL(paramDict:paramDict)
@@ -191,20 +191,12 @@ struct ListOfPubsCreator: WebServiceCallerType {
     }    
 }
 
-func convertToDictionary(searchOptions:[SearchOption]) -> [String:String] {
-    var realAle="no"
-    var onlyPubs="no"
-    var memberDiscountScheme="no"
-    for option in searchOptions {
-        switch option {
-        case .realAle:
-            realAle="yes"
-        case .pubs:
-            onlyPubs="yes"
-        case .memberDiscountScheme:
-            memberDiscountScheme="yes"
-        }
+func convertToDictionary(searchOptions:[SearchTerm]) -> [String:String] {
+    
+    var queryDictionary=[String:String]()
+    for searchTerm in searchOptions {
+        queryDictionary[searchTerm.qStringName] = searchTerm.qStringValue
     }
-    return ["realAle":realAle,"pubs":onlyPubs,"memberDiscount":memberDiscountScheme]
+    return queryDictionary
 }
 
