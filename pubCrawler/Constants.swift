@@ -9,11 +9,7 @@
 import UIKit
 struct K {
     struct Notification {
-        static let pubCrawlAdded = NSNotification.Name(rawValue:"pubCrawlAdded")  //notify with new pubCrawl
-        static let pubCrawlRemoved = NSNotification.Name(rawValue:"pubCrawlRemoved") // notify with old pubCrawl
-        static let pubCrawlChanged = NSNotification.Name(rawValue:"pubCrawlChanged") // notify with pubPubCrawl impacted
-        static let listOfPubCrawlsChanged = NSNotification.Name(rawValue:"listOfPubCrawlsChanged") // notify with listOfPubCrawls impacted
-        static let pubChanged = NSNotification.Name(rawValue:"pubChanged") // notify with pub impacted
+        static let filterChanged = NSNotification.Name(rawValue:"filterChanged")  //notify with new pubCrawl
     }
     static let minLat = 49.8
     static let maxLat = 60.9

@@ -56,6 +56,9 @@ class FilterTableViewController: UITableViewController, SettingsSwitchDelegate {
             let newSearchTerm = searchTerm.update(value: cell.optionSwitch.isOn)
             newSearchTerm.write()
         }
+        
+        let nc = NotificationCenter.default
+        nc.post(name:K.Notification.filterChanged, object: nil, userInfo: nil)
     }
     
     func getSearchOptions() {

@@ -268,14 +268,8 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     func joinPubCrawl() {
         ListOfPubCrawlsUpdater(delegate: self).addUser(toPubCrawl: self.pubCrawl)
         self.startActivityIndicator()
-    }/*
-    func finishedAddingUser(listOfPubCrawls:ListOfPubCrawls){
-        stopActivityIndicator()
-        joinButton.isEnabled = false
-        
-        NotificationCenter.default.post(changedListOfPubCrawls: listOfPubCrawls)
     }
-    */
+    
     @IBAction func actionButtonPressed(_ sender: AnyObject) {
         self.startActivityIndicator()
         self.emailPubCrawl()

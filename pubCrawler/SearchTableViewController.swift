@@ -25,6 +25,7 @@ class SearchTableViewController: AbstractTableViewController {
     }
     fileprivate var userId=UId()
     fileprivate var currentLocation=Location()
+    private var filterChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,18 @@ class SearchTableViewController: AbstractTableViewController {
         
         self.searchBar.delegate=self
         self.searchBar.setShortPlaceholder(using: K.shortPubSearchText)
-    }
         
+        let nc = NotificationCenter.default
+        nc.addObserver(forName: K.Notification.filterChanged, object: nil, queue: nil, using: setFilterChanged)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if filterChanged {
+            self.createRefreshWarning()
+            self.filterChanged = false
+        }
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let searchBar = self.searchBar {
@@ -107,6 +118,32 @@ class SearchTableViewController: AbstractTableViewController {
         }
         return true
     }
+    func setFilterChanged(notification:Notification) {
+        if self.listOfPubHeaders.count > 0 {
+            self.filterChanged = true
+        }
+    }
+    func createRefreshWarning() {
+        let alert = UIAlertController(title: "Filters Changed", message: "Would you like to refresh the search results?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: self.refreshSearch))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: false, completion: nil)
+    }
+    func refreshSearch(alertAction:UIAlertAction) {
+        guard let searchText = self.searchBar.text else {return}
+        if searchText.isEmpty {
+            self.refreshSearchForCurrentLocation()
+        } else {
+            self.refreshSearchUsingSearchBar()
+        }
+    }
+    func refreshSearchForCurrentLocation() {
+        self.nearMeButtonPressed(UIBarButtonItem())
+    }
+    func refreshSearchUsingSearchBar() {
+        self.searchBarSearchButtonClicked(self.searchBar)
+    }
+
 }
 
 extension SearchTableViewController:ListOfPubsCreatorDelegate { //ListOfPubsCreator delegate methods
