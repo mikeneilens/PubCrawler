@@ -43,6 +43,7 @@ struct K {
                                  ,SearchTerm(qStringName: "lmeals", key: "LunchtimeMeal", value: false, text:"Only places serving lunch")
                                  ,SearchTerm(qStringName: "emeals", key: "EveningMeal", value: false, text:"Only places serving evening meals")
                                  ,SearchTerm(qStringName: "memberDiscount", key: "MemberDiscountScheme", value: false, text:"Discount scheme")
+                                 ,SearchTerm(qStringName: "events", key: "events", value: false, text:"Events such as quizzes")
                                 ]
     }
     struct URL {

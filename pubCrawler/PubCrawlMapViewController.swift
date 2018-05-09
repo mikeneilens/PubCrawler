@@ -9,10 +9,11 @@
 import UIKit
 import MapKit
 
-class PubCrawlMapViewController: AbstractViewController {
+class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
     
     var listOfPubHeaders = ListOfPubs()
     var pubCrawlName = ""
+    var pubHeaderSelected = PubHeader()
     
     private var newListOfPubHeaders = [PubHeader]()
     @IBOutlet weak var mapView: MKMapView!
@@ -31,10 +32,58 @@ class PubCrawlMapViewController: AbstractViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mapView.delegate = self
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mapView.delegate = nil
+    }
+    
     private func setUpMap() {
         mapView.showsUserLocation = true
         mapView.setRegion(self.getRegion(listOfPubs: self.listOfPubHeaders), animated:true)
+        mapView.delegate = self
         self.navigationItem.title = self.pubCrawlName
+    }
+    
+    func mapView(_ mapView: MKMapView,
+                 viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let pubAnnotation = annotation as? PubAnnotation {
+            return createPubAnnotationView(annotation: pubAnnotation)
+        } else {
+            return createUserAnnotationView(annotation: annotation)
+        }
+    }
+   
+    func createPubAnnotationView(annotation: PubAnnotation) -> MKAnnotationView {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pubAnnotationView")
+        annotationView.canShowCallout = true
+        let button = UIButton(type: .detailDisclosure)
+        annotationView.rightCalloutAccessoryView = button
+        return annotationView
+    }
+    
+    func createUserAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "userAnnotationView")
+        annotationView.canShowCallout = true
+        annotationView.pinTintColor = UIColor.blue
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView,
+                 annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        if let annotation = view.annotation as? PubAnnotation {
+            self.pubHeaderSelected = annotation.pubHeader
+            performSegue(withIdentifier: K.SegueId.showDetail, sender: nil)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pubDetailViewController = segue.destination as? PubDetailTableViewController {
+                pubDetailViewController.pubHeader = self.pubHeaderSelected
+        }
     }
     
     private func getRegion(listOfPubs:ListOfPubs) -> MKCoordinateRegion {
@@ -75,11 +124,7 @@ class PubCrawlMapViewController: AbstractViewController {
     }
     
     private func addPubToMap(pubHeader:PubHeader) {
-        let location = CLLocationCoordinate2D(latitude:pubHeader.location.lat, longitude:pubHeader.location.lng )
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = pubHeader.name
-        annotation.subtitle = pubHeader.town
+        let annotation = PubAnnotation(pubHeader: pubHeader)
         mapView.addAnnotation(annotation)
     }
     
@@ -87,6 +132,16 @@ class PubCrawlMapViewController: AbstractViewController {
         super.didReceiveMemoryWarning()
     }
     
+    class PubAnnotation:NSObject, MKAnnotation {
+        var coordinate: CLLocationCoordinate2D
+        var title: String? {return pubHeader.name }
+        var subtitle: String? { return pubHeader.town }
+        let pubHeader:PubHeader
+        init(pubHeader:PubHeader) {
+            self.coordinate = CLLocationCoordinate2D(latitude:pubHeader.location.lat, longitude:pubHeader.location.lng )
+            self.pubHeader = pubHeader
+        }
+    }
 }
 
 extension PubCrawlMapViewController:PubCreatorDelegate {
