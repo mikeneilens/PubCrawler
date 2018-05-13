@@ -53,7 +53,8 @@ class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
         if let pubAnnotation = annotation as? PubAnnotation {
             return createPubAnnotationView(annotation: pubAnnotation)
         } else {
-            return createUserAnnotationView(annotation: annotation)
+            //for user's location this means the view used is the blue blob instead of a pin.
+            return nil
         }
     }
    
@@ -62,13 +63,6 @@ class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
         annotationView.canShowCallout = true
         let button = UIButton(type: .detailDisclosure)
         annotationView.rightCalloutAccessoryView = button
-        return annotationView
-    }
-    
-    func createUserAnnotationView(annotation: MKAnnotation) -> MKAnnotationView {
-        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "userAnnotationView")
-        annotationView.canShowCallout = true
-        annotationView.pinTintColor = UIColor.blue
         return annotationView
     }
     

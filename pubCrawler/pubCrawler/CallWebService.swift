@@ -39,7 +39,7 @@ extension WebServiceCallerType {
         errorDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:"Error connecting to internet", errorTitle:"Could not " + serviceName)
     }
     func failedGettingJson(error:JSONError, errorText:String) {
-        errorDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not" + serviceName)
+        errorDelegate.requestFailed(error:JSONError.ConversionFailed, errorText:errorText, errorTitle:"Could not " + serviceName)
     }
 
 }

@@ -135,7 +135,7 @@ struct ListOfPubsCreator: WebServiceCallerType {
     let delegate:ListOfPubsCreatorDelegate
     let listOfPubs:ListOfPubs
     let errorDelegate: WebServiceDelegate
-    let serviceName = "update pub"
+    let serviceName = "obtain pubs"
 
     init (withDelegate delegate:ListOfPubsCreatorDelegate) {
         self.delegate = delegate
