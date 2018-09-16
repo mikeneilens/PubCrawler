@@ -38,4 +38,8 @@ class MapViewController: UIViewController {
         annotation.subtitle = self.address
         self.mapView.addAnnotation(annotation)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 }

@@ -41,6 +41,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
         if (self.pubCrawl.name.isEmpty)  {
             print("Error PubCrawlDetailTableViewController - pubCrawl not initialised before loading view")
         }
+        self.navigationItem.title = ""
         
         self.editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(PubCrawlDetailTableViewController.editPressed))
         self.saveButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(PubCrawlDetailTableViewController.donePressed))

@@ -34,6 +34,7 @@ class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.title = listOfPubHeaders.listTitle
         mapView.delegate = self
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,7 +46,6 @@ class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
         mapView.showsUserLocation = true
         mapView.setRegion(self.getRegion(listOfPubs: self.listOfPubHeaders), animated:true)
         mapView.delegate = self
-        self.navigationItem.title = self.pubCrawlName
     }
     
     func mapView(_ mapView: MKMapView,

@@ -11,12 +11,14 @@ import MNWebServiceCall
 
 struct ListOfPubs {
     let pubHeaders:[PubHeader]
+    let listTitle:String
     let morePubsService:String
     var morePubsAvailable:Bool { return morePubsService.isNotEmpty  }
 
     init () {
         self.pubHeaders = [PubHeader]()
         self.morePubsService = ""
+        self.listTitle=""
     }
     init (fromJson json:[String:Any]) {
         self=ListOfPubs(fromJson:json, existingList:ListOfPubs())
@@ -24,6 +26,7 @@ struct ListOfPubs {
 
     init (fromJson json:[String:Any], existingList:ListOfPubs) {
         self.morePubsService = json[K.PubListJsonName.morePubsService] as? String ?? ""
+        self.listTitle = json[K.PubListJsonName.listTitle] as? String ?? ""
         var newPubHeaders = existingList.pubHeaders
         if let jsonPubs = json[K.PubListJsonName.pubs] as? [[String:Any]] {
             for jsonPub:[String:Any] in jsonPubs {
@@ -35,6 +38,7 @@ struct ListOfPubs {
     }
     init (using newPubHeaders:[PubHeader], existingList:ListOfPubs) {
         self.morePubsService = existingList.morePubsService
+        self.listTitle = existingList.listTitle
         self.pubHeaders = newPubHeaders
     }
 

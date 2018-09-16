@@ -142,6 +142,7 @@ struct K {
         static let pubService = "PubService"
         static let removePubService = "RemovePubService"
         static let morePubsService = "MorePubsService"
+        static let listTitle = "ListTitle"
         static let pageNo = "PageNo"
     }
     struct PubCrawlJsonName {
@@ -177,7 +178,7 @@ struct K {
     static let message = "Message"
     struct MapView {
         static let minSpan = 0.005
-        static let maxPubsToFetch = 30
+        static let maxPubsToFetch = 40
     }
 
 }
