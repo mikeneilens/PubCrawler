@@ -47,9 +47,9 @@ struct K {
                                 ]
     }
     struct URL {
-        static let pubListURL="https://www.api.neilens.co.uk/ListOfPubs/?"
-        static let pubCrawlURL="https://www.api.neilens.co.uk/ListOfPubCrawls/?"
-        static let foodHygieneURL="https://www.api.neilens.co.uk/HygieneRating/?"
+        static let pubListURL="https://pubcrawlapi.appspot.com/listofpubs/?"
+        static let pubCrawlURL="https://pubcrawlapi.appspot.com/listofpubcrawls/?"
+        static let foodHygieneURL="https://pubcrawlapi.appspot.com/hygienerating/?"
         static let helpURL="https://www.api.neilens.co.uk/help/"
         static let hygieneHelpURL="https://www.api.neilens.co.uk/hygienehelp/"
         static let foodHygieneImageURL="http://ratings.food.gov.uk/images/scores/small/"
