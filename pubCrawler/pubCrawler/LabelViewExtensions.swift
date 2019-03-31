@@ -16,7 +16,7 @@ extension UILabel {
             let size: CGSize = (string as NSString).boundingRect(
                 with: CGSize(width: self.frame.size.width, height: CGFloat(Float.greatestFiniteMagnitude)),
                 options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                attributes: [NSAttributedString.Key.font: self.font],
+                attributes: [NSAttributedString.Key.font: self.font as Any],
                 context: nil).size
             
             return (size.height > self.bounds.size.height)
