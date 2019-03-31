@@ -97,7 +97,7 @@ extension PubCrawlsTableViewController { //datasource delegate methods
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         let pubCrawl = self.listOfpubCrawls.pubCrawls[row]
         
         cell.textLabel!.text = pubCrawl.name

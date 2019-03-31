@@ -43,9 +43,9 @@ class ItemSwitchCell: UITableViewCell {
     
     func setLabel() {
         if self.switchOn {
-            self.switchButton.setTitle(self.trueText, for: UIControlState())
+            self.switchButton.setTitle(self.trueText, for: UIControl.State())
         } else {
-            self.switchButton.setTitle(self.falseText, for: UIControlState())
+            self.switchButton.setTitle(self.falseText, for: UIControl.State())
         }
         
     }

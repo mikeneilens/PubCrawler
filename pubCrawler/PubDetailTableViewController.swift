@@ -35,7 +35,7 @@ class PubDetailTableViewController: AbstractTableViewController {
         }
         
         self.tableView.estimatedRowHeight = 60
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         self.navigationItem.title = self.pubHeader.name
         
@@ -258,7 +258,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
         return false
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let (row, section) = indexPath.rowAndSection
         
         if editingStyle == .delete {

@@ -86,7 +86,7 @@ class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
             case 0:
                 return MKCoordinateRegion()
             case 1:
-                let span = MKCoordinateSpanMake(K.MapView.minSpan, K.MapView.minSpan)
+                let span = MKCoordinateSpan.init(latitudeDelta: K.MapView.minSpan, longitudeDelta: K.MapView.minSpan)
                 let startLocation = CLLocationCoordinate2D( latitude:listOfPubs.pubHeaders[0].location.lat, longitude:listOfPubs.pubHeaders[0].location.lng )
                 return MKCoordinateRegion(center: startLocation, span: span)
             default:
@@ -103,7 +103,7 @@ class PubCrawlMapViewController: AbstractViewController,MKMapViewDelegate {
                     
                 }
                 
-                let span = MKCoordinateSpanMake(2.3 * abs(maxLat - minLat), 2.3 * abs(maxLng - maxLng))
+                let span = MKCoordinateSpan.init(latitudeDelta: 2.3 * abs(maxLat - minLat), longitudeDelta: 2.3 * abs(maxLng - maxLng))
                 let startLocation = CLLocationCoordinate2D(latitude:minLat + (maxLat - minLat)/2, longitude: minLng + (maxLng - minLng)/2 )
                 
                 return MKCoordinateRegion(center: startLocation, span: span)

@@ -308,8 +308,8 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     func createCopyAlert() -> UIAlertController {
         let alert = UIAlertController(title: "Copy pub crawl", message: "Are you sure you want top copy this pub crawl?", preferredStyle: .alert)
-        let cancelCopy = (UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
-        let confirmCopy = (UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: self.copyConfirmed))
+        let cancelCopy = (UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil))
+        let confirmCopy = (UIAlertAction(title: "Yes", style: UIAlertAction.Style.destructive, handler: self.copyConfirmed))
         alert.addAction(cancelCopy)
         alert.addAction(confirmCopy)
         return alert
@@ -422,7 +422,7 @@ extension PubCrawlDetailTableViewController { //datasource methods
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubNameTableViewCell") as! PubNameTableViewCell
             cell.textLabel!.text = self.listOfPubHeaders[row].name
             cell.detailTextLabel!.text = self.listOfPubHeaders.distanceToPreveiousPubText(atIndex:row)
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             cell.selectionStyle = .default
             return cell
         case K.PubCrawlHeadings.setting:
@@ -460,7 +460,7 @@ extension PubCrawlDetailTableViewController { //datasource methods
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let (row, section) = indexPath.rowAndSection
         
         if editingStyle == .delete {

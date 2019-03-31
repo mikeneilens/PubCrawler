@@ -23,7 +23,7 @@ class PubImageView: UIImageView {
 
     private var delegate:PubImageLoadedDelegate?
     
-    private func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    private func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard
@@ -42,7 +42,7 @@ class PubImageView: UIImageView {
             }
             }.resume()
     }
-    func downloadedFrom(link: String, delegate:PubImageLoadedDelegate?, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(link: String, delegate:PubImageLoadedDelegate?, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         self.delegate = delegate
         
@@ -59,7 +59,7 @@ class PubImageView: UIImageView {
             downloadedFrom(url: url, contentMode: mode)
         }
     }
-    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         self.downloadedFrom(link: link, delegate:nil, contentMode:mode)
     }
     

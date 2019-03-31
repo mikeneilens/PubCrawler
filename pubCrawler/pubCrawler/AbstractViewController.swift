@@ -56,7 +56,7 @@ class AbstractViewController: UIViewController {
     }
     
     private func setActivityViewProperties() {
-        activityView.activityIndicatorViewStyle = .whiteLarge
+        activityView.style = .whiteLarge
         activityView.hidesWhenStopped = true;
         activityView.isHidden = false
         activityView.startAnimating()
@@ -90,8 +90,8 @@ class AbstractViewController: UIViewController {
     }
     
     func showErrorMessage(withMessage message:String, withTitle:String) {
-        let alert = UIAlertController(title: withTitle, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: nil))
+        let alert = UIAlertController(title: withTitle, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: false, completion: nil)
     }
 

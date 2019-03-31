@@ -14,7 +14,7 @@ class TabBarController: UITabBarController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(switchToPubCrawls),
-            name: NSNotification.Name.UIApplicationDidBecomeActive,
+            name: UIApplication.didBecomeActiveNotification,
             object: nil)
     }
  

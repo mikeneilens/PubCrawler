@@ -124,9 +124,9 @@ class SearchTableViewController: AbstractTableViewController {
         }
     }
     func createRefreshWarning() {
-        let alert = UIAlertController(title: "Filters Changed", message: "Would you like to refresh the search results?", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: self.refreshSearch))
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "Filters Changed", message: "Would you like to refresh the search results?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: self.refreshSearch))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: false, completion: nil)
     }
     func refreshSearch(alertAction:UIAlertAction) {
@@ -238,10 +238,10 @@ extension SearchTableViewController {
             let pubHeader = self.listOfPubHeaders[row]
             cell.textLabel!.text = pubHeader.name + " "
             cell.detailTextLabel!.text = pubHeader.distanceText
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         } else {
             cell.textLabel!.text = "more pubs..."
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
             cell.detailTextLabel!.text = ""
         }
         
