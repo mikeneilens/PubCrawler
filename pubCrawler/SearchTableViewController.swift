@@ -36,7 +36,7 @@ class SearchTableViewController: AbstractTableViewController {
         //otherwise get a list of pubs near to the specified pub.
         if pub.pubHeader.name.isEmpty {
             self.locationManager.delegate = self
-            self.locationManager.requestWhenInUseAuthorization()
+            checkLocationServicesPermissionsAndGetData()
         } else {
             self.navigationItem.leftBarButtonItem = nil
             self.updateListOfPubs(forPub:pub)
@@ -48,6 +48,18 @@ class SearchTableViewController: AbstractTableViewController {
         let nc = NotificationCenter.default
         nc.addObserver(forName: K.Notification.filterChanged, object: nil, queue: nil, using: setFilterChanged)
     }
+    
+    func checkLocationServicesPermissionsAndGetData() {
+        if CLLocationManager.locationServicesEnabled() {
+            let authorisationStatus = CLLocationManager.authorizationStatus()
+            if authorisationStatus == .authorizedAlways || authorisationStatus == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                Timer.scheduledTimer(timeInterval: 0.5, target:self, selector: #selector(self.getPubsNearBy), userInfo: nil, repeats: false)
+            } else {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
+        }
+    }    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -146,12 +158,19 @@ class SearchTableViewController: AbstractTableViewController {
 
 }
 
-extension SearchTableViewController:ListOfPubsCreatorDelegate { //ListOfPubsCreator delegate methods
+extension SearchTableViewController:ListOfPubsCreatorDelegate, ListOfBeersCreatorDelegate {
+    //ListOfPubsCreator delegate methods
     
     func updateListOfPubs(forSearchString search:String) {
         self.startActivityIndicator()
         ListOfPubsCreator(withDelegate: self).createList(usingSearchString:search, location:self.currentLocation, options:userId.searchOptions, uId:self.userId)
+        
+        //ListOfBeersCreator(withDelegate: self).createList(usingSearchString:search, location:currentLocation, deg:"0.003", options:userId.searchOptions, uId:self.userId)
     }
+    func finishedCreating(listOfBeers: ListOfBeers) {
+        print(listOfBeers.beers[0].name)
+    }
+
 
     func updateListOfPubs(forPub pub:Pub) {
         self.startActivityIndicator()

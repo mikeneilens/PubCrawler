@@ -16,7 +16,7 @@ struct K {
     static let minLng = -10.7
     static let maxLng = 1.9
     static let defaultSearch = "London"
-    static let usingDefaultSearchWarningMessage = "Your location is outside of United Kingdom so showing pubs in " + defaultSearch
+    static let usingDefaultSearchWarningMessage = "Cannout find your location or you are outside of United Kingdom so showing pubs in " + defaultSearch
     static let nearMeSearchText = "nearby"
     static let shortPubSearchText="Town, pub or postcode"
     static let shortPubCrawlSearchText="Name of pub crawl"
@@ -53,11 +53,13 @@ struct K {
         static let helpURL="https://www.api.neilens.co.uk/help/"
         static let hygieneHelpURL="https://www.api.neilens.co.uk/hygienehelp/"
         static let foodHygieneImageURL="http://ratings.food.gov.uk/images/scores/small/"
+        static let beerListURL="https://pubcrawlapi.appspot.com/listofbeers/?"
     }
     struct QueryParm {
         static let function="function"
         static let lat="lat"
         static let lng="lng"
+        static let deg="deg"
         static let uId="uId"
         static let search="search"
         static let page="page"
@@ -163,6 +165,15 @@ struct K {
         static let sequencePubsService = "SequencePubsService"
         static let emailTextService = "EmailTextService"
         static let emailText = "EmailText"
+    }
+    struct BeerListJsonName {
+        static let beers = "Beers"
+    }
+    struct BeerJsonName {
+        static let name = "Name"
+        static let pubName = "PubName"
+        static let pubService = "PubService"
+        static let isRegular = "IsRegular"
     }
     struct FoodHygeineJsonName {
         static let businessName = "BusinessName"

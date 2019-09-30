@@ -56,6 +56,8 @@
 		FB3EDA021C726951000FDAC7 /* pubCrawlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3EDA011C726951000FDAC7 /* pubCrawlerTests.swift */; };
 		FB3EDA0D1C72697E000FDAC7 /* Pub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3EDA0C1C72697E000FDAC7 /* Pub.swift */; };
 		FB3EDA0F1C726BFC000FDAC7 /* ListOfPubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3EDA0E1C726BFC000FDAC7 /* ListOfPubs.swift */; };
+		FB46A91C234118130029CF91 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A91B234118130029CF91 /* Beer.swift */; };
+		FB46A91F2341186F0029CF91 /* ListOfBeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A91E2341186F0029CF91 /* ListOfBeers.swift */; };
 		FB6C97BF1E17DE9500642861 /* phone-29.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BC1E17DE9500642861 /* phone-29.png */; };
 		FB6C97C01E17DE9500642861 /* phone-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BD1E17DE9500642861 /* phone-50.png */; };
 		FB6C97C11E17DE9500642861 /* phone-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BE1E17DE9500642861 /* phone-72.png */; };
@@ -205,6 +207,8 @@
 		FB3EDA031C726951000FDAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB3EDA0C1C72697E000FDAC7 /* Pub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pub.swift; path = ../Pub.swift; sourceTree = "<group>"; };
 		FB3EDA0E1C726BFC000FDAC7 /* ListOfPubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListOfPubs.swift; path = ../ListOfPubs.swift; sourceTree = "<group>"; };
+		FB46A91B234118130029CF91 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		FB46A91E2341186F0029CF91 /* ListOfBeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBeers.swift; sourceTree = "<group>"; };
 		FB6C97BC1E17DE9500642861 /* phone-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-29.png"; sourceTree = SOURCE_ROOT; };
 		FB6C97BD1E17DE9500642861 /* phone-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-50.png"; sourceTree = SOURCE_ROOT; };
 		FB6C97BE1E17DE9500642861 /* phone-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-72.png"; sourceTree = SOURCE_ROOT; };
@@ -417,6 +421,8 @@
 				FB950E5F1DD89A5700B86AB3 /* Location.swift */,
 				FB3156C01DB14636005A867D /* FoodHygieneRating.swift */,
 				FBAF88B21C8B2B5B0043A612 /* UId.swift */,
+				FB46A91B234118130029CF91 /* Beer.swift */,
+				FB46A91E2341186F0029CF91 /* ListOfBeers.swift */,
 				FB0147F520011862005750BF /* CallWebService.swift */,
 				FB8A67311E6760F6000EE992 /* Extensions */,
 			);
@@ -635,6 +641,7 @@
 				FBAF88A71C833FB90043A612 /* PubCrawlMapViewController.swift in Sources */,
 				FBAF88AC1C8780500043A612 /* SettingsTableViewCell.swift in Sources */,
 				FBCDC7CC1C81CD0B00A74ABA /* PubNameTableViewCell.swift in Sources */,
+				FB46A91C234118130029CF91 /* Beer.swift in Sources */,
 				FBF2AC711C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift in Sources */,
 				FB9A3AD31DB28F3A008AB628 /* HygieneRatingCell.swift in Sources */,
 				FBAF88AF1C8781260043A612 /* FilterTableViewController.swift in Sources */,
@@ -645,6 +652,7 @@
 				FBAF88B31C8B2B5B0043A612 /* UId.swift in Sources */,
 				FBAF88B51C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift in Sources */,
 				FB77C2AB1D34145E00B91E43 /* DictionaryExtensions.swift in Sources */,
+				FB46A91F2341186F0029CF91 /* ListOfBeers.swift in Sources */,
 				FBF2AC731C79DD3A00B7A7DF /* ListOfPubCrawls.swift in Sources */,
 				FB2B77241E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift in Sources */,
 				FB3EDA0F1C726BFC000FDAC7 /* ListOfPubs.swift in Sources */,
@@ -824,6 +832,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3.11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = QK48V24G7M;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -833,6 +842,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Neilens.pubCrawler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -845,6 +855,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3.11;
 				DEVELOPMENT_TEAM = QK48V24G7M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -853,6 +864,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Neilens.pubCrawler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
