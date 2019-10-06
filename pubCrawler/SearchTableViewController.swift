@@ -158,19 +158,13 @@ class SearchTableViewController: AbstractTableViewController {
 
 }
 
-extension SearchTableViewController:ListOfPubsCreatorDelegate, ListOfBeersCreatorDelegate {
+extension SearchTableViewController:ListOfPubsCreatorDelegate {
     //ListOfPubsCreator delegate methods
     
     func updateListOfPubs(forSearchString search:String) {
         self.startActivityIndicator()
         ListOfPubsCreator(withDelegate: self).createList(usingSearchString:search, location:self.currentLocation, options:userId.searchOptions, uId:self.userId)
-        
-        //ListOfBeersCreator(withDelegate: self).createList(usingSearchString:search, location:currentLocation, deg:"0.003", options:userId.searchOptions, uId:self.userId)
     }
-    func finishedCreating(listOfBeers: ListOfBeers) {
-        print(listOfBeers.beers[0].name)
-    }
-
 
     func updateListOfPubs(forPub pub:Pub) {
         self.startActivityIndicator()

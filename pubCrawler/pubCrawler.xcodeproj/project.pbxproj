@@ -58,6 +58,7 @@
 		FB3EDA0F1C726BFC000FDAC7 /* ListOfPubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3EDA0E1C726BFC000FDAC7 /* ListOfPubs.swift */; };
 		FB46A91C234118130029CF91 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A91B234118130029CF91 /* Beer.swift */; };
 		FB46A91F2341186F0029CF91 /* ListOfBeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A91E2341186F0029CF91 /* ListOfBeers.swift */; };
+		FB46A925234A1B160029CF91 /* SearchBeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A924234A1B160029CF91 /* SearchBeerTableViewController.swift */; };
 		FB6C97BF1E17DE9500642861 /* phone-29.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BC1E17DE9500642861 /* phone-29.png */; };
 		FB6C97C01E17DE9500642861 /* phone-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BD1E17DE9500642861 /* phone-50.png */; };
 		FB6C97C11E17DE9500642861 /* phone-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BE1E17DE9500642861 /* phone-72.png */; };
@@ -209,6 +210,7 @@
 		FB3EDA0E1C726BFC000FDAC7 /* ListOfPubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListOfPubs.swift; path = ../ListOfPubs.swift; sourceTree = "<group>"; };
 		FB46A91B234118130029CF91 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		FB46A91E2341186F0029CF91 /* ListOfBeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBeers.swift; sourceTree = "<group>"; };
+		FB46A924234A1B160029CF91 /* SearchBeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeerTableViewController.swift; sourceTree = "<group>"; };
 		FB6C97BC1E17DE9500642861 /* phone-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-29.png"; sourceTree = SOURCE_ROOT; };
 		FB6C97BD1E17DE9500642861 /* phone-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-50.png"; sourceTree = SOURCE_ROOT; };
 		FB6C97BE1E17DE9500642861 /* phone-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-72.png"; sourceTree = SOURCE_ROOT; };
@@ -365,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */,
+				FB46A924234A1B160029CF91 /* SearchBeerTableViewController.swift */,
 				FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */,
 				FB28F5CB1D4297AC003475DC /* TabBarController.swift */,
 				FB27F3EF1CAC3E4F00C2F41A /* AppDelegate.swift */,
@@ -668,6 +671,7 @@
 				FB9A3AD71DB7FEE7008AB628 /* LongAboutTableViewCell.swift in Sources */,
 				FB0651631DBAC3A8009B0A51 /* AddressTableViewCell.swift in Sources */,
 				FB28F5E81D4CC2CB003475DC /* AddToPubCrawlViewController.swift in Sources */,
+				FB46A925234A1B160029CF91 /* SearchBeerTableViewController.swift in Sources */,
 				FB77C2A91D34143C00B91E43 /* StringExtensions.swift in Sources */,
 				FB0147F620011862005750BF /* CallWebService.swift in Sources */,
 				FBE820331F816D5400098082 /* SearchBarExtension.swift in Sources */,
@@ -832,7 +836,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3.11;
+				CURRENT_PROJECT_VERSION = 3.20;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = QK48V24G7M;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -842,7 +846,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.11;
+				MARKETING_VERSION = 3.20;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Neilens.pubCrawler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -855,7 +859,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3.11;
+				CURRENT_PROJECT_VERSION = 3.20;
 				DEVELOPMENT_TEAM = QK48V24G7M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -864,7 +868,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.11;
+				MARKETING_VERSION = 3.20;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Neilens.pubCrawler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -174,6 +174,8 @@ struct K {
         static let pubName = "PubName"
         static let pubService = "PubService"
         static let isRegular = "IsRegular"
+        static let lat = "Lat"
+        static let lng = "Lng"
     }
     struct FoodHygeineJsonName {
         static let businessName = "BusinessName"
