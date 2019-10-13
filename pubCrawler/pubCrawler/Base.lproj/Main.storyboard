@@ -7,6 +7,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Help-->
+        <scene sceneID="6dm-JZ-zQF">
+            <objects>
+                <navigationController id="CSP-Jf-7F8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Help" image="help" selectedImage="help" id="HxI-Fc-KWv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S3N-sk-cbG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ca0-M9-dp2" kind="relationship" relationship="rootViewController" id="AI3-Ue-w1c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2Q-Om-ODg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="722" y="573"/>
+        </scene>
         <!--Filter-->
         <scene sceneID="q1p-9L-gVf">
             <objects>
@@ -487,6 +504,7 @@
                         <segue destination="M95-wc-PcR" kind="relationship" relationship="viewControllers" id="3CK-RZ-jy3"/>
                         <segue destination="P0U-ps-Njx" kind="relationship" relationship="viewControllers" id="Zby-8F-Wwm"/>
                         <segue destination="hOo-eK-i44" kind="relationship" relationship="viewControllers" id="wER-6m-z4g"/>
+                        <segue destination="CSP-Jf-7F8" kind="relationship" relationship="viewControllers" id="KV3-Sw-LYq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSW-Rx-6Am" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -559,7 +577,7 @@
                             <outlet property="delegate" destination="PPu-6y-hCT" id="8sm-7k-c3G"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Beer" id="YLZ-Ly-HdD">
+                    <navigationItem key="navigationItem" title="Beer near you" id="YLZ-Ly-HdD">
                         <barButtonItem key="rightBarButtonItem" image="crossHair" id="VRg-9g-2mF">
                             <connections>
                                 <action selector="nearMeButtonPressed:" destination="PPu-6y-hCT" id="9Df-GQ-Zlh"/>
@@ -814,6 +832,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qaJ-n8-Adm" secondAttribute="trailing" constant="2" id="htG-lM-D1M"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ENk-4a-pbQ"/>
                     <connections>
                         <outlet property="pubCrawlNameText" destination="qaJ-n8-Adm" id="pLP-3q-HY1"/>
                     </connections>
@@ -842,7 +861,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JX7-tx-XBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="1330"/>
+            <point key="canvasLocation" x="791" y="1307"/>
         </scene>
         <!--Pub Crawl-->
         <scene sceneID="mKu-Gj-TYf">
@@ -986,11 +1005,11 @@
             </objects>
             <point key="canvasLocation" x="-71" y="2126"/>
         </scene>
-        <!--Help-->
+        <!--Beer-->
         <scene sceneID="JiI-tz-5WK">
             <objects>
                 <navigationController id="hOo-eK-i44" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Help" image="help" id="tuE-uQ-aBY"/>
+                    <tabBarItem key="tabBarItem" title="Beer" image="beer" id="tuE-uQ-aBY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="46v-Xt-RYa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1001,7 +1020,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8Y-yp-vSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="574"/>
+            <point key="canvasLocation" x="-2194" y="547"/>
         </scene>
         <!--Pub Crawls-->
         <scene sceneID="D33-Ea-c1F">
@@ -1023,6 +1042,7 @@
     </scenes>
     <resources>
         <image name="CrossHair-60.png" width="60" height="60"/>
+        <image name="beer" width="27.5" height="27.5"/>
         <image name="bug" width="25" height="25"/>
         <image name="copy" width="25" height="25"/>
         <image name="crossHair" width="20" height="20"/>
@@ -1038,7 +1058,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="83J-0m-FRV"/>
         <segue reference="l9x-Mx-Do2"/>
-        <segue reference="aD7-5y-Fp4"/>
-        <segue reference="5At-bV-VXE"/>
+        <segue reference="tsl-Nk-0bq"/>
+        <segue reference="vYY-Id-MA3"/>
     </inferredMetricsTieBreakers>
 </document>

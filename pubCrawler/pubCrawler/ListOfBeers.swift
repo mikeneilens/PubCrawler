@@ -26,7 +26,14 @@ struct ListOfBeers {
                 newBeers.append(beer)
             }
         }
-        self.beers = newBeers
+        
+        if newBeers.count < 300 {
+            self.beers = newBeers
+        } else {
+            let distanceFromOrigins = newBeers.map{$0.pubForBeer.distanceToOrigin}.sorted()
+            let maxDistance = distanceFromOrigins[299]
+            self.beers =  newBeers.filter{$0.pubForBeer.distanceToOrigin <= maxDistance}
+        }
     }
     
     struct BeerSection {
@@ -45,18 +52,10 @@ struct ListOfBeers {
         return uniqueNames
     }
     
-    func first(_ limit:Int, _ beers:Array<Beer>) -> Array<Beer> {
-        if beers.count < limit {return beers}
-        let distanceFromOrigins = beers.map{$0.pubForBeer.distanceToOrigin}.sorted()
-        let maxDistance = distanceFromOrigins[limit - 1]
-        return beers.filter{$0.pubForBeer.distanceToOrigin <= maxDistance}
-    }
-    
     var beerSections:Array<BeerSection> {
         var beerSections = Array<BeerSection>()
-        let firstOneHundredBeers = first(300, beers)
         for name in uniqueBeerNames {
-            let sectionPubs = firstOneHundredBeers.filter{$0.name == name}.map{$0.pubForBeer}
+            let sectionPubs = self.beers.filter{$0.name == name}.map{$0.pubForBeer}
                 .sorted{(firstPub, secondPub) in firstPub.distanceToOrigin < secondPub.distanceToOrigin}
             if sectionPubs.count > 0 {
                 beerSections.append(BeerSection(name: name, listOfPubs: sectionPubs))

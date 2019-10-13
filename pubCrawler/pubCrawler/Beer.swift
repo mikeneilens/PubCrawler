@@ -25,7 +25,7 @@ struct Beer {
     let pubForBeer:PubForBeer
     
     init (fromJson json:[String:Any], searchOrigin:Location ) {
-        self.name       = json[K.BeerJsonName.name]       as? String ?? ""
+        self.name       = (json[K.BeerJsonName.name]      as? String ?? "").condensedWhitespace
         let pubName    = json[K.BeerJsonName.pubName]    as? String ?? ""
         let pubService = json[K.BeerJsonName.pubService] as? String ?? ""
         let isRegular  = json.getBoolValue(forKey: K.BeerJsonName.isRegular, trueIfValueIs: "yes")

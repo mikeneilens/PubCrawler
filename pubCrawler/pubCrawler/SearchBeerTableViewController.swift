@@ -16,9 +16,13 @@ class SearchBeerTableViewController: AbstractTableViewController {
     
     let locationManager = CLLocationManager()
     var listOfBeers = ListOfBeers()
+    var sectionSelected = Array<Bool>()
+    var selectionButtons = Dictionary<Int, UIButton>()
     fileprivate var userId=UId()
     fileprivate var currentLocation=Location()
-    
+    let rightImage = UIImage(named: "right-circle-240")
+    let downImage = UIImage(named: "down-circle-240")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -110,12 +114,12 @@ extension SearchBeerTableViewController: ListOfBeersCreatorDelegate {
     func updateListOfBeers(forSearchString search:String) {
         self.startActivityIndicator()
         
-        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:search, location:currentLocation, deg:"0.05", options:userId.searchOptions, uId:self.userId)
+        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:search, location:currentLocation, deg:"0.08", options:userId.searchOptions, uId:self.userId)
     }
     func updateListOfBeersForLocation() {
         self.startActivityIndicator()
         
-        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:"", location:currentLocation, deg:"0.05", options:userId.searchOptions, uId:self.userId)
+        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:"", location:currentLocation, deg:"0.08", options:userId.searchOptions, uId:self.userId)
     }
 
     func finishedCreating(listOfBeers: ListOfBeers) {
@@ -126,6 +130,7 @@ extension SearchBeerTableViewController: ListOfBeersCreatorDelegate {
             }
         } else {
             self.listOfBeers = listOfBeers
+            self.sectionSelected = Array(repeating: false, count: listOfBeers.beerSections.count)
             self.tableView.reloadData()
         }
     }
@@ -177,16 +182,117 @@ extension SearchBeerTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.sectionSelected[section] {
         return self.listOfBeers.beerSections[section].listOfPubs.count
+        } else {
+            return 0
+        }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.listOfBeers.beerSections[section].name
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return K.BeerHeadings.headingHeight
     }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headingView = self.createSectionHeadingView()
+        let headingLabel = self.createSectionHeadingLabel(headingView: headingView, section: section)
+        let buttonLabel = self.createHeadingButton(headingView: headingView, section: section, isSelected: sectionSelected[section])
+        let underline = self.createUnderline(headingView: headingView)
+        headingLabel.text = "  " + self.listOfBeers.beerSections[section].name
+        headingView.addSubview(headingLabel)
+        headingView.addSubview(buttonLabel)
+        headingView.addSubview(underline)
+        selectionButtons[section] = buttonLabel
+        return headingView
+    }
+
+    private func createSectionHeadingView() -> UIView {
+        let viewHeight = Double(K.BeerHeadings.headingHeight)
+        let headingFrame = CGRect(x:0.0 , y: 0.0, width: Double(self.view.frame.size.width.native), height: viewHeight)
+        let headingView = UIView(frame: headingFrame)
+        return headingView
+    }
+    private func createSectionHeadingLabel(headingView:UIView, section:Int) -> UILabel {
+        let headingFrame = headingView.frame
+        let headingHeight = Double(headingFrame.size.height)
+        let headingWidth = Double(headingFrame.size.width)
+        
+        let labelWidth = headingWidth// - K.BeerHeadings.buttonWidth
+        let labelFrame = CGRect(x:0, y:0.0, width:labelWidth, height:headingHeight)
+        
+        let headingLabel = UILabel(frame: labelFrame)
+        headingLabel.backgroundColor = K.BeerHeadings.backgroundColor
+        headingLabel.textColor = K.BeerHeadings.fontColor
+        headingLabel.tag = section
+        headingLabel.isUserInteractionEnabled = true
+        let tapGesture = HeadingLabelGestureRecogniser(target: self, action: #selector(pressedAction(gestureRecogniser:)))
+        tapGesture.section = section
+        headingLabel.addGestureRecognizer(tapGesture)
+        return headingLabel
+    }
+    private func createHeadingButton(headingView:UIView, section:Int, isSelected:Bool) -> UIButton {
+        let headingFrame = headingView.frame
+        let headingHeight = Double(headingFrame.size.height)
+        let headingWidth = Double(headingFrame.size.width)
+
+        let buttonFrame = CGRect(x:headingWidth - K.BeerHeadings.buttonWidth, y:headingHeight * 0.25, width:K.BeerHeadings.buttonWidth * 0.5, height:headingHeight * 0.5)
+        let headingButton = UIButton(frame: buttonFrame)
+        headingButton.backgroundColor = K.BeerHeadings.backgroundColor
+        headingButton.setImage(rightImage, for: .normal)
+        if isSelected { headingButton.setImage(downImage, for: .normal)}
+        else {headingButton.setImage(rightImage, for: .normal)}
+        headingButton.setTitleColor(K.BeerHeadings.fontColor, for: .normal)
+        headingButton.tag = section
+        headingButton.addTarget(self, action: #selector(pressedAction(_:)), for: .touchUpInside)
+        return headingButton
+    }
+    
+    private func createUnderline(headingView:UIView) -> UIView {
+        let headingFrame = headingView.frame
+        let headingWidth = Double(headingFrame.size.width)
+
+        let lineFrame = CGRect(x:0.0, y:0.0, width:headingWidth, height:1)
+        let underline = UIView(frame: lineFrame)
+        underline.backgroundColor = K.BeerHeadings.fontColor
+        return underline
+    }
+
+    @objc func pressedAction(gestureRecogniser:UIGestureRecognizer) {
+        if let headingLabelGestureRecogniser = gestureRecogniser as? HeadingLabelGestureRecogniser {
+            changeStateOf(section: headingLabelGestureRecogniser.section)
+        }
+    }
+    @objc func pressedAction(_ sender: UIView) {
+        changeStateOf(section: sender.tag)
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.tableView.reloadData()
+    }
+    
+    func changeStateOf(section:Int) {
+        self.sectionSelected[section] = !self.sectionSelected[section]
+        let button = selectionButtons[section]
+        let numberOfRows = self.listOfBeers.beerSections[section].listOfPubs.count
+        var arrayIndexPaths = Array<IndexPath>()
+
+        for i in 0..<numberOfRows {
+            arrayIndexPaths.append(IndexPath(item:i, section:section))
+        }
+        self.tableView.beginUpdates()
+        if self.sectionSelected[section] {
+            button?.setImage(downImage, for: .normal)
+            self.tableView.insertRows(at: arrayIndexPaths, with: .none)
+        } else {
+            button?.setImage(rightImage, for: .normal)
+            self.tableView.deleteRows(at: arrayIndexPaths, with: .none)
+        }
+        self.tableView.endUpdates()
+
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "pubCell", for: indexPath)
-        
         let pubForBeer = self.listOfBeers.beerSections[indexPath.section].listOfPubs[row]
         if pubForBeer.isRegular {
             cell.textLabel!.text = pubForBeer.pubName
@@ -199,7 +305,7 @@ extension SearchBeerTableViewController {
         return cell
     }
     
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return listOfBeers.beerSections.map{"\($0.name.prefix(1))"}
-    }
+}
+class HeadingLabelGestureRecogniser:UITapGestureRecognizer {
+    var section:Int = 0
 }

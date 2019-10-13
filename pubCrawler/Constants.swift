@@ -106,6 +106,12 @@ struct K {
         static let noPubs="No pubs on this pub crawl"
         static let setting="Pub Crawl Settings"
     }
+    struct BeerHeadings {
+        static let headingHeight:CGFloat = 40.0
+        static let backgroundColor = UIColor.white
+        static let fontColor = UIColor.darkText
+        static let buttonWidth =  40.0
+    }
     
     struct PubJsonName {
         static let pub = "Pub"
