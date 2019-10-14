@@ -571,6 +571,31 @@
                                     <segue destination="cZ0-ud-lbB" kind="show" identifier="showDetail" id="5At-bV-VXE"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerCell" id="z71-pD-wPs" customClass="BeerTableViewCell" customModule="pubCrawler" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="127.5" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z71-pD-wPs" id="DjI-PN-Xeg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pOi-Mo-7hc">
+                                            <rect key="frame" x="342" y="9.5" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="1X3-Dz-DzZ"/>
+                                                <constraint firstAttribute="height" constant="25" id="kei-eA-jYF"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="pOi-Mo-7hc" secondAttribute="trailing" constant="8" id="2vW-Fs-ssR"/>
+                                        <constraint firstItem="pOi-Mo-7hc" firstAttribute="centerY" secondItem="DjI-PN-Xeg" secondAttribute="centerY" id="PPl-1s-khv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="selector" destination="pOi-Mo-7hc" id="5nV-ai-Pje"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="PPu-6y-hCT" id="rwE-m5-Z4T"/>
@@ -592,7 +617,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fup-tJ-nwF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2193" y="1307"/>
+            <point key="canvasLocation" x="-2194.4000000000001" y="1306.5967016491754"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -1059,6 +1084,6 @@
         <segue reference="83J-0m-FRV"/>
         <segue reference="l9x-Mx-Do2"/>
         <segue reference="tsl-Nk-0bq"/>
-        <segue reference="vYY-Id-MA3"/>
+        <segue reference="5At-bV-VXE"/>
     </inferredMetricsTieBreakers>
 </document>

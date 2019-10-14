@@ -35,35 +35,6 @@ struct ListOfBeers {
             self.beers =  newBeers.filter{$0.pubForBeer.distanceToOrigin <= maxDistance}
         }
     }
-    
-    struct BeerSection {
-        let name:String
-        let listOfPubs:Array<PubForBeer>
-    }
-       
-    var uniqueBeerNames:Array<String> {
-        let beerNames = beers.map{$0.name}
-        var uniqueNames = Array<String>()
-        for beerName in beerNames {
-            if !uniqueNames.contains(beerName){
-                uniqueNames.append(beerName)
-            }
-        }
-        return uniqueNames
-    }
-    
-    var beerSections:Array<BeerSection> {
-        var beerSections = Array<BeerSection>()
-        for name in uniqueBeerNames {
-            let sectionPubs = self.beers.filter{$0.name == name}.map{$0.pubForBeer}
-                .sorted{(firstPub, secondPub) in firstPub.distanceToOrigin < secondPub.distanceToOrigin}
-            if sectionPubs.count > 0 {
-                beerSections.append(BeerSection(name: name, listOfPubs: sectionPubs))
-            }
-        }
-        return beerSections
-    }
- 
 }
 
 protocol ListOfBeersCreatorDelegate :WebServiceDelegate {
