@@ -19,7 +19,7 @@ class SearchBeerTableViewController: AbstractTableViewController {
     fileprivate var listOfBeers = ListOfBeers()
     
     fileprivate var listOfBeerOrPub = Array<BeerOrPub>()
-    fileprivate var beerSelected = Array<Bool>()
+    fileprivate var beerIsSelected = Dictionary<String,Bool>()
     
     fileprivate var userId=UId()
     fileprivate var currentLocation=Location()
@@ -131,10 +131,8 @@ extension SearchBeerTableViewController: ListOfBeersCreatorDelegate {
             }
         } else {
             self.listOfBeers = listOfBeers
-            
-            self.listOfBeerOrPub = createListOfBeerOrPub(listOfBeers: listOfBeers, beerSelected: [])
-            self.beerSelected = Array(repeating: false, count: listOfBeerOrPub.noOfBeers)
-
+            self.beerIsSelected = Dictionary()
+            self.listOfBeerOrPub = createListOfBeerOrPub(listOfBeers: listOfBeers, beerSelected: beerIsSelected)
             self.tableView.reloadData()
         }
     }
@@ -195,8 +193,8 @@ extension SearchBeerTableViewController {
         switch self.listOfBeerOrPub[row] {
         case .Pub(let pubForBeer):
              return createPubCell(pubForBeer: pubForBeer, indexPath: indexPath)
-        case .Beer(let beerName, let beerNdx):
-            return createBeerCell(beerName:beerName, beerNdx:beerNdx, indexPath:indexPath)
+        case .Beer(let beerName):
+            return createBeerCell(beerName:beerName, indexPath:indexPath)
         }        
     }
     func createPubCell(pubForBeer:PubForBeer, indexPath:IndexPath) -> UITableViewCell{
@@ -210,23 +208,28 @@ extension SearchBeerTableViewController {
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         return cell
     }
-    func createBeerCell(beerName:String, beerNdx:Int, indexPath:IndexPath) -> UITableViewCell{
+    func createBeerCell(beerName:String, indexPath:IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "beerCell", for: indexPath)
         cell.textLabel?.text = beerName
         if let beerCell = cell as? BeerTableViewCell {
-            beerCell.setSelector(beerSelected[beerNdx])
+            beerCell.setSelector(beerIsSelected.isTrue(for:beerName))
         }
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let beerNdx = listOfBeerOrPub.beerNdx(forRow:indexPath.row) else {return}
-        beerSelected[beerNdx] = !beerSelected[beerNdx]
-        if let beerCell = tableView.cellForRow(at: indexPath) as? BeerTableViewCell {
-            beerCell.setSelector(beerSelected[beerNdx])
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+        if case BeerOrPub.Beer(let beerName) = listOfBeerOrPub[indexPath.row] {
+            beerIsSelected[beerName] = !beerIsSelected.isTrue(for:beerName)
+            if let beerCell = tableView.cellForRow(at: indexPath) as? BeerTableViewCell {
+                beerCell.setSelector(beerIsSelected.isTrue(for:beerName))
+            }
+            self.listOfBeerOrPub = createListOfBeerOrPub(listOfBeers: listOfBeers, beerSelected: beerIsSelected)
+            self.tableView.reloadData()
         }
-        self.listOfBeerOrPub = createListOfBeerOrPub(listOfBeers: listOfBeers, beerSelected: beerSelected)
-        self.tableView.reloadData()
     }
-    
-    
+}
+extension Dictionary where Key == String, Value == Bool  {
+    func isTrue(for key:String) -> Bool {
+        guard let value = self[key] else {return false}
+        return value
+    }
 }
