@@ -27,11 +27,11 @@ struct ListOfBeers {
             }
         }
         
-        if newBeers.count < 300 {
+        if newBeers.count < 500 {
             self.beers = newBeers
         } else {
             let distanceFromOrigins = newBeers.map{$0.pubForBeer.distanceToOrigin}.sorted()
-            let maxDistance = distanceFromOrigins[299]
+            let maxDistance = distanceFromOrigins[499]
             self.beers =  newBeers.filter{$0.pubForBeer.distanceToOrigin <= maxDistance}
         }
     }

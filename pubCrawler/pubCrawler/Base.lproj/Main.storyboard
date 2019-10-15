@@ -123,18 +123,20 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CZI-eR-8qt" customClass="PubImageView" customModule="pubCrawler" customModuleProvider="target">
-                                            <rect key="frame" x="310" y="0.5" width="57" height="43"/>
+                                            <rect key="frame" x="310" y="0.0" width="57" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="57" id="jr3-ba-8FC"/>
-                                                <constraint firstAttribute="height" constant="43" id="s6O-0f-KUW"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="s6O-0f-KUW"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="CZI-eR-8qt" firstAttribute="leading" secondItem="1KM-SR-fIT" secondAttribute="trailing" constant="20" id="Do8-MY-RMF"/>
                                         <constraint firstItem="1KM-SR-fIT" firstAttribute="centerY" secondItem="Yom-tP-2ed" secondAttribute="centerY" id="Jwc-ot-aVE"/>
+                                        <constraint firstAttribute="bottom" secondItem="CZI-eR-8qt" secondAttribute="bottom" id="VK8-oL-J96"/>
                                         <constraint firstAttribute="trailing" secondItem="CZI-eR-8qt" secondAttribute="trailing" constant="8" id="Y03-HQ-8O4"/>
                                         <constraint firstItem="CZI-eR-8qt" firstAttribute="centerY" secondItem="Yom-tP-2ed" secondAttribute="centerY" id="iqE-Xz-RIW"/>
+                                        <constraint firstItem="CZI-eR-8qt" firstAttribute="top" secondItem="Yom-tP-2ed" secondAttribute="top" id="t8V-gr-d6b"/>
                                         <constraint firstItem="1KM-SR-fIT" firstAttribute="leading" secondItem="Yom-tP-2ed" secondAttribute="leadingMargin" id="tCR-16-LOp"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -932,15 +934,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pub crawl name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upg-eA-WmE">
-                                            <rect key="frame" x="7" y="5" width="305" height="34"/>
+                                            <rect key="frame" x="7" y="5" width="150" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="upg-eA-WmE" firstAttribute="centerY" secondItem="yju-P0-SMI" secondAttribute="centerY" id="2JP-cs-0fu"/>
-                                        <constraint firstAttribute="trailing" secondItem="upg-eA-WmE" secondAttribute="trailing" constant="63" id="Ghn-8Z-gic"/>
-                                        <constraint firstItem="upg-eA-WmE" firstAttribute="leading" secondItem="yju-P0-SMI" secondAttribute="leading" constant="7" id="NwA-a8-ZF3"/>
+                                        <constraint firstItem="upg-eA-WmE" firstAttribute="leading" secondItem="yju-P0-SMI" secondAttribute="leading" constant="7" id="emR-Fv-Jzl"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="upg-eA-WmE" secondAttribute="trailing" constant="50" id="sSA-bu-IMh"/>
+                                        <constraint firstItem="upg-eA-WmE" firstAttribute="centerY" secondItem="yju-P0-SMI" secondAttribute="centerY" id="vaj-DF-l8Y"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1083,7 +1085,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="83J-0m-FRV"/>
         <segue reference="l9x-Mx-Do2"/>
-        <segue reference="tsl-Nk-0bq"/>
+        <segue reference="aD7-5y-Fp4"/>
         <segue reference="5At-bV-VXE"/>
     </inferredMetricsTieBreakers>
 </document>

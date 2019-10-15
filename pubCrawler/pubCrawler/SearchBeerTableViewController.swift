@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 
+typealias BeerIsSelected = Dictionary<String,Bool>
+
 class SearchBeerTableViewController: AbstractTableViewController {
 
     @IBOutlet weak var nearMeButton: UIBarButtonItem!
@@ -19,7 +21,7 @@ class SearchBeerTableViewController: AbstractTableViewController {
     fileprivate var listOfBeers = ListOfBeers()
     
     fileprivate var listOfBeerOrPub = Array<BeerOrPub>()
-    fileprivate var beerIsSelected = Dictionary<String,Bool>()
+    fileprivate var beerIsSelected = BeerIsSelected()
     
     fileprivate var userId=UId()
     fileprivate var currentLocation=Location()
@@ -115,12 +117,12 @@ extension SearchBeerTableViewController: ListOfBeersCreatorDelegate {
     func updateListOfBeers(forSearchString search:String) {
         self.startActivityIndicator()
             
-        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:search, location:currentLocation, deg:"0.08", options:userId.searchOptions, uId:self.userId)
+        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:search, location:currentLocation, deg:"0.1", options:userId.searchOptions, uId:self.userId)
     }
     func updateListOfBeersForLocation() {
         self.startActivityIndicator()
         
-        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:"", location:currentLocation, deg:"0.08", options:userId.searchOptions, uId:self.userId)
+        ListOfBeersCreator(withDelegate: self).createList(usingSearchString:"", location:currentLocation, deg:"0.1", options:userId.searchOptions, uId:self.userId)
     }
 
     func finishedCreating(listOfBeers: ListOfBeers) {
@@ -227,9 +229,9 @@ extension SearchBeerTableViewController {
         }
     }
 }
-extension Dictionary where Key == String, Value == Bool  {
-    func isTrue(for key:String) -> Bool {
-        guard let value = self[key] else {return false}
-        return value
+extension BeerIsSelected  {
+    func isTrue(for beer:String) -> Bool {
+        guard let isSelected = self[beer] else {return false}
+        return isSelected
     }
 }

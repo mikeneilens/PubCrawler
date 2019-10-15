@@ -13,7 +13,7 @@ enum BeerOrPub {
     case Pub(PubForBeer)
 }
 
-func createListOfBeerOrPub(listOfBeers:ListOfBeers, beerSelected:Dictionary<String, Bool>)->Array<BeerOrPub>{
+func createListOfBeerOrPub(listOfBeers:ListOfBeers, beerSelected:BeerIsSelected)->Array<BeerOrPub>{
     var beerOrPubs=Array<BeerOrPub>()
     
     var currentBeer = ""
