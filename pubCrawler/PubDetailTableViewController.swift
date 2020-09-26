@@ -274,7 +274,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
 
     private func callNumber(phoneNumber:String) {
         if let url = URL(string:"telprompt://" + phoneNumber), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url)
         }
     }
 }

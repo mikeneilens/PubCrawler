@@ -50,8 +50,8 @@ struct K {
         static let pubListURL="https://pubcrawlapi.appspot.com/listofpubs/?"
         static let pubCrawlURL="https://pubcrawlapi.appspot.com/listofpubcrawls/?"
         static let foodHygieneURL="https://pubcrawlapi.appspot.com/hygienerating/?"
-        static let helpURL="https://www.api.neilens.co.uk/help/"
-        static let hygieneHelpURL="https://www.api.neilens.co.uk/hygienehelp/"
+        static let helpURL="https://pubcrawlapi.appspot.com/help/"
+        static let hygieneHelpURL="https://pubcrawlapi.appspot.com/hygienehelp/"
         static let foodHygieneImageURL="http://ratings.food.gov.uk/images/scores/small/"
         static let beerListURL="https://pubcrawlapi.appspot.com/listofbeers/?"
     }
