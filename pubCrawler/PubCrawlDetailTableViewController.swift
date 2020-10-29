@@ -390,10 +390,11 @@ extension PubCrawlDetailTableViewController { //datasource methods
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let heading = UILabel()
-        heading.backgroundColor = K.PubHeadings.backgroundColor
-        heading.textColor = K.PubHeadings.fontColor
-        heading.text = self.headings[section]
+        //UITableViewHeaderFooterView
+        let heading = UITableViewHeaderFooterView()
+        //heading.backgroundColor = K.PubHeadings.backgroundColor
+        //heading.textColor = K.PubHeadings.fontColor
+        heading.textLabel?.text = self.headings[section]
         return heading
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

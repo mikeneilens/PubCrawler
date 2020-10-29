@@ -202,8 +202,8 @@ extension PubDetailTableViewController { //tableViewDelegate methods
     private func createSectionHeadingView() -> UIView {
         let viewHeight = Double(K.PubHeadings.height)
         let headingFrame = CGRect(x:0.0 , y: 0.0, width: Double(self.view.frame.size.width.native), height: viewHeight)
-        let headingView = UIView(frame: headingFrame)
-        headingView.backgroundColor = K.PubHeadings.backgroundColor
+        
+        let headingView = UITableViewHeaderFooterView(frame: headingFrame)
         return headingView
     }
     private func createSectionHeadingLabel(headingView:UIView) -> UILabel {
@@ -215,8 +215,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
         let labelWidth = Double(headingFrame.size.width.native) - leftMargin - rightMargin
         let labelFrame = CGRect(x:leftMargin, y:0.0, width:labelWidth, height:headingHeight)
         let headingLabel = UILabel(frame: labelFrame)
-        headingLabel.backgroundColor = K.PubHeadings.backgroundColor
-        headingLabel.textColor = K.PubHeadings.fontColor
+        
         return headingLabel
     }
     
