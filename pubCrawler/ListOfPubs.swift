@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MNWebServiceCall
 
 struct ListOfPubs {
     let pubHeaders:[PubHeader]

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MNWebServiceCall
 
 struct ListOfBeers {
     let beers:Array<Beer>

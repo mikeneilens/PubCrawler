@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MNWebServiceCall
 
 struct ListOfPubCrawls {
     let pubCrawls:[PubCrawl]

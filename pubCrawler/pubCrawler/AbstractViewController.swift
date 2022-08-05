@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MNWebServiceCall
 
 class AbstractViewController: UIViewController {
     var activities = 0
@@ -56,7 +55,7 @@ class AbstractViewController: UIViewController {
     }
     
     private func setActivityViewProperties() {
-        activityView.style = .whiteLarge
+        activityView.style = .large
         activityView.hidesWhenStopped = true;
         activityView.isHidden = false
         activityView.startAnimating()

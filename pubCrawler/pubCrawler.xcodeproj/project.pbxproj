@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		FB0147F620011862005750BF /* CallWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0147F520011862005750BF /* CallWebService.swift */; };
 		FB0259531E635E2400AB69EC /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0259521E635E2400AB69EC /* PictureViewController.swift */; };
-		FB0544D3251F782700AA9482 /* MNWebServiceCall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBBB0F261FA61C1C004E9D95 /* MNWebServiceCall.framework */; };
-		FB0544D4251F782700AA9482 /* MNWebServiceCall.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FBBB0F261FA61C1C004E9D95 /* MNWebServiceCall.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB0651611DBAAE41009B0A51 /* LabelViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0651601DBAAE41009B0A51 /* LabelViewExtensions.swift */; };
 		FB0651631DBAC3A8009B0A51 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0651621DBAC3A8009B0A51 /* AddressTableViewCell.swift */; };
 		FB0651651DC4EE16009B0A51 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0651641DC4EE16009B0A51 /* CollectionExtensions.swift */; };
@@ -121,6 +119,10 @@
 		FBCDC7C51C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */; };
 		FBCDC7C91C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */; };
 		FBCDC7CC1C81CD0B00A74ABA /* PubNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */; };
+		FBE36241289DAE690001527F /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36240289DAE690001527F /* WebService.swift */; };
+		FBE36245289DAE890001527F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36244289DAE890001527F /* Request.swift */; };
+		FBE36247289DAEA10001527F /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36246289DAEA10001527F /* JSONError.swift */; };
+		FBE36249289DAEBB0001527F /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36248289DAEBB0001527F /* RequestMethod.swift */; };
 		FBE820331F816D5400098082 /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE820321F816D5400098082 /* SearchBarExtension.swift */; };
 		FBF2AC6D1C78FA1300B7A7DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */; };
 		FBF2AC6F1C7915EE00B7A7DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF2AC6E1C7915ED00B7A7DF /* CoreLocation.framework */; };
@@ -138,20 +140,6 @@
 			remoteGlobalIDString = FB3ED9E61C72694E000FDAC7;
 			remoteInfo = pubCrawler;
 		};
-		FBBB0F251FA61C1C004E9D95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FBBB0F201FA61C1C004E9D95 /* MNWebServiceCall.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FB09032F1F9B953200F10EBA;
-			remoteInfo = MNWebServiceCall;
-		};
-		FBBB0F271FA61C1C004E9D95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FBBB0F201FA61C1C004E9D95 /* MNWebServiceCall.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FB0903381F9B953200F10EBA;
-			remoteInfo = MNWebServiceCallTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -161,7 +149,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FB0544D4251F782700AA9482 /* MNWebServiceCall.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,11 +270,14 @@
 		FBAF88F21C943E270043A612 /* bug-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-29.png"; sourceTree = SOURCE_ROOT; };
 		FBAF88F81C943F410043A612 /* bug-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-50.png"; sourceTree = SOURCE_ROOT; };
 		FBAF88F91C943F410043A612 /* bug-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-72.png"; sourceTree = SOURCE_ROOT; };
-		FBBB0F201FA61C1C004E9D95 /* MNWebServiceCall.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MNWebServiceCall.xcodeproj; path = ../../MNWebServiceCall/MNWebServiceCall/MNWebServiceCall.xcodeproj; sourceTree = "<group>"; };
 		FBBB0F2E1FA7C7C2004E9D95 /* pubCrawl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pubCrawl.png; sourceTree = SOURCE_ROOT; };
 		FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlDetailTableViewController.swift; path = ../PubCrawlDetailTableViewController.swift; sourceTree = "<group>"; };
 		FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlNameTableViewCell.swift; path = ../PubCrawlNameTableViewCell.swift; sourceTree = "<group>"; };
 		FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubNameTableViewCell.swift; path = ../PubNameTableViewCell.swift; sourceTree = "<group>"; };
+		FBE36240289DAE690001527F /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		FBE36244289DAE890001527F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		FBE36246289DAEA10001527F /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
+		FBE36248289DAEBB0001527F /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		FBE820321F816D5400098082 /* SearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
 		FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
 		FBF2AC6E1C7915ED00B7A7DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -302,7 +292,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB0544D3251F782700AA9482 /* MNWebServiceCall.framework in Frameworks */,
 				FBF2AC6F1C7915EE00B7A7DF /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +391,6 @@
 		FB3ED9DE1C72694D000FDAC7 = {
 			isa = PBXGroup;
 			children = (
-				FBBB0F201FA61C1C004E9D95 /* MNWebServiceCall.xcodeproj */,
 				FBF2AC6E1C7915ED00B7A7DF /* CoreLocation.framework */,
 				FB3ED9E91C72694F000FDAC7 /* pubCrawler */,
 				FB3EDA001C726951000FDAC7 /* pubCrawlerTests */,
@@ -423,6 +411,10 @@
 		FB3ED9E91C72694F000FDAC7 /* pubCrawler */ = {
 			isa = PBXGroup;
 			children = (
+				FBE36240289DAE690001527F /* WebService.swift */,
+				FBE36244289DAE890001527F /* Request.swift */,
+				FBE36246289DAEA10001527F /* JSONError.swift */,
+				FBE36248289DAEBB0001527F /* RequestMethod.swift */,
 				FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */,
 				FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */,
 				FB28F5CB1D4297AC003475DC /* TabBarController.swift */,
@@ -505,15 +497,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		FBBB0F211FA61C1C004E9D95 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FBBB0F261FA61C1C004E9D95 /* MNWebServiceCall.framework */,
-				FBBB0F281FA61C1C004E9D95 /* MNWebServiceCallTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -588,12 +571,6 @@
 			mainGroup = FB3ED9DE1C72694D000FDAC7;
 			productRefGroup = FB3ED9E81C72694E000FDAC7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FBBB0F211FA61C1C004E9D95 /* Products */;
-					ProjectRef = FBBB0F201FA61C1C004E9D95 /* MNWebServiceCall.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FB3ED9E61C72694E000FDAC7 /* pubCrawler */,
@@ -601,23 +578,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FBBB0F261FA61C1C004E9D95 /* MNWebServiceCall.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MNWebServiceCall.framework;
-			remoteRef = FBBB0F251FA61C1C004E9D95 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FBBB0F281FA61C1C004E9D95 /* MNWebServiceCallTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MNWebServiceCallTests.xctest;
-			remoteRef = FBBB0F271FA61C1C004E9D95 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FB3ED9E51C72694E000FDAC7 /* Resources */ = {
@@ -718,6 +678,7 @@
 				FBCDC7C51C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift in Sources */,
 				FB3156BD1DAE99DA005A867D /* IndexPathExtensions.swift in Sources */,
 				FB2B77261E3240E700B4FEF9 /* AbstractViewController.swift in Sources */,
+				FBE36249289DAEBB0001527F /* RequestMethod.swift in Sources */,
 				FB3676181C94AD54008EFD3C /* HelpViewController.swift in Sources */,
 				FBAF88A71C833FB90043A612 /* PubCrawlMapViewController.swift in Sources */,
 				FBAF88AC1C8780500043A612 /* SettingsTableViewCell.swift in Sources */,
@@ -731,11 +692,13 @@
 				FB0651671DC65CE6009B0A51 /* HygieneHelpViewController.swift in Sources */,
 				FB950E601DD89A5700B86AB3 /* Location.swift in Sources */,
 				FB3156C11DB14636005A867D /* FoodHygieneRating.swift in Sources */,
+				FBE36247289DAEA10001527F /* JSONError.swift in Sources */,
 				FBAF88B31C8B2B5B0043A612 /* UId.swift in Sources */,
 				FBAF88B51C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift in Sources */,
 				FB77C2AB1D34145E00B91E43 /* DictionaryExtensions.swift in Sources */,
 				FB43D57B2353AEB300491677 /* BeerTableViewCell.swift in Sources */,
 				FB46A91F2341186F0029CF91 /* ListOfBeers.swift in Sources */,
+				FBE36245289DAE890001527F /* Request.swift in Sources */,
 				FBF2AC731C79DD3A00B7A7DF /* ListOfPubCrawls.swift in Sources */,
 				FB2B77241E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift in Sources */,
 				FB3EDA0F1C726BFC000FDAC7 /* ListOfPubs.swift in Sources */,
@@ -753,6 +716,7 @@
 				FB28F5E81D4CC2CB003475DC /* AddToPubCrawlViewController.swift in Sources */,
 				FB77C2A91D34143C00B91E43 /* StringExtensions.swift in Sources */,
 				FB43D57923538ED800491677 /* SearchBeerTableViewController.swift in Sources */,
+				FBE36241289DAE690001527F /* WebService.swift in Sources */,
 				FB0147F620011862005750BF /* CallWebService.swift in Sources */,
 				FBE820331F816D5400098082 /* SearchBarExtension.swift in Sources */,
 				FB0651651DC4EE16009B0A51 /* CollectionExtensions.swift in Sources */,
@@ -920,7 +884,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Neilens.pubCrawler;
@@ -941,7 +905,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Neilens.pubCrawler;

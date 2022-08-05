@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MNWebServiceCall
 
 class AbstractTableViewController: UITableViewController {
 
@@ -42,7 +41,7 @@ class AbstractTableViewController: UITableViewController {
         activityView.color = UIColor.black
     }
     private func setActivityViewProperties() {
-        activityView.style = .whiteLarge
+        activityView.style = .large
         activityView.hidesWhenStopped = true;
         activityView.isHidden = false
         activityView.startAnimating()

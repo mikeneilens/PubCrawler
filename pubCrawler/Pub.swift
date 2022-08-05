@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MNWebServiceCall
 
 struct PubHeader {
     let name:String
