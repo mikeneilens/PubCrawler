@@ -411,10 +411,6 @@
 		FB3ED9E91C72694F000FDAC7 /* pubCrawler */ = {
 			isa = PBXGroup;
 			children = (
-				FBE36240289DAE690001527F /* WebService.swift */,
-				FBE36244289DAE890001527F /* Request.swift */,
-				FBE36246289DAEA10001527F /* JSONError.swift */,
-				FBE36248289DAEBB0001527F /* RequestMethod.swift */,
 				FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */,
 				FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */,
 				FB28F5CB1D4297AC003475DC /* TabBarController.swift */,
@@ -445,6 +441,10 @@
 				FB3676171C94AD54008EFD3C /* HelpViewController.swift */,
 				FB0651661DC65CE6009B0A51 /* HygieneHelpViewController.swift */,
 				FB43D57A2353AEB300491677 /* BeerTableViewCell.swift */,
+				FBE36240289DAE690001527F /* WebService.swift */,
+				FBE36244289DAE890001527F /* Request.swift */,
+				FBE36246289DAEA10001527F /* JSONError.swift */,
+				FBE36248289DAEBB0001527F /* RequestMethod.swift */,
 				FB8A67301E6760E5000EE992 /* Models */,
 				FB3ED9F01C726950000FDAC7 /* Main.storyboard */,
 				FB3ED9F51C726950000FDAC7 /* LaunchScreen.storyboard */,

@@ -16,6 +16,7 @@ class AbstractTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.backgroundColor = .systemBackground
         self.view.addSubview(self.activityView)
         self.activityView.isHidden = true
     }

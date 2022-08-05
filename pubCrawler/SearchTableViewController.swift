@@ -29,7 +29,6 @@ class SearchTableViewController: AbstractTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         userId.refreshUId()
 
         //if there is no pub specified, get a list of pubs near to the current location
