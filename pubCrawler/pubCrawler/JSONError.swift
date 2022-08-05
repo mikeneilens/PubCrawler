@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum JSONError: String, Error {
+enum JSONError: String, Error {
     case NoData = "ERROR: no data"
     case ConversionFailed = "ERROR: conversion from JSON failed"
     case ErrorWithData = "ERROR: Non-zero response from service"

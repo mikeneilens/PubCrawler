@@ -8,16 +8,16 @@
 
 import Foundation
 
-public protocol MNWebService {
+protocol MNWebService {
     func getJson(forRequest request:Request, delegate:JSONResponseDelegate)
 }
 
-public protocol JSONResponseDelegate  {
+protocol JSONResponseDelegate  {
     func finishedGetting(json:[String:Any])
     func failedGettingJson(error:Error)
 }
 
-public struct WebService:MNWebService {
+struct WebService:MNWebService {
     
     public init(){}
     public func getJson(forRequest request:Request, delegate:JSONResponseDelegate) {
