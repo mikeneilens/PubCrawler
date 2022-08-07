@@ -215,7 +215,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
         let labelWidth = Double(headingFrame.size.width.native) - leftMargin - rightMargin
         let labelFrame = CGRect(x:leftMargin, y:0.0, width:labelWidth, height:headingHeight)
         let headingLabel = UILabel(frame: labelFrame)
-        
+        headingLabel.font = UIFont.systemFont(ofSize: headingLabel.font!.pointSize, weight: .bold)
         return headingLabel
     }
     
