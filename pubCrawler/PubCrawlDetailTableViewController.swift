@@ -390,6 +390,38 @@ extension PubCrawlDetailTableViewController { //datasource methods
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headingView = self.createSectionHeadingView()
+        let headingLabel = self.createSectionHeadingLabel(headingView: headingView)
+
+        headingLabel.text = self.headings[section]
+        headingView.addSubview(headingLabel)
+        
+        return headingView
+    }
+
+    private func createSectionHeadingView() -> UIView {
+        let viewHeight = Double(K.PubHeadings.height)
+        let headingFrame = CGRect(x:0.0 , y: 0.0, width: Double(self.view.frame.size.width.native), height: viewHeight)
+        
+        let headingView = UITableViewHeaderFooterView(frame: headingFrame)
+        return headingView
+    }
+    private func createSectionHeadingLabel(headingView:UIView) -> UILabel {
+        let headingFrame = headingView.frame
+        let headingHeight = Double(headingFrame.size.height)
+
+        let leftMargin:Double = 8.0
+        let rightMargin:Double = 8.0
+        let labelWidth = Double(headingFrame.size.width.native) - leftMargin - rightMargin
+        let labelFrame = CGRect(x:leftMargin, y:0.0, width:labelWidth, height:headingHeight)
+        let headingLabel = UILabel(frame: labelFrame)
+        headingLabel.font = UIFont.systemFont(ofSize: headingLabel.font!.pointSize, weight: .bold)
+        return headingLabel
+    }
+    
+    /*
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //UITableViewHeaderFooterView
         let heading = UITableViewHeaderFooterView()
         //heading.backgroundColor = K.PubHeadings.backgroundColor
@@ -397,6 +429,7 @@ extension PubCrawlDetailTableViewController { //datasource methods
         heading.textLabel?.text = self.headings[section]
         return heading
     }
+     */
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return K.PubHeadings.height
     }
