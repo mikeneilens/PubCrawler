@@ -425,7 +425,8 @@ extension PubDetailTableViewController { //datasource
             telephoneCell.textLabel!.text = self.pub.telephone
             return telephoneCell
         case K.PubHeadings.openingTime:
-            pubDetailcell.textLabel!.text = self.pub.openingTimes
+            return self.createOpeningTimesCell(tableView, indexPath: indexPath)
+            //pubDetailcell.textLabel!.text = self.pub.openingTimes
         case K.PubHeadings.mealTime:
             pubDetailcell.textLabel!.text = self.pub.mealTimes
         case K.PubHeadings.owner:
@@ -488,6 +489,16 @@ extension PubDetailTableViewController { //datasource
             return cell
         } else {
             return addressCell
+        }
+    }
+    func createOpeningTimesCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
+        let openingTimesCell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
+        if let cell = openingTimesCell as? AddressTableViewCell {
+            cell.variableSizeTextLabel.text = String( self.pub.openingTimes.replacingOccurrences(of: "; ", with: "\n").dropLast(1) )
+            cell.setLabelType(isMultirow: true)
+            return cell
+        } else {
+            return openingTimesCell
         }
     }
     func createPictureCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
