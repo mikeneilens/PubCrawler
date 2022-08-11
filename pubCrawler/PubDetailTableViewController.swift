@@ -425,10 +425,9 @@ extension PubDetailTableViewController { //datasource
             telephoneCell.textLabel!.text = self.pub.telephone
             return telephoneCell
         case K.PubHeadings.openingTime:
-            return self.createOpeningTimesCell(tableView, indexPath: indexPath)
-            //pubDetailcell.textLabel!.text = self.pub.openingTimes
+            return self.createOpeningTimesCell(tableView, indexPath: indexPath, openingTimes: self.pub.openingTimes)
         case K.PubHeadings.mealTime:
-            pubDetailcell.textLabel!.text = self.pub.mealTimes
+            return self.createOpeningTimesCell(tableView, indexPath: indexPath, openingTimes: self.pub.mealTimes)
         case K.PubHeadings.owner:
             pubDetailcell.textLabel!.text = self.pub.owner
         case K.PubHeadings.about:
@@ -491,10 +490,10 @@ extension PubDetailTableViewController { //datasource
             return addressCell
         }
     }
-    func createOpeningTimesCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
+    func createOpeningTimesCell(_ tableView: UITableView, indexPath:IndexPath, openingTimes:String ) -> UITableViewCell {
         let openingTimesCell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
         if let cell = openingTimesCell as? AddressTableViewCell {
-            cell.variableSizeTextLabel.text = String( self.pub.openingTimes.replacingOccurrences(of: "; ", with: "\n").dropLast(1) )
+            cell.variableSizeTextLabel.text = openingTimes.splitIntoLines()
             cell.setLabelType(isMultirow: true)
             return cell
         } else {

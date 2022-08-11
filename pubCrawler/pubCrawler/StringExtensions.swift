@@ -26,4 +26,13 @@ extension String {
     var isNotEmpty:Bool {
         return !self.isEmpty
     }
+    func splitIntoLines()-> String {
+        if self.count == 0 { return self }
+        let splitString = self.replacingOccurrences(of: "; ", with: "\n")
+        if splitString.last == "\n" {
+            return String(splitString.dropLast(1))
+        } else {
+            return splitString
+        }
+    }
 }
