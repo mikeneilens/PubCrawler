@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dvv-aY-bgB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dvv-aY-bgB">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,11 +64,11 @@
             <objects>
                 <tableViewController id="cZ0-ud-lbB" customClass="PubDetailTableViewController" customModule="pubCrawler" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="EhW-Ru-iwd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pubDetailCell" id="5aV-92-2b5">
-                                <rect key="frame" x="16" y="49.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="55.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5aV-92-2b5" id="NWr-Lp-DlQ">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -76,7 +76,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pubShowOnMapCell" id="X77-9S-L4c">
-                                <rect key="frame" x="16" y="93.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="99.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X77-9S-L4c" id="ZYG-Gg-cPQ">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -110,7 +110,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pubShowPictureCell" id="joH-NE-oo3" customClass="PictureTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="137.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="143.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="joH-NE-oo3" id="Yom-tP-2ed">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -147,7 +147,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shortAboutCell" textLabel="MKj-fI-cbd" style="IBUITableViewCellStyleDefault" id="8yY-Lm-uTs">
-                                <rect key="frame" x="16" y="181.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="187.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8yY-Lm-uTs" id="AFc-Wc-p6o">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -164,7 +164,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="longAboutCell" rowHeight="72" id="gf3-M1-Mg3" customClass="LongAboutTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="225.5" width="343" height="72"/>
+                                <rect key="frame" x="16" y="231.5" width="343" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gf3-M1-Mg3" id="Y37-OM-Mtn">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
@@ -205,7 +205,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pubUpdatePubCrawlsCell" id="5Xg-67-5Lz">
-                                <rect key="frame" x="16" y="297.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="303.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Xg-67-5Lz" id="KYO-84-qbt">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -238,7 +238,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemSwitchCell" id="aXU-aP-MUl" customClass="ItemSwitchCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="341.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="347.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aXU-aP-MUl" id="Udv-3U-ikf">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -270,7 +270,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pubsNearByCell" id="JQe-HE-f5c">
-                                <rect key="frame" x="16" y="385.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="391.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JQe-HE-f5c" id="3e8-ed-gzt">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -284,7 +284,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pubs near by..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enz-cf-g5N">
-                                            <rect key="frame" x="14" y="12" width="191" height="20.5"/>
+                                            <rect key="frame" x="14" y="11.5" width="191" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -303,7 +303,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hygieneRatingCell" rowHeight="60" id="fZb-Sh-azB" customClass="HygieneRatingCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="429.5" width="343" height="60"/>
+                                <rect key="frame" x="16" y="435.5" width="343" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fZb-Sh-azB" id="jKb-Ty-P8Y">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
@@ -364,7 +364,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" id="TPK-jB-tA2" customClass="AddressTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="489.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="495.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TPK-jB-tA2" id="PUp-yW-c6g">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -394,7 +394,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="telephoneCell" id="8HW-SC-09a">
-                                <rect key="frame" x="16" y="533.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="539.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8HW-SC-09a" id="739-eI-J4Y">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -415,10 +415,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="pubCrawlCell" id="8hg-pp-x38">
-                                <rect key="frame" x="16" y="577.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="583.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8hg-pp-x38" id="VJZ-cd-Fbs">
-                                    <rect key="frame" x="0.0" y="0.0" width="318.5" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="316.5" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -446,11 +446,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Pub-zs-g5l"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x6b-hk-Stx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NUI-i2-92t">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="525"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="618"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -479,7 +479,7 @@
                         <viewControllerLayoutGuide type="bottom" id="T2e-Hr-uEz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zQX-wl-ZU8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -547,7 +547,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pubCell" textLabel="rO1-Mb-h77" detailTextLabel="9KO-pI-Weq" style="IBUITableViewCellStyleSubtitle" id="e7O-gi-gxW">
-                                <rect key="frame" x="0.0" y="88.5" width="375" height="55.5"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e7O-gi-gxW" id="hlG-kA-5iF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
@@ -574,7 +574,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beerCell" id="z71-pD-wPs" customClass="BeerTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="144" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="149.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z71-pD-wPs" id="DjI-PN-Xeg">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -626,7 +626,7 @@
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="SearchTableViewController" customModule="pubCrawler" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="r7i-6Z-zg0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter town, pub or postcode" showsCancelButton="YES" id="O3f-KS-PqZ">
@@ -636,10 +636,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" detailTextLabel="YBB-Q8-NC9" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="105.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="111.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="350.5" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348.5" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
@@ -702,7 +702,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter name of pub crawl" showsCancelButton="YES" id="RDV-pe-8Aj">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
@@ -712,7 +712,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="InW-eP-XYd">
-                                <rect key="frame" x="0.0" y="100.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="111.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="InW-eP-XYd" id="KJv-KL-s5D">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -759,7 +759,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4Nj-pC-FQt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j1Z-Mj-Uaf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AjC-Lv-6Ki" customClass="PubImageView" customModule="pubCrawler" customModuleProvider="target">
@@ -798,11 +798,11 @@
                         <viewControllerLayoutGuide type="bottom" id="5sG-CT-bwJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GcA-X4-fdr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3jQ-8a-HAF">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="525"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="618"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -899,7 +899,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PubNameTableViewCell" textLabel="QxH-ts-B4r" detailTextLabel="OKe-WG-h0c" style="IBUITableViewCellStyleSubtitle" id="qUd-15-6Pt" customClass="PubNameTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="49.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="55.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qUd-15-6Pt" id="MMc-q8-bYO">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -926,7 +926,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PubCrawlNameTableViewCell" id="hjc-qr-Ptj" customClass="PubCrawlNameTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="93.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="99.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hjc-qr-Ptj" id="yju-P0-SMI">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -949,7 +949,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PubCrawlSettingTableViewCell" id="bWL-Ld-FW9" customClass="PubCrawlSettingTableViewCell" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="137.5" width="343" height="44"/>
+                                <rect key="frame" x="16" y="143.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWL-Ld-FW9" id="DnS-a1-v8L">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -1067,9 +1067,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="9GL-HC-XXP"/>
-        <segue reference="cvi-z8-QE1"/>
+        <segue reference="l9x-Mx-Do2"/>
         <segue reference="aD7-5y-Fp4"/>
-        <segue reference="Trd-Ce-bUq"/>
+        <segue reference="vYY-Id-MA3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="beer" width="27.5" height="27.5"/>

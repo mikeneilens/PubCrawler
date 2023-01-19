@@ -138,12 +138,14 @@ struct K {
         static let pubsNearbyService = "NearByService"
         static let hygieneRatingService = "HygieneRatingService"
         static let nextPubService = "NextPubService"
+        static let beerGuideService = "BeerGuideService"
     }
     struct PubListJsonName {
         static let pubs = "Pubs"
         static let name = "Name"
         static let town = "Town"
         static let distance = "Distance"
+        static let isInBeerGuide="IsInBeerGuide"
         static let lat = "Lat"
         static let lng = "Lng"
         static let sequence = "Sequence"

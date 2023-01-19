@@ -250,6 +250,11 @@ extension SearchTableViewController {
             let pubHeader = self.listOfPubHeaders[row]
             cell.textLabel!.text = pubHeader.name + " "
             cell.detailTextLabel!.text = pubHeader.distanceText
+            if (pubHeader.isInBeerGuide == "yes") {
+                cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 16.0)
+            } else {
+                cell.textLabel!.font = UIFont.systemFont(ofSize: 16.0)
+            }
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         } else {
             cell.textLabel!.text = "more pubs..."

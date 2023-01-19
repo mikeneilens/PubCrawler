@@ -12,6 +12,7 @@ struct PubHeader {
     let name:String
     let town:String
     let distance:String
+    let isInBeerGuide:String
     let sequence:Int
     let location:Location
     let pubService:String
@@ -29,7 +30,8 @@ struct PubHeader {
     init() { self = PubHeader(fromJson:[:])}
     
     init (fromJson json:[String:Any]) {
-        self.name         = json[K.PubListJsonName.name]  as? String ?? ""
+        self.isInBeerGuide = json[K.PubListJsonName.isInBeerGuide] as? String ?? ""
+        self.name         = json[K.PubListJsonName.name]  as? String  ?? ""
         self.town         = json[K.PubListJsonName.town]     as? String ?? ""
         self.distance     = json[K.PubListJsonName.distance] as? String ?? ""
         self.location     = Location(fromJson:json)
@@ -56,6 +58,7 @@ struct Pub {
     let changeVisitedService:String
     let hygieneRatingService:String
     let pubsNearByService:String
+    let beerGuideService:String
     let visited:Bool
     let liked:Bool
     let createPubCrawlService:String
@@ -98,6 +101,7 @@ struct Pub {
         self.hygieneRatingService = json[K.PubJsonName.hygieneRatingService] as? String ?? ""
         self.pubsNearByService = json[K.PubJsonName.pubsNearbyService] as? String ?? ""
         self.nextPubService = json[K.PubJsonName.nextPubService] as? String ?? ""
+        self.beerGuideService = json[K.PubJsonName.beerGuideService] as? String ?? ""
         
         let otherPubCrawlsJson = json.getValues(forKey: K.PubCrawlJsonName.otherPubCrawl, withDefault:[String:Any]())
         self.listOfOtherPubCrawls =  getPubCrawls(fromJson: otherPubCrawlsJson)
@@ -150,6 +154,7 @@ struct PubCreator: WebServiceCallerType {
         case 0:
             let pub = Pub(fromJson: json)
             self.delegate.finishedCreating(newPub:pub)
+            BeerGuideCreator(errorDelegate: errorDelegate, serviceName: "Beer Guide details").refreshBeerGuideCache(pub: pub)
         default:
             self.failedGettingJson(error:JSONError.ConversionFailed, errorText:errorText)
         }
@@ -205,4 +210,16 @@ struct PubUpdater:WebServiceCallerType {
         }
     }
     
+}
+
+struct BeerGuideCreator: WebServiceCallerType {
+    var errorDelegate: WebServiceDelegate
+    
+    var serviceName: String
+    
+    func finishedGetting(json: [String : Any]) {}
+    
+    func refreshBeerGuideCache(pub:Pub) {
+        self.call(withDelegate: self, url: pub.beerGuideService)
+    }
 }
