@@ -1,0 +1,100 @@
+workspace {
+
+    model {
+        whatPub = softwareSystem "WhatPub.com" "WhaPub website" {
+            tags "External Software System"
+        }
+        foodHygieneRating = softwareSystem "Food Hygiene Rating" "Foound Hyiene Rating API" {
+            tags "External Software System"
+        }
+        pubCrawler = softwareSystem "Pub Crawler" "The pub crawler app and supporting APIs." {
+
+            pubCrawlerData = container "pubCrawler datastore" "database for pubcrawler App" {
+                pubCache = component "Pubs" "A cache of pubs retrieved from WhatPub"
+                pubCrawlHeader = component "PubCrawlHeader" "Pub crawls for each user"
+                pubCrawl = component "PubCrawl" "Pubs for each pub crawl"
+                tags "Data store"
+            }
+            pubCrawlerAPI = container "pubCrawlerAPI" "PHP based API" {
+                pub = component "pub.php" "retrieves information about a pub" {
+                    -> whatPub
+                    -> pubCrawlerData
+                }
+                listOfPubs = component "listofpubs.php" "retrieves lists of pibs" {
+                    -> whatPub
+                }
+                listOfPubCrawls = component "listOfPubCrawls.php" "manages pub crawls" {
+                    -> pubCrawlerData
+                }
+                hygieneRating = component "hygieneRating.php" "manages request to food hygiene rating site" {
+                    -> foodHygieneRating
+                }
+                visits = component "visit.php" "manages whether user has visited or liked a pub" {
+                    -> pubCrawlerData
+                }
+                router = component "index.php" "manages routing of requests" {
+                    -> pub "/pub"
+                    -> listOfPubs "/listofpubs"
+                    -> listOfPubCrawls "/listofpubcrawls"
+                    -> hygieneRating "/hygienerating"
+                    -> visits "/visits"                    
+                }
+            }
+            iOSapp = container "isOS App" {
+                -> pubCrawlerAPI
+            }
+
+        }
+        user = person "User" "Person looking for pubs to visit." {
+            -> iOSapp
+        }
+        production = deploymentEnvironment "Production" {
+            deploymentNode "GCP App Engine" {
+                containerInstance pubCrawlerAPI
+                deploymentNode "GCP Firestore in Datastore mode" {
+                    containerInstance pubCrawlerData
+                }
+            }
+        }
+
+    }
+
+    views {
+        systemContext pubCrawler "PubCrawlerSystem" {
+            include *
+            autoLayout
+        }
+        container pubCrawler "PubCrawlerContainers" {
+            include *
+            autoLayout
+        }
+        component pubcrawlerAPI "PubCrawlerAPIComponents" {
+            include *
+            autoLayout
+        }
+        deployment * production "PubCrawlerDeployment" {
+            include *
+            autoLayout
+        }
+
+        styles {
+            element "Software System" {
+                background #1168bd
+                color #ffffff
+            }
+            element "Person" {
+                shape person
+                background #1168bd
+                color #ffffff
+            }
+            element "External Software System" {
+                background #808080
+                shape RoundedBox
+            }
+                element "Data store" {
+                background #90EE90
+            }
+        }
+    }
+    
+}
