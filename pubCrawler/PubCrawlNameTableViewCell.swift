@@ -29,9 +29,7 @@ class PubCrawlNameTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if let delegate = delegate {
-            delegate.nameChanged(name:textField.text!)
-        }
+        delegate?.nameChanged(name:textField.text!)
     }
 
 }

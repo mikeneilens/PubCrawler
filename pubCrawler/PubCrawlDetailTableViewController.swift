@@ -89,12 +89,8 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let tabBar = self.tabBarController?.tabBar {
-            tabBar.isHidden = true
-        }
-        if let toolBar = self.navigationController?.toolbar {
-            toolBar.isHidden = false
-        }
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.toolbar.isHidden = false
         
         if let navController = self.navigationController  {
             navController.isToolbarHidden = false
@@ -106,14 +102,10 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
  
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-            self.resignFirstResponder()
-
-        if let tabBar = self.tabBarController?.tabBar {
-            tabBar.isHidden = false
-        }
-        if let toolBar = self.navigationController?.toolbar {
-            toolBar.isHidden = true
-        }
+        self.resignFirstResponder()
+        
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.toolbar.isHidden = true
     }
     
     @objc func editPressed()
@@ -135,10 +127,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     {
         self.setNameAndSettingCells(isEnabled:false)
         
-        var newName = ""
-        if let pubCrawlNameCell = self.pubCrawlNameTableViewCell {
-            newName = pubCrawlNameCell.pubCrawlNameText.text!
-        }
+        let newName = self.pubCrawlNameTableViewCell?.pubCrawlNameText.text ?? ""
                     
         if ((self.pubCrawl.name == newName ) && (!self.crawlSequenceChanged) && (!self.crawlSettingChanged) ){
             //nothings changed
@@ -169,24 +158,15 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     
     @objc func cancelPressed() {
-        if let pubCrawlNameCell = self.pubCrawlNameTableViewCell {
-            pubCrawlNameCell.pubCrawlNameText.text = self.pubCrawl.name
-        }
+        self.pubCrawlNameTableViewCell?.pubCrawlNameText.text = self.pubCrawl.name
         self.setNameAndSettingCells(isEnabled:false)
         self.showDefaultButtons()
     }
     
     func setNameAndSettingCells(isEnabled enabled:Bool) {
-        if let pubCrawlNameCell = self.pubCrawlNameTableViewCell {
-            pubCrawlNameCell.pubCrawlNameText.isEnabled = self.pubCrawl.canUpdate
-        }
-        
-        if let pubCrawlSettingCell = self.pubCrawlSettingTableViewCell {
-            pubCrawlSettingCell.settingSwitch.isEnabled = self.pubCrawl.canUpdateSetting
-        }
-        
+        self.pubCrawlNameTableViewCell?.pubCrawlNameText.isEnabled = self.pubCrawl.canUpdate
+        self.pubCrawlSettingTableViewCell?.settingSwitch.isEnabled = self.pubCrawl.canUpdateSetting
         self.setEditing(enabled, animated: true)
-        
     }
     
     func updatePubCrawl(name:String) {
@@ -255,12 +235,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        let section = indexPath.section
-        
-        if self.headings[section] == K.PubCrawlHeadings.pubs {
-            return true
-        }
-        return false
+        return self.headings[indexPath.section] == K.PubCrawlHeadings.pubs
     }
     
     @IBAction func joinButtonPressed(_ sender: UIBarButtonItem) {
@@ -323,10 +298,7 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     }
     func finishedCopying(listOfPubCrawls:ListOfPubCrawls) {
         stopActivityIndicator()
-
-        if let navController = self.navigationController {
-            navController.popViewController(animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -420,16 +392,6 @@ extension PubCrawlDetailTableViewController { //datasource methods
         return headingLabel
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //UITableViewHeaderFooterView
-        let heading = UITableViewHeaderFooterView()
-        //heading.backgroundColor = K.PubHeadings.backgroundColor
-        //heading.textColor = K.PubHeadings.fontColor
-        heading.textLabel?.text = self.headings[section]
-        return heading
-    }
-     */
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return K.PubHeadings.height
     }

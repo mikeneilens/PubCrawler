@@ -77,16 +77,11 @@ class AbstractTableViewController: UITableViewController {
     
     private func disableView(){
         self.view.isUserInteractionEnabled = false
-        if let navController = self.navigationController{
-            navController.navigationBar.isUserInteractionEnabled=false
-        }
-
+        navigationController?.navigationBar.isUserInteractionEnabled = false
     }
     private func enableView() {
         self.view.isUserInteractionEnabled = true
-        if let navController=self.navigationController {
-            navController.navigationBar.isUserInteractionEnabled=true
-        }
+        self.navigationController?.navigationBar.isUserInteractionEnabled = true
     }
     private func removeRightButton() {
         if let rightButton = self.navigationItem.rightBarButtonItem {

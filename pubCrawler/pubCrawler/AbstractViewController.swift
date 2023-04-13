@@ -75,9 +75,7 @@ class AbstractViewController: UIViewController {
         
         if (activities==0) {
             self.view.isUserInteractionEnabled = true
-            if let navController=self.navigationController{
-                navController.navigationBar.isUserInteractionEnabled=true
-            }
+            self.navigationController?.navigationBar.isUserInteractionEnabled=true
             
             activityView.stopAnimating()
             

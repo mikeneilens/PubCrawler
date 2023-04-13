@@ -13,8 +13,8 @@ extension URL{
     var queryParams:[String:Any] {
                 
         var info = [String:String]()
-        if let queryString = self.query {
-            for parameter in queryString.components(separatedBy: "&"){
+        if let query {
+            for parameter in query.components(separatedBy: "&"){
                 let parts = parameter.components(separatedBy: "=")
                 if parts.count > 1{
                     if let key = (parts[0] ).removingPercentEncoding, let value = (parts[1] ).removingPercentEncoding

@@ -31,8 +31,6 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
-        if let delegate = self.delegate {
-            delegate.settingsSwitchChanged(optionSwitch:sender, label:self.label)
-        }
+        delegate?.settingsSwitchChanged(optionSwitch:sender, label:self.label)
     }
 }

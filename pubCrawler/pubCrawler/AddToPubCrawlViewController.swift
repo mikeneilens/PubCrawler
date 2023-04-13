@@ -63,14 +63,10 @@ class AddToPubCrawlViewController: UIAlertController {
     }
     
     func add(pubCrawlItem:PubCrawlItem) {
-        if let delegate = self.delegate {
-            delegate.pubCrawlAdded(atIndex:pubCrawlItem.ndx)
-        }
+        delegate?.pubCrawlAdded(atIndex:pubCrawlItem.ndx)
     }
     func createItem() {
-        if let delegate = self.delegate {
-            delegate.createPubCrawl()
-        }
+        delegate?.createPubCrawl()
     }
     
     func cancel() {

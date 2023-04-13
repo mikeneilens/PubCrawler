@@ -40,13 +40,13 @@ struct WebService:MNWebService {
     }
     
     func dataHandler(data:Data?, response:URLResponse?, error:Error?, delegate:JSONResponseDelegate) {
-        if let error = error {
+        if let error  {
             print("URLSessionDataTask error \(error)")
             self.returnFailure(error: JSONError.ErrorWithData, delegate:delegate)
         }
         
         do {
-            if let data = data {
+            if let data {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                     self.returnSuccess(json: json, delegate:delegate)
                 }

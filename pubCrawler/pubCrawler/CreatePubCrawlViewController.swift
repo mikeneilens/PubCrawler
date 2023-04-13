@@ -42,10 +42,10 @@ class CreatePubCrawlViewController: AbstractViewController, UITextFieldDelegate,
     func addPubCrawl(withName name:String) {
         self.startActivityIndicator()
 
-        if let pub = self.pub {
+        if let pub  {
             PubCrawlCreator(withDelegate:self, withPub:pub).create(name:name)
         } else
-            if let listOfPubCrawls = self.listOfPubCrawls {
+            if let listOfPubCrawls  {
                 PubCrawlCreator(withDelegate:self).create(forListOfPubCrawls:listOfPubCrawls, name:name)
         }
     }
@@ -55,15 +55,5 @@ class CreatePubCrawlViewController: AbstractViewController, UITextFieldDelegate,
         self.navigationController?.popViewController(animated: true)
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

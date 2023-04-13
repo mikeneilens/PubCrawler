@@ -18,8 +18,6 @@ class PubCrawlSettingTableViewCell: UITableViewCell {
     
     
     @IBAction func switchChanged(_ sender: UISwitch) {
-        if let delegate = self.delegate {
-            delegate.pubCrawlSettingChanged(settingSwitch:sender)
-        }
+        delegate?.pubCrawlSettingChanged(settingSwitch:sender)
     }
 }
