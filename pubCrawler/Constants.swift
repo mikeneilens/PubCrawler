@@ -52,7 +52,7 @@ struct K {
         static let foodHygieneURL="https://pubcrawlapi.appspot.com/hygienerating/?"
         static let helpURL="https://pubcrawlapi.appspot.com/help/"
         static let hygieneHelpURL="https://pubcrawlapi.appspot.com/hygienehelp/"
-        static let foodHygieneImageURL="http://ratings.food.gov.uk/images/scores/small/"
+        static let foodHygieneImageURL="https://storage.googleapis.com/fhr/"
         static let beerListURL="https://pubcrawlapi.appspot.com/listofbeers/?"
     }
     struct QueryParm {

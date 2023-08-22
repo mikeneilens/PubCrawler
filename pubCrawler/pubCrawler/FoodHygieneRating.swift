@@ -28,7 +28,7 @@ struct FoodHygieneRating {
         }
     }
     var displayImageURL:String {
-        return K.URL.foodHygieneImageURL + ratingKey + ".JPG"
+        return K.URL.foodHygieneImageURL + ratingKey + ".png"
     }
     init(){
         self.businessName="this location"
