@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -165,10 +165,10 @@
 		FB08592820409CDB00951471 /* filter-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter-72.png"; sourceTree = SOURCE_ROOT; };
 		FB08592A20409CDB00951471 /* filter-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter-29.png"; sourceTree = SOURCE_ROOT; };
 		FB08592B20409CDB00951471 /* filter-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter-50.png"; sourceTree = SOURCE_ROOT; };
-		FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubDetailTableViewController.swift; path = ../PubDetailTableViewController.swift; sourceTree = "<group>"; };
-		FB27F3ED1CAC3DE700C2F41A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
-		FB27F3EF1CAC3E4F00C2F41A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubDetailTableViewController.swift; sourceTree = "<group>"; };
+		FB27F3ED1CAC3DE700C2F41A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = pubCrawler/Constants.swift; sourceTree = SOURCE_ROOT; };
+		FB27F3EF1CAC3E4F00C2F41A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = pubCrawler/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = pubCrawler/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		FB27F3F31CAC3F5100C2F41A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		FB27F4171CB95D2600C2F41A /* search-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-29.png"; sourceTree = SOURCE_ROOT; };
 		FB27F4181CB95D2600C2F41A /* search-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-50.png"; sourceTree = SOURCE_ROOT; };
@@ -197,7 +197,7 @@
 		FB36760A1C945A36008EFD3C /* copy-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-29.png"; sourceTree = SOURCE_ROOT; };
 		FB36760B1C945A36008EFD3C /* copy-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-50.png"; sourceTree = SOURCE_ROOT; };
 		FB36760C1C945A36008EFD3C /* copy-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy-72.png"; sourceTree = SOURCE_ROOT; };
-		FB3676171C94AD54008EFD3C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = SOURCE_ROOT; };
+		FB3676171C94AD54008EFD3C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = pubCrawler/HelpViewController.swift; sourceTree = SOURCE_ROOT; };
 		FB3676191C94BF06008EFD3C /* email-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-29.png"; sourceTree = SOURCE_ROOT; };
 		FB36761A1C94BF06008EFD3C /* email-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-50.png"; sourceTree = SOURCE_ROOT; };
 		FB36761B1C94BF06008EFD3C /* email-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-72.png"; sourceTree = SOURCE_ROOT; };
@@ -246,13 +246,13 @@
 		FB950E5F1DD89A5700B86AB3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FB9A3AD21DB28F3A008AB628 /* HygieneRatingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HygieneRatingCell.swift; sourceTree = "<group>"; };
 		FB9A3AD61DB7FEE7008AB628 /* LongAboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongAboutTableViewCell.swift; sourceTree = "<group>"; };
-		FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlMapViewController.swift; path = ../PubCrawlMapViewController.swift; sourceTree = "<group>"; };
-		FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractTableViewController.swift; path = ../AbstractTableViewController.swift; sourceTree = "<group>"; };
-		FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewCell.swift; path = ../SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsTableViewCell.xib; path = ../SettingsTableViewCell.xib; sourceTree = "<group>"; };
-		FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterTableViewController.swift; path = ../FilterTableViewController.swift; sourceTree = "<group>"; };
+		FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawlMapViewController.swift; sourceTree = "<group>"; };
+		FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractTableViewController.swift; sourceTree = "<group>"; };
+		FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		FBAF88B21C8B2B5B0043A612 /* UId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UId.swift; path = ../UId.swift; sourceTree = "<group>"; };
-		FBAF88B41C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlSettingTableViewCell.swift; path = ../PubCrawlSettingTableViewCell.swift; sourceTree = "<group>"; };
+		FBAF88B41C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawlSettingTableViewCell.swift; sourceTree = "<group>"; };
 		FBAF88D01C90C7D40043A612 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "../Icon-40.png"; sourceTree = "<group>"; };
 		FBAF88D11C90C7D40043A612 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "../Icon-40@2x.png"; sourceTree = "<group>"; };
 		FBAF88D21C90C7D40043A612 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@3x.png"; path = "../Icon-40@3x.png"; sourceTree = "<group>"; };
@@ -271,17 +271,17 @@
 		FBAF88F81C943F410043A612 /* bug-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-50.png"; sourceTree = SOURCE_ROOT; };
 		FBAF88F91C943F410043A612 /* bug-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug-72.png"; sourceTree = SOURCE_ROOT; };
 		FBBB0F2E1FA7C7C2004E9D95 /* pubCrawl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pubCrawl.png; sourceTree = SOURCE_ROOT; };
-		FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlDetailTableViewController.swift; path = ../PubCrawlDetailTableViewController.swift; sourceTree = "<group>"; };
-		FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlNameTableViewCell.swift; path = ../PubCrawlNameTableViewCell.swift; sourceTree = "<group>"; };
-		FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubNameTableViewCell.swift; path = ../PubNameTableViewCell.swift; sourceTree = "<group>"; };
+		FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawlDetailTableViewController.swift; sourceTree = "<group>"; };
+		FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawlNameTableViewCell.swift; sourceTree = "<group>"; };
+		FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubNameTableViewCell.swift; sourceTree = "<group>"; };
 		FBE36240289DAE690001527F /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		FBE36244289DAE890001527F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		FBE36246289DAEA10001527F /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		FBE36248289DAEBB0001527F /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		FBE820321F816D5400098082 /* SearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
-		FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
+		FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FBF2AC6E1C7915ED00B7A7DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FBF2AC701C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawlsTableViewController.swift; path = ../PubCrawlsTableViewController.swift; sourceTree = "<group>"; };
+		FBF2AC701C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawlsTableViewController.swift; sourceTree = "<group>"; };
 		FBF2AC721C79DD3A00B7A7DF /* ListOfPubCrawls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListOfPubCrawls.swift; path = ../ListOfPubCrawls.swift; sourceTree = "<group>"; };
 		FBF2AC781C7BADA400B7A7DF /* PubCrawl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubCrawl.swift; path = ../PubCrawl.swift; sourceTree = "<group>"; };
 		FBFA79BC2354DBC0008288B3 /* ListOfBeerOrPub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBeerOrPub.swift; sourceTree = "<group>"; };
@@ -311,6 +311,59 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB2671CA2AEC321A004FD828 /* Custom TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FB0651621DBAC3A8009B0A51 /* AddressTableViewCell.swift */,
+				FB43D57A2353AEB300491677 /* BeerTableViewCell.swift */,
+				FB9A3AD21DB28F3A008AB628 /* HygieneRatingCell.swift */,
+				FB77C2B61D36D02900B91E43 /* ItemSwitchCell.swift */,
+				FB9A3AD61DB7FEE7008AB628 /* LongAboutTableViewCell.swift */,
+				FB8A67341E6A1276000EE992 /* PictureTableViewCell.swift */,
+				FB8A67321E6A03B6000EE992 /* PubImageView.swift */,
+				FBAF88B41C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift */,
+				FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */,
+				FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */,
+				FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */,
+				FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */,
+			);
+			name = "Custom TableViewCells";
+			sourceTree = "<group>";
+		};
+		FB2671CB2AEC331F004FD828 /* TableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */,
+				FB2B77231E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift */,
+				FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */,
+				FB28F5CB1D4297AC003475DC /* TabBarController.swift */,
+				FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */,
+				FB43D57823538ED800491677 /* SearchBeerTableViewController.swift */,
+				FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */,
+				FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */,
+				FB0259521E635E2400AB69EC /* PictureViewController.swift */,
+				FBF2AC701C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift */,
+				FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */,
+				FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */,
+				FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */,
+				FB28F5E71D4CC2CB003475DC /* AddToPubCrawlViewController.swift */,
+				FB3676171C94AD54008EFD3C /* HelpViewController.swift */,
+				FB0651661DC65CE6009B0A51 /* HygieneHelpViewController.swift */,
+			);
+			name = TableViewControllers;
+			sourceTree = "<group>";
+		};
+		FB2671CC2AEC3353004FD828 /* Connetor */ = {
+			isa = PBXGroup;
+			children = (
+				FBE36240289DAE690001527F /* WebService.swift */,
+				FBE36244289DAE890001527F /* Request.swift */,
+				FBE36246289DAEA10001527F /* JSONError.swift */,
+				FBE36248289DAEBB0001527F /* RequestMethod.swift */,
+			);
+			name = Connetor;
 			sourceTree = "<group>";
 		};
 		FB3676161C945F6A008EFD3C /* Images */ = {
@@ -411,40 +464,11 @@
 		FB3ED9E91C72694F000FDAC7 /* pubCrawler */ = {
 			isa = PBXGroup;
 			children = (
-				FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */,
-				FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */,
-				FB28F5CB1D4297AC003475DC /* TabBarController.swift */,
 				FB27F3EF1CAC3E4F00C2F41A /* AppDelegate.swift */,
 				FB27F3ED1CAC3DE700C2F41A /* Constants.swift */,
-				FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */,
-				FB43D57823538ED800491677 /* SearchBeerTableViewController.swift */,
-				FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */,
-				FB77C2B61D36D02900B91E43 /* ItemSwitchCell.swift */,
-				FB9A3AD21DB28F3A008AB628 /* HygieneRatingCell.swift */,
-				FB0651621DBAC3A8009B0A51 /* AddressTableViewCell.swift */,
-				FB9A3AD61DB7FEE7008AB628 /* LongAboutTableViewCell.swift */,
-				FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */,
-				FB8A67341E6A1276000EE992 /* PictureTableViewCell.swift */,
-				FB0259521E635E2400AB69EC /* PictureViewController.swift */,
-				FB8A67321E6A03B6000EE992 /* PubImageView.swift */,
-				FBF2AC701C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift */,
-				FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */,
-				FB2B77231E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift */,
-				FBAF88B41C8C9A180043A612 /* PubCrawlSettingTableViewCell.swift */,
-				FBCDC7C81C81B8F500A74ABA /* PubCrawlNameTableViewCell.swift */,
-				FBCDC7CA1C81CD0B00A74ABA /* PubNameTableViewCell.swift */,
-				FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */,
-				FBAF88AE1C8781260043A612 /* FilterTableViewController.swift */,
-				FBAF88AA1C8780500043A612 /* SettingsTableViewCell.swift */,
-				FBAF88AB1C8780500043A612 /* SettingsTableViewCell.xib */,
-				FB28F5E71D4CC2CB003475DC /* AddToPubCrawlViewController.swift */,
-				FB3676171C94AD54008EFD3C /* HelpViewController.swift */,
-				FB0651661DC65CE6009B0A51 /* HygieneHelpViewController.swift */,
-				FB43D57A2353AEB300491677 /* BeerTableViewCell.swift */,
-				FBE36240289DAE690001527F /* WebService.swift */,
-				FBE36244289DAE890001527F /* Request.swift */,
-				FBE36246289DAEA10001527F /* JSONError.swift */,
-				FBE36248289DAEBB0001527F /* RequestMethod.swift */,
+				FB2671CC2AEC3353004FD828 /* Connetor */,
+				FB2671CB2AEC331F004FD828 /* TableViewControllers */,
+				FB2671CA2AEC321A004FD828 /* Custom TableViewCells */,
 				FB8A67301E6760E5000EE992 /* Models */,
 				FB3ED9F01C726950000FDAC7 /* Main.storyboard */,
 				FB3ED9F51C726950000FDAC7 /* LaunchScreen.storyboard */,
