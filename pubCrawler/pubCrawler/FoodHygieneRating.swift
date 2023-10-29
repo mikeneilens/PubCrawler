@@ -69,6 +69,9 @@ struct ListOfFoodHygieneRatings {
     init(withHygieneRating foodHygienRating:FoodHygieneRating) {
         self.foodHygieneRatings = [foodHygienRating]
     }
+    init(foodHygienRatings:[FoodHygieneRating]) {
+        self.foodHygieneRatings = foodHygienRatings
+    }
 }
 
 protocol FoodHygieneRatingsCreatorDelegate :WebServiceDelegate  {

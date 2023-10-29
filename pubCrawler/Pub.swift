@@ -223,3 +223,76 @@ struct BeerGuideCreator: WebServiceCallerType {
         self.call(withDelegate: self, url: pub.beerGuideService)
     }
 }
+
+extension PubHeader {
+     init(name:String?,
+          town:String?,
+          distance:String?,
+          isInBeerGuide:String?,
+          sequence:Int?,
+          location:Location?,
+          pubService:String?,
+          removePubService:String?
+    ) {
+         self.name = name ?? ""
+         self.town = town ?? ""
+         self.distance = distance ?? ""
+         self.isInBeerGuide = isInBeerGuide ?? ""
+         self.sequence = sequence ?? 0
+         self.location = location ?? Location()
+         self.pubService = pubService ?? ""
+         self.removePubService = removePubService ?? ""
+    }
+}
+
+extension Pub {
+    init(
+    pubHeader:PubHeader?,
+    address:String?,
+    photoURL:String?,
+    telephone:String?,
+    openingTimes:String?,
+    mealTimes:String?,
+    owner:String?,
+    about:String?,
+    beer:[String]?,
+    guest:[String]?,
+    feature:[String]?,
+    facility:[String]?,
+    changeLikedService:String?,
+    changeVisitedService:String?,
+    hygieneRatingService:String?,
+    pubsNearByService:String?,
+    beerGuideService:String?,
+    visited:Bool?,
+    liked:Bool?,
+    createPubCrawlService:String?,
+    listOfPubCrawls:ListOfPubCrawls?,
+    listOfOtherPubCrawls:ListOfPubCrawls?,
+    nextPubService:String?
+    ) {
+        self.pubHeader = pubHeader ?? PubHeader()
+        self.address = address ?? ""
+        self.photoURL = photoURL ?? ""
+        self.telephone = telephone ?? ""
+        self.openingTimes = openingTimes ?? ""
+        self.mealTimes = mealTimes ?? ""
+        self.owner = owner ?? ""
+        self.about = about ?? ""
+        self.beer = beer ?? []
+        self.guest = guest ?? []
+        self.feature = feature ?? []
+        self.facility = facility ?? []
+        self.changeLikedService = changeLikedService ?? ""
+        self.changeVisitedService = changeVisitedService ?? ""
+        self.hygieneRatingService = hygieneRatingService ?? ""
+        self.pubsNearByService = pubsNearByService ?? ""
+        self.beerGuideService = beerGuideService ?? ""
+        self.visited = visited ?? false
+        self.liked = liked ?? false
+        self.createPubCrawlService = createPubCrawlService ?? ""
+        self.listOfPubCrawls = listOfPubCrawls ?? ListOfPubCrawls()
+        self.listOfOtherPubCrawls = listOfOtherPubCrawls ?? ListOfPubCrawls()
+        self.nextPubService = nextPubService ?? ""
+    }
+}

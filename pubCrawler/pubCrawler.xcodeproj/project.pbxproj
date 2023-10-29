@@ -17,6 +17,7 @@
 		FB08592D20409CDB00951471 /* filter-29.png in Resources */ = {isa = PBXBuildFile; fileRef = FB08592A20409CDB00951471 /* filter-29.png */; };
 		FB08592E20409CDB00951471 /* filter-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FB08592B20409CDB00951471 /* filter-50.png */; };
 		FB102CD91C78BD55007CC228 /* PubDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */; };
+		FB2671CF2AEEA01B004FD828 /* SearchTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2671CE2AEEA01B004FD828 /* SearchTableViewControllerTests.swift */; };
 		FB27F3EE1CAC3DE700C2F41A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3ED1CAC3DE700C2F41A /* Constants.swift */; };
 		FB27F3F01CAC3E4F00C2F41A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3EF1CAC3E4F00C2F41A /* AppDelegate.swift */; };
 		FB27F3F21CAC3F0600C2F41A /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */; };
@@ -62,6 +63,9 @@
 		FB43D57B2353AEB300491677 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43D57A2353AEB300491677 /* BeerTableViewCell.swift */; };
 		FB46A91C234118130029CF91 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A91B234118130029CF91 /* Beer.swift */; };
 		FB46A91F2341186F0029CF91 /* ListOfBeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A91E2341186F0029CF91 /* ListOfBeers.swift */; };
+		FB49D0AA2AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49D0A92AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift */; };
+		FB49D0AC2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49D0AB2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift */; };
+		FB49D0AE2AEEC0F3006E7F9A /* SamplePub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB49D0AD2AEEC0F3006E7F9A /* SamplePub.swift */; };
 		FB6C97BF1E17DE9500642861 /* phone-29.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BC1E17DE9500642861 /* phone-29.png */; };
 		FB6C97C01E17DE9500642861 /* phone-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BD1E17DE9500642861 /* phone-50.png */; };
 		FB6C97C11E17DE9500642861 /* phone-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C97BE1E17DE9500642861 /* phone-72.png */; };
@@ -166,6 +170,7 @@
 		FB08592A20409CDB00951471 /* filter-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter-29.png"; sourceTree = SOURCE_ROOT; };
 		FB08592B20409CDB00951471 /* filter-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter-50.png"; sourceTree = SOURCE_ROOT; };
 		FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubDetailTableViewController.swift; sourceTree = "<group>"; };
+		FB2671CE2AEEA01B004FD828 /* SearchTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewControllerTests.swift; sourceTree = "<group>"; };
 		FB27F3ED1CAC3DE700C2F41A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = pubCrawler/Constants.swift; sourceTree = SOURCE_ROOT; };
 		FB27F3EF1CAC3E4F00C2F41A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = pubCrawler/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = pubCrawler/SearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -216,6 +221,9 @@
 		FB43D57A2353AEB300491677 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		FB46A91B234118130029CF91 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		FB46A91E2341186F0029CF91 /* ListOfBeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBeers.swift; sourceTree = "<group>"; };
+		FB49D0A92AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeerTableViewControllerTests.swift; sourceTree = "<group>"; };
+		FB49D0AB2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubDetailTableViewControllerTests.swift; sourceTree = "<group>"; };
+		FB49D0AD2AEEC0F3006E7F9A /* SamplePub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePub.swift; sourceTree = "<group>"; };
 		FB6C97BC1E17DE9500642861 /* phone-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-29.png"; sourceTree = SOURCE_ROOT; };
 		FB6C97BD1E17DE9500642861 /* phone-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-50.png"; sourceTree = SOURCE_ROOT; };
 		FB6C97BE1E17DE9500642861 /* phone-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-72.png"; sourceTree = SOURCE_ROOT; };
@@ -336,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				FBAF88A81C876A610043A612 /* AbstractTableViewController.swift */,
-				FB2B77231E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift */,
 				FB2B77251E3240E700B4FEF9 /* AbstractViewController.swift */,
 				FB28F5CB1D4297AC003475DC /* TabBarController.swift */,
 				FB27F3F11CAC3F0600C2F41A /* SearchTableViewController.swift */,
@@ -344,6 +351,7 @@
 				FB102CD81C78BD55007CC228 /* PubDetailTableViewController.swift */,
 				FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */,
 				FB0259521E635E2400AB69EC /* PictureViewController.swift */,
+				FB2B77231E323B2E00B4FEF9 /* CreatePubCrawlViewController.swift */,
 				FBF2AC701C79DB7B00B7A7DF /* PubCrawlsTableViewController.swift */,
 				FBCDC7C41C81B4DA00A74ABA /* PubCrawlDetailTableViewController.swift */,
 				FBAF88A61C833FB90043A612 /* PubCrawlMapViewController.swift */,
@@ -364,6 +372,17 @@
 				FBE36248289DAEBB0001527F /* RequestMethod.swift */,
 			);
 			name = Connetor;
+			sourceTree = "<group>";
+		};
+		FB2671CD2AEE9FCA004FD828 /* TableViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				FB2671CE2AEEA01B004FD828 /* SearchTableViewControllerTests.swift */,
+				FB49D0A92AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift */,
+				FB49D0AB2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift */,
+				FB49D0AD2AEEC0F3006E7F9A /* SamplePub.swift */,
+			);
+			path = TableViewControllerTests;
 			sourceTree = "<group>";
 		};
 		FB3676161C945F6A008EFD3C /* Images */ = {
@@ -482,6 +501,7 @@
 		FB3EDA001C726951000FDAC7 /* pubCrawlerTests */ = {
 			isa = PBXGroup;
 			children = (
+				FB2671CD2AEE9FCA004FD828 /* TableViewControllerTests */,
 				FB3EDA011C726951000FDAC7 /* pubCrawlerTests.swift */,
 				FB3EDA031C726951000FDAC7 /* Info.plist */,
 			);
@@ -568,7 +588,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Michael Neilens";
 				TargetAttributes = {
 					FB3ED9E61C72694E000FDAC7 = {
@@ -754,7 +774,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB49D0AE2AEEC0F3006E7F9A /* SamplePub.swift in Sources */,
 				FB3EDA021C726951000FDAC7 /* pubCrawlerTests.swift in Sources */,
+				FB2671CF2AEEA01B004FD828 /* SearchTableViewControllerTests.swift in Sources */,
+				FB49D0AC2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift in Sources */,
+				FB49D0AA2AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +846,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -879,6 +904,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

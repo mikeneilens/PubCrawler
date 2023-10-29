@@ -20,7 +20,7 @@ class SearchBeerTableViewController: AbstractTableViewController {
     
     fileprivate var listOfBeers = ListOfBeers()
     
-    fileprivate var listOfBeerOrPub = Array<BeerOrPub>()
+    var listOfBeerOrPub = Array<BeerOrPub>()
     fileprivate var beerIsSelected = BeerIsSelected()
     
     fileprivate var userId=UId()
@@ -182,7 +182,7 @@ extension SearchBeerTableViewController: CLLocationManagerDelegate { //delegat m
 extension SearchBeerTableViewController {
         
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
         
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -192,11 +192,11 @@ extension SearchBeerTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         
-        switch self.listOfBeerOrPub[row] {
-        case .Pub(let pubForBeer):
-             return createPubCell(pubForBeer: pubForBeer, indexPath: indexPath)
-        case .Beer(let beerName):
-            return createBeerCell(beerName:beerName, indexPath:indexPath)
+        return switch self.listOfBeerOrPub[row] {
+            case .Pub(let pubForBeer):
+                createPubCell(pubForBeer: pubForBeer, indexPath: indexPath)
+            case .Beer(let beerName):
+                createBeerCell(beerName:beerName, indexPath:indexPath)
         }        
     }
     func createPubCell(pubForBeer:PubForBeer, indexPath:IndexPath) -> UITableViewCell{

@@ -22,7 +22,7 @@ class PubDetailTableViewController: AbstractTableViewController {
     
     var headings=[String]()
     fileprivate var pictureCell=PictureTableViewCell()
-    fileprivate var hygieneRatings=ListOfFoodHygieneRatings()
+    var hygieneRatings=ListOfFoodHygieneRatings()
     fileprivate var editButton=UIBarButtonItem()
     fileprivate var nextButton=UIBarButtonItem()
     fileprivate var cancelButton=UIBarButtonItem()
@@ -173,7 +173,7 @@ extension PubDetailTableViewController:PubCreatorDelegate { //delegate methods f
         return false
     }
     var isNextPub:Bool {
-        return self.pub.nextPubService.isNotEmpty
+        self.pub.nextPubService.isNotEmpty
     }
 }
 
@@ -220,7 +220,7 @@ extension PubDetailTableViewController { //tableViewDelegate methods
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return K.PubHeadings.height
+        K.PubHeadings.height
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -368,38 +368,39 @@ extension PubDetailTableViewController:PubImageLoadedDelegate {
 extension PubDetailTableViewController { //datasource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.headings.count
+        self.headings.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows=1
-        switch self.headings[section]
+        return switch self.headings[section]
         {
         case K.PubHeadings.beersHeading:
-            rows = self.pub.beer.count
+            self.pub.beer.count
         case K.PubHeadings.address:
             if self.pub.photoURL.isNotEmpty {
-                rows = 3
+                3
             } else {
-                rows = 2
+                2
             }
         case K.PubHeadings.guests:
-            rows =  self.pub.guest.count
+            self.pub.guest.count
         case K.PubHeadings.features:
-            rows = self.pub.feature.count
-            if self.pub.pubsNearByIsAvailable { rows += 1 }
+            if self.pub.pubsNearByIsAvailable {
+                self.pub.feature.count + 1
+            } else {
+                self.pub.feature.count
+            }
         case K.PubHeadings.facilities:
-            rows = self.pub.facility.count
+            self.pub.facility.count
         case K.PubHeadings.pubCrawls:
-            rows = self.pub.listOfPubCrawls.count + 1
+            self.pub.listOfPubCrawls.count + 1
         case K.PubHeadings.foodHygieneRating:
-            rows = self.hygieneRatings.foodHygieneRatings.count
+            self.hygieneRatings.foodHygieneRatings.count
         case K.PubHeadings.visitHistory:
-            rows = 2
+            2
         default:
-            rows = 1
+            1
         }
-        return rows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -432,7 +433,7 @@ extension PubDetailTableViewController { //datasource
             pubDetailcell.textLabel!.text = self.pub.owner
         case K.PubHeadings.about:
             if (showAllAbout) {
-                return self.createLongAboutCell(tableView, withMultiLine:true, indexPath:indexPath)
+                return self.createLongAboutCell(tableView, indexPath:indexPath)
             } else {
                 return self.createShortAboutCell(tableView, indexPath:indexPath)
             }
@@ -456,7 +457,7 @@ extension PubDetailTableViewController { //datasource
         return pubDetailcell
     }
     
-    func createLongAboutCell(_ tableView: UITableView, withMultiLine:Bool, indexPath:IndexPath) ->UITableViewCell {
+    func createLongAboutCell(_ tableView: UITableView, indexPath:IndexPath) ->UITableViewCell {
         let longAboutCell = tableView.dequeueReusableCell(withIdentifier: "longAboutCell", for: indexPath)
         if let cell = longAboutCell as? LongAboutTableViewCell {
             cell.variableSizeTextLabel.text = self.pub.about
@@ -466,69 +467,94 @@ extension PubDetailTableViewController { //datasource
             return longAboutCell
         }
     }
+    
     func createShortAboutCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
         let shortAboutCell = tableView.dequeueReusableCell(withIdentifier: "shortAboutCell", for: indexPath)
         shortAboutCell.textLabel!.text = self.pub.about
         
-        if let cellLabel = shortAboutCell.textLabel {
+        return if let cellLabel = shortAboutCell.textLabel {
             if cellLabel.isTruncated() {
-                return self.createLongAboutCell(tableView, withMultiLine:false, indexPath: indexPath)
+                self.createLongAboutCell(tableView, indexPath: indexPath)
             } else {
-                return shortAboutCell
+                shortAboutCell
             }
         } else {
-            return shortAboutCell
+            shortAboutCell
         }
     }
+    
     func createAddressCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
         let addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
-        if let cell = addressCell as? AddressTableViewCell {
-            cell.variableSizeTextLabel.text = self.pub.address
-            cell.setLabelType(isMultirow: true)
-            return cell
+        return if let cell = addressCell as? AddressTableViewCell {
+            configuredAddressCell(addressCell: cell)
         } else {
-            return addressCell
+            addressCell
         }
     }
+    func configuredAddressCell(addressCell: AddressTableViewCell) -> AddressTableViewCell {
+        addressCell.variableSizeTextLabel.text = self.pub.address
+        addressCell.setLabelType(isMultirow: true)
+        return addressCell
+    }
+    
     func createOpeningTimesCell(_ tableView: UITableView, indexPath:IndexPath, openingTimes:String ) -> UITableViewCell {
         let openingTimesCell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
-        if let cell = openingTimesCell as? AddressTableViewCell {
-            cell.variableSizeTextLabel.text = openingTimes.splitIntoLines()
-            cell.setLabelType(isMultirow: true)
-            return cell
+        return if let cell = openingTimesCell as? AddressTableViewCell {
+            configuredOpeningTimeCell(openingTimesCell: cell, openingTimes: openingTimes)
         } else {
-            return openingTimesCell
+            openingTimesCell
         }
     }
+    func configuredOpeningTimeCell(openingTimesCell: AddressTableViewCell, openingTimes:String ) -> AddressTableViewCell {
+        openingTimesCell.variableSizeTextLabel.text = openingTimes.splitIntoLines()
+        openingTimesCell.setLabelType(isMultirow: true)
+        return openingTimesCell
+    }
+    
     func createPictureCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "pubShowPictureCell", for: indexPath) as? PictureTableViewCell {
-            self.pictureCell = cell
-            self.pictureCell.pictureLabel.text = "Picture loading"
-            self.pictureCell.pictureImage.downloadedFrom(link: self.pub.photoURL, delegate:self)
-            return self.pictureCell
+            configuredPictureCell(cell: cell)
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
+            tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
         }
     }
+    func configuredPictureCell(cell: PictureTableViewCell) -> PictureTableViewCell {
+        self.pictureCell = cell
+        self.pictureCell.pictureLabel.text = "Picture loading"
+        self.pictureCell.pictureImage.downloadedFrom(link: self.pub.photoURL, delegate:self)
+        return self.pictureCell
+    }
+    
     func createFoodHygieneRatingCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell {
         let row = indexPath.row
-        if  self.hygieneRatings.foodHygieneRatings[row].ratingKey.isEmpty {
-            let pubDetailCell =  tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
-            pubDetailCell.textLabel!.text = self.hygieneRatings.foodHygieneRatings[row].displayText
-            return pubDetailCell
+        return if  self.hygieneRatings.foodHygieneRatings[row].ratingKey.isEmpty {
+            configureHygieneCellForNoRating(indexPath: indexPath)
         } else {
-            let hygieneRatingCell = tableView.dequeueReusableCell(withIdentifier: "hygieneRatingCell", for: indexPath)
-            if let cell = hygieneRatingCell as? HygieneRatingCell {
-                cell.hygieneRatingLabel.text = self.hygieneRatings.foodHygieneRatings[row].displayText
-                cell.hygieneRatingDateLabel.text = self.hygieneRatings.foodHygieneRatings[row].displayDate
-                let imageURL = self.hygieneRatings.foodHygieneRatings[row].displayImageURL
-                cell.hygieneRatingImage.downloadedFrom(link: imageURL)
-                return cell
-            } else {
-                return tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
-            }
+            configureHygieneCellForRating(indexPath: indexPath)
         }
     }
+    func configureHygieneCellForNoRating(indexPath:IndexPath) -> UITableViewCell {
+        let pubDetailCell =  tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
+        pubDetailCell.textLabel!.text = self.hygieneRatings.foodHygieneRatings[indexPath.row].displayText
+        return pubDetailCell
+    }
+    func configureHygieneCellForRating(indexPath: IndexPath) -> UITableViewCell {
+        let hygieneRatingCell = tableView.dequeueReusableCell(withIdentifier: "hygieneRatingCell", for: indexPath)
+        return if let cell = hygieneRatingCell as? HygieneRatingCell {
+            configuredHygieneCellWithRating(cell: cell, indexPath: indexPath)
+        } else {
+            tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
+        }
+    }
+    func configuredHygieneCellWithRating(cell: HygieneRatingCell, indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        cell.hygieneRatingLabel.text = self.hygieneRatings.foodHygieneRatings[row].displayText
+        cell.hygieneRatingDateLabel.text = self.hygieneRatings.foodHygieneRatings[row].displayDate
+        let imageURL = self.hygieneRatings.foodHygieneRatings[row].displayImageURL
+        cell.hygieneRatingImage.downloadedFrom(link: imageURL)
+        return cell
+    }
+    
     func createFeaturesCell(_ tableView: UITableView, indexPath:IndexPath) ->UITableViewCell {
         let row = indexPath.row
         if row < self.pub.feature.count {

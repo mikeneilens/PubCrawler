@@ -19,6 +19,12 @@ struct ListOfPubs {
         self.morePubsService = ""
         self.listTitle=""
     }
+    init(pubHeaders:[PubHeader], listTitle:String, morePubSerice:String) {
+        self.pubHeaders = pubHeaders
+        self.listTitle = listTitle
+        self.morePubsService = morePubSerice
+    }
+    
     init (fromJson json:[String:Any]) {
         self=ListOfPubs(fromJson:json, existingList:ListOfPubs())
     }
