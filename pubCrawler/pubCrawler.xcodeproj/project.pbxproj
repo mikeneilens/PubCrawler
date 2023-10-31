@@ -127,6 +127,8 @@
 		FBE36245289DAE890001527F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36244289DAE890001527F /* Request.swift */; };
 		FBE36247289DAEA10001527F /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36246289DAEA10001527F /* JSONError.swift */; };
 		FBE36249289DAEBB0001527F /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE36248289DAEBB0001527F /* RequestMethod.swift */; };
+		FBE710792AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE710782AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift */; };
+		FBE7107B2AF16CD1005A2534 /* PubCrawlDetailTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7107A2AF16CD1005A2534 /* PubCrawlDetailTableViewControllerTests.swift */; };
 		FBE820331F816D5400098082 /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE820321F816D5400098082 /* SearchBarExtension.swift */; };
 		FBF2AC6D1C78FA1300B7A7DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */; };
 		FBF2AC6F1C7915EE00B7A7DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF2AC6E1C7915ED00B7A7DF /* CoreLocation.framework */; };
@@ -286,6 +288,8 @@
 		FBE36244289DAE890001527F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		FBE36246289DAEA10001527F /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		FBE36248289DAEBB0001527F /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		FBE710782AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubCrawlsTableViewControllerTests.swift; sourceTree = "<group>"; };
+		FBE7107A2AF16CD1005A2534 /* PubCrawlDetailTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubCrawlDetailTableViewControllerTests.swift; sourceTree = "<group>"; };
 		FBE820321F816D5400098082 /* SearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
 		FBF2AC6C1C78FA1300B7A7DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FBF2AC6E1C7915ED00B7A7DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -380,6 +384,8 @@
 				FB2671CE2AEEA01B004FD828 /* SearchTableViewControllerTests.swift */,
 				FB49D0A92AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift */,
 				FB49D0AB2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift */,
+				FBE710782AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift */,
+				FBE7107A2AF16CD1005A2534 /* PubCrawlDetailTableViewControllerTests.swift */,
 				FB49D0AD2AEEC0F3006E7F9A /* SamplePub.swift */,
 			);
 			path = TableViewControllerTests;
@@ -776,7 +782,9 @@
 			files = (
 				FB49D0AE2AEEC0F3006E7F9A /* SamplePub.swift in Sources */,
 				FB3EDA021C726951000FDAC7 /* pubCrawlerTests.swift in Sources */,
+				FBE7107B2AF16CD1005A2534 /* PubCrawlDetailTableViewControllerTests.swift in Sources */,
 				FB2671CF2AEEA01B004FD828 /* SearchTableViewControllerTests.swift in Sources */,
+				FBE710792AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift in Sources */,
 				FB49D0AC2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift in Sources */,
 				FB49D0AA2AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift in Sources */,
 			);

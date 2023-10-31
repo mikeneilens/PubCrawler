@@ -556,49 +556,61 @@ extension PubDetailTableViewController { //datasource
     }
     
     func createFeaturesCell(_ tableView: UITableView, indexPath:IndexPath) ->UITableViewCell {
-        let row = indexPath.row
-        if row < self.pub.feature.count {
-            let pubDetailCell =  tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
-            pubDetailCell.textLabel!.text = self.pub.feature[row]
-            return pubDetailCell
+        if indexPath.row < self.pub.feature.count {
+            configureFeatureCell(tableView, indexPath: indexPath)
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: "pubsNearByCell", for: indexPath)
+            tableView.dequeueReusableCell(withIdentifier: "pubsNearByCell", for: indexPath)
         }
     }
+    func configureFeatureCell(_ tableView: UITableView, indexPath:IndexPath) ->UITableViewCell {
+        let pubDetailCell =  tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
+        pubDetailCell.textLabel!.text = self.pub.feature[indexPath.row]
+        return pubDetailCell
+    }
+    
     func createPubCrawlCell(_ tableView: UITableView, indexPath:IndexPath) ->UITableViewCell {
-        let row = indexPath.row
-        let pubDetailCell =  tableView.dequeueReusableCell(withIdentifier: "pubCrawlCell", for: indexPath)
-        if row < self.pub.listOfPubCrawls.count {
-            let pubCrawl = self.pub.listOfPubCrawls[row]
-            pubDetailCell.textLabel!.text = pubCrawl.name
-            return pubDetailCell
+        if indexPath.row < self.pub.listOfPubCrawls.count {
+            configurePubCrawlell(tableView, indexPath: indexPath)
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: "pubUpdatePubCrawlsCell", for: indexPath)
+            tableView.dequeueReusableCell(withIdentifier: "pubUpdatePubCrawlsCell", for: indexPath)
         }
     }
+    func configurePubCrawlell(_ tableView: UITableView, indexPath:IndexPath) ->UITableViewCell {
+        let pubDetailCell =  tableView.dequeueReusableCell(withIdentifier: "pubCrawlCell", for: indexPath)
+        let pubCrawl = self.pub.listOfPubCrawls[indexPath.row]
+        pubDetailCell.textLabel!.text = pubCrawl.name
+        return pubDetailCell
+    }
+    
     func createVisitHistoryCell(_ tableView: UITableView, indexPath:IndexPath) -> UITableViewCell{
-        let row = indexPath.row
-        let itemSwitchCell =  tableView.dequeueReusableCell(withIdentifier: "itemSwitchCell", for: indexPath)
-        switch row {
+        switch indexPath.row {
         case K.PubHeadings.visitedRow:
-            let pubItemSwitchCell = itemSwitchCell as! ItemSwitchCell
-            pubItemSwitchCell.initialValues(text:"Visited?:", isOn:self.pub.visited, trueText:"Yes", falseText:"No", ndx:K.PubHeadings.visitedRow, delegate:self)
-            return pubItemSwitchCell
+            createVisitedCell(tableView, indexPath: indexPath)
         case K.PubHeadings.likedRow:
-            let pubItemSwitchCell = itemSwitchCell as! ItemSwitchCell
-            pubItemSwitchCell.initialValues(text:"Like it?:", isOn:self.pub.liked, trueText:"Yes", falseText:"No", ndx:K.PubHeadings.likedRow, delegate:self)
-            return pubItemSwitchCell
+            createLikedCell(tableView, indexPath: indexPath)
         default:
-            return tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
+            tableView.dequeueReusableCell(withIdentifier: "pubDetailCell", for: indexPath)
         }
+    }
+    func createVisitedCell(_ tableView: UITableView, indexPath:IndexPath) -> ItemSwitchCell {
+        let itemSwitchCell =  tableView.dequeueReusableCell(withIdentifier: "itemSwitchCell", for: indexPath)
+        let pubItemSwitchCell = itemSwitchCell as! ItemSwitchCell
+        pubItemSwitchCell.initialValues(text:"Visited?:", isOn:self.pub.visited, trueText:"Yes", falseText:"No", ndx:K.PubHeadings.visitedRow, delegate:self)
+        return pubItemSwitchCell
+    }
+    func createLikedCell(_ tableView: UITableView, indexPath:IndexPath) -> ItemSwitchCell {
+        let itemSwitchCell =  tableView.dequeueReusableCell(withIdentifier: "itemSwitchCell", for: indexPath)
+        let pubItemSwitchCell = itemSwitchCell as! ItemSwitchCell
+        pubItemSwitchCell.initialValues(text:"Like it?:", isOn:self.pub.liked, trueText:"Yes", falseText:"No", ndx:K.PubHeadings.likedRow, delegate:self)
+        return pubItemSwitchCell
     }
     
     //This safely returns a string from an array, giving "" if the index is out of bounds
     func textIn(pubArray:[String], atNdx ndx:Int)-> String {
         if ndx < pubArray.count {
-            return pubArray[ndx]
+            pubArray[ndx]
         } else {
-            return ""
+            ""
         }
     }
 }

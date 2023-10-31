@@ -450,7 +450,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NUI-i2-92t">
-                                <rect key="frame" x="-4" y="64" width="383" height="505"/>
+                                <rect key="frame" x="-4" y="20" width="383" height="598"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -696,7 +696,7 @@
         <!--Pub Crawls-->
         <scene sceneID="c8d-qx-fem">
             <objects>
-                <tableViewController title="Pub Crawls" id="paj-Fd-dJQ" customClass="PubCrawlsTableViewController" customModule="pubCrawler" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pub crawls" title="Pub Crawls" id="paj-Fd-dJQ" customClass="PubCrawlsTableViewController" customModule="pubCrawler" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="blQ-a1-sUB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -763,7 +763,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AjC-Lv-6Ki" customClass="PubImageView" customModule="pubCrawler" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="285"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="285"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="760" id="Hob-PV-qn3">
                                         <variation key="heightClass=regular-widthClass=compact" constant="375"/>
@@ -802,7 +802,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3jQ-8a-HAF">
-                                <rect key="frame" x="-4" y="64" width="383" height="505"/>
+                                <rect key="frame" x="-4" y="20" width="383" height="598"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1067,9 +1067,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="83J-0m-FRV"/>
-        <segue reference="l9x-Mx-Do2"/>
+        <segue reference="cvi-z8-QE1"/>
         <segue reference="aD7-5y-Fp4"/>
-        <segue reference="5At-bV-VXE"/>
+        <segue reference="Trd-Ce-bUq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="beer" width="27.5" height="27.5"/>

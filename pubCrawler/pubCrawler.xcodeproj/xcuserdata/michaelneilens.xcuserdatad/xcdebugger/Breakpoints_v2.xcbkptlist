@@ -116,5 +116,133 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3BC9C731-2CAC-4D59-93C2-A3B83E22C030"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pubCrawlerTests/TableViewControllerTests/PubDetailTableViewControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "test_creating_features_cell_when_row_has_no_feature()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB8852ED-DE40-43D3-941F-084E53979B30"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pubCrawlerTests/TableViewControllerTests/PubDetailTableViewControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "test_creating_pubcrawl_cell_when_row_has_no_pubcrawls()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AB8852ED-DE40-43D3-941F-084E53979B30 - 3fed8be23cf70522"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pubCrawlerTests.PubDetailTableViewControllerTests.test_creating_pubcrawl_cell_when_row_has_no_pubcrawls() -&gt; ()"
+                  moduleName = "pubCrawlerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/github/PubCrawler/pubCrawler/pubCrawlerTests/TableViewControllerTests/PubDetailTableViewControllerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "270"
+                  endingLineNumber = "270"
+                  offsetFromSymbolStart = "2138">
+               </Location>
+               <Location
+                  uuid = "AB8852ED-DE40-43D3-941F-084E53979B30 - 3fed8be23cf70522"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pubCrawlerTests.PubDetailTableViewControllerTests.test_creating_pubcrawl_cell_when_row_has_no_pubcrawls() -&gt; ()"
+                  moduleName = "pubCrawlerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/github/PubCrawler/pubCrawler/pubCrawlerTests/TableViewControllerTests/PubDetailTableViewControllerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "270"
+                  endingLineNumber = "270"
+                  offsetFromSymbolStart = "2093">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2042982-8CF4-41AE-A418-D81547C93545"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pubCrawlerTests/TableViewControllerTests/PubCrawlDetailTableViewControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "test_view_for_section_has_same_title_as_the_heading()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B2042982-8CF4-41AE-A418-D81547C93545 - 8020b4e963357ac4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pubCrawlerTests.PubCrawlDetailTableViewControllerTests.test_view_for_section_has_same_title_as_the_heading() -&gt; ()"
+                  moduleName = "pubCrawlerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/github/PubCrawler/pubCrawler/pubCrawlerTests/TableViewControllerTests/PubCrawlDetailTableViewControllerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "853">
+               </Location>
+               <Location
+                  uuid = "B2042982-8CF4-41AE-A418-D81547C93545 - 8020b4e963357ac4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "pubCrawlerTests.PubCrawlDetailTableViewControllerTests.test_view_for_section_has_same_title_as_the_heading() -&gt; ()"
+                  moduleName = "pubCrawlerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelneilens/github/PubCrawler/pubCrawler/pubCrawlerTests/TableViewControllerTests/PubCrawlDetailTableViewControllerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "981">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ACB5E7BA-3193-41EA-8C94-CDE7C965D591"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pubCrawler/PubCrawlDetailTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "tableView(_:viewForHeaderInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

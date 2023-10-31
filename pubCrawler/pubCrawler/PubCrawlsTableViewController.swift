@@ -15,7 +15,7 @@ class PubCrawlsTableViewController: AbstractTableViewController  {
     @IBOutlet weak var searchBar: UISearchBar!
     
     fileprivate var userId=UId()
-    fileprivate var listOfpubCrawls = ListOfPubCrawls()
+    var listOfpubCrawls = ListOfPubCrawls()
 
     fileprivate var lastSearch = ""
     
@@ -85,23 +85,17 @@ class PubCrawlsTableViewController: AbstractTableViewController  {
 extension PubCrawlsTableViewController { //datasource delegate methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listOfpubCrawls.count
+        self.listOfpubCrawls.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        let pubCrawl = self.listOfpubCrawls.pubCrawls[row]
-        
-        cell.textLabel!.text = pubCrawl.name
-        
+        cell.textLabel!.text = self.listOfpubCrawls.pubCrawls[indexPath.row].name
         return cell
     }
 

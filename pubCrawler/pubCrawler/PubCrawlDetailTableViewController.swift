@@ -21,8 +21,8 @@ class PubCrawlDetailTableViewController: AbstractTableViewController, updatePubC
     var pubCrawl=PubCrawl()
     var pubCrawlNdx=0
     
-    fileprivate var headings = [String]()
-    fileprivate var listOfPubHeaders=ListOfPubs()
+    var headings = [String]()
+    var listOfPubHeaders=ListOfPubs()
     
     fileprivate var editButton=UIBarButtonItem()
     fileprivate var saveButton=UIBarButtonItem()
@@ -343,22 +343,12 @@ extension PubCrawlDetailTableViewController { //datasource methods
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows = 0
         switch self.headings[section] {
-        case  K.PubCrawlHeadings.crawlName:
-            rows = 1
-        case K.PubCrawlHeadings.newCrawlName:
-            rows = 1
-        case K.PubCrawlHeadings.pubs:
-            rows = self.listOfPubHeaders.count
-        case K.PubCrawlHeadings.noPubs:
-            rows = 0
-        case K.PubCrawlHeadings.setting:
-            rows = 1
-        default:
-            break
+        case  K.PubCrawlHeadings.crawlName, K.PubCrawlHeadings.newCrawlName, K.PubCrawlHeadings.setting: 1
+        case K.PubCrawlHeadings.pubs: self.listOfPubHeaders.count
+        case K.PubCrawlHeadings.noPubs: 0
+        default: 0
         }
-        return rows
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
