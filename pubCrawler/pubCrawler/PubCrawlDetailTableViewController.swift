@@ -387,62 +387,81 @@ extension PubCrawlDetailTableViewController { //datasource methods
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let (row, section) = indexPath.rowAndSection
-        let cell = UITableViewCell()
-        
-        switch self.headings[section] {
+        switch self.headings[indexPath.section] {
         case  K.PubCrawlHeadings.crawlName:
-            self.pubCrawlNameTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlNameTableViewCell") as? PubCrawlNameTableViewCell
-            self.pubCrawlNameTableViewCell!.pubCrawlNameText.text = self.pubCrawl.name
-            self.pubCrawlNameTableViewCell!.pubCrawlNameText.isEnabled = false
-            self.pubCrawlNameTableViewCell!.delegate = self
-            
-            return self.pubCrawlNameTableViewCell!
+            createReadOnlyCrawlNameCell()
         case K.PubCrawlHeadings.newCrawlName:
-            self.pubCrawlNameTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlNameTableViewCell") as? PubCrawlNameTableViewCell
-            self.pubCrawlNameTableViewCell!.pubCrawlNameText.isEnabled = true
-            self.pubCrawlNameTableViewCell!.delegate = self
-            
-            return self.pubCrawlNameTableViewCell!
+            createEditableCrawlNameCell()
         case K.PubCrawlHeadings.pubs:
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubNameTableViewCell") as! PubNameTableViewCell
-            cell.textLabel!.text = self.listOfPubHeaders[row].name
-            cell.detailTextLabel!.text = self.listOfPubHeaders.distanceToPreveiousPubText(atIndex:row)
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-            cell.selectionStyle = .default
-            return cell
+            createPubCellContainingPubDetail(indexPath: indexPath)
         case K.PubCrawlHeadings.setting:
-            self.pubCrawlSettingTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlSettingTableViewCell") as? PubCrawlSettingTableViewCell
-            self.pubCrawlSettingTableViewCell!.settingSwitch.isEnabled = self.isEditing
-            if self.pubCrawl.isPublic  {
-                self.pubCrawlSettingTableViewCell!.settingSwitch.isOn = true
-            } else {
-                self.pubCrawlSettingTableViewCell!.settingSwitch.isOn = false
-            }
-            self.pubCrawlSettingTableViewCell!.delegate = self
-            
-            return self.pubCrawlSettingTableViewCell!
+            createPubCrawlSettingCell()
         default:
-            break
+            UITableViewCell()
         }
-        
+    }
+    
+    func createReadOnlyCrawlNameCell() -> PubCrawlNameTableViewCell {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlNameTableViewCell") as? PubCrawlNameTableViewCell
+        else {   
+            let cell = PubCrawlNameTableViewCell()
+            self.pubCrawlNameTableViewCell = cell
+            return cell
+        }
+        cell.pubCrawlNameText.text = self.pubCrawl.name
+        cell.pubCrawlNameText.isEnabled = false
+        cell.delegate = self
+        self.pubCrawlNameTableViewCell = cell
+        return cell
+    }
+    func createEditableCrawlNameCell() -> PubCrawlNameTableViewCell {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlNameTableViewCell") as? PubCrawlNameTableViewCell
+        else {
+            let cell = PubCrawlNameTableViewCell()
+            self.pubCrawlNameTableViewCell = cell
+            return cell
+        }
+        cell.pubCrawlNameText.isEnabled = true
+        cell.delegate = self
+        self.pubCrawlNameTableViewCell = cell
+        return cell
+    }
+    func createPubCellContainingPubDetail(indexPath: IndexPath) -> PubNameTableViewCell {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubNameTableViewCell") as? PubNameTableViewCell else {return PubNameTableViewCell()}
+        cell.textLabel!.text = self.listOfPubHeaders[indexPath.row].name
+        cell.detailTextLabel!.text = self.listOfPubHeaders.distanceToPreveiousPubText(atIndex:indexPath.row)
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        cell.selectionStyle = .default
+        return cell
+    }
+    func createPubCrawlSettingCell() -> PubCrawlSettingTableViewCell {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PubCrawlSettingTableViewCell") as? PubCrawlSettingTableViewCell
+        else {
+            let cell = PubCrawlSettingTableViewCell()
+            self.pubCrawlSettingTableViewCell = cell
+            return cell
+        }
+        cell.settingSwitch.isEnabled = self.isEditing
+        cell.settingSwitch.isOn = self.pubCrawl.isPublic
+        cell.delegate = self
+
+        self.pubCrawlSettingTableViewCell = cell
         return cell
     }
  
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let (row, section) = indexPath.rowAndSection
-        
-        let heading = self.headings[section]
-        
+        canEdit(heading: self.headings[indexPath.section], atRow: indexPath)
+    }
+    func canEdit(heading: String, atRow indexPath: IndexPath) -> Bool {
         switch heading {
         case K.PubCrawlHeadings.crawlName:
-            return self.pubCrawl.canRemove
+            self.pubCrawl.canRemove
         case K.PubCrawlHeadings.setting:
-            return false
+            false
         case K.PubCrawlHeadings.pubs:
-            return self.listOfPubHeaders.pubHeaders[row].canRemovePub
+            self.listOfPubHeaders.pubHeaders[indexPath.row].canRemovePub
         default:
-            return true
+            true
         }
     }
     
