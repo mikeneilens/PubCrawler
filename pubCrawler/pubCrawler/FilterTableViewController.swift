@@ -27,26 +27,25 @@ class FilterTableViewController: UITableViewController, SettingsSwitchDelegate {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.options.count
+        self.options.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        let searchTerm = self.options[row]
-
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") as! SettingsTableViewCell
-        cell.labelText.text = searchTerm.text
-        cell.label = searchTerm.text
-        cell.delegate = self
-        
-        cell.optionSwitch.isOn = searchTerm.value
-        
-        return cell
+        return configureSettingsCell(cell, searchTerm: self.options[indexPath.row])
+    }
+    
+    func configureSettingsCell(_ settingsCell:SettingsTableViewCell, searchTerm: SearchTerm ) ->SettingsTableViewCell {
+        settingsCell.labelText.text = searchTerm.text
+        settingsCell.label = searchTerm.text
+        settingsCell.delegate = self
+        settingsCell.optionSwitch.isOn = searchTerm.value
+        return settingsCell
     }
     
     func settingsSwitchChanged(optionSwitch: UISwitch, label:String) {

@@ -90,6 +90,7 @@
 		FB7897C1235348B90085F58B /* beer-29.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7897BE235348B80085F58B /* beer-29.png */; };
 		FB7897C2235348B90085F58B /* beer-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7897BF235348B80085F58B /* beer-50.png */; };
 		FB7897C3235348B90085F58B /* beer-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7897C0235348B90085F58B /* beer-72.png */; };
+		FB8469222B0BD9C000A18E4D /* FilterTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8469212B0BD9C000A18E4D /* FilterTableViewControllerTests.swift */; };
 		FB864B751D4146BC00FB7F30 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB864B741D4146BC00FB7F30 /* NSURLExtensions.swift */; };
 		FB8A67331E6A03B6000EE992 /* PubImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A67321E6A03B6000EE992 /* PubImageView.swift */; };
 		FB8A67351E6A1276000EE992 /* PictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A67341E6A1276000EE992 /* PictureTableViewCell.swift */; };
@@ -250,6 +251,7 @@
 		FB7897BE235348B80085F58B /* beer-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer-29.png"; sourceTree = "<group>"; };
 		FB7897BF235348B80085F58B /* beer-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer-50.png"; sourceTree = "<group>"; };
 		FB7897C0235348B90085F58B /* beer-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer-72.png"; sourceTree = "<group>"; };
+		FB8469212B0BD9C000A18E4D /* FilterTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewControllerTests.swift; sourceTree = "<group>"; };
 		FB864B741D4146BC00FB7F30 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLExtensions.swift; sourceTree = "<group>"; };
 		FB8A67321E6A03B6000EE992 /* PubImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubImageView.swift; sourceTree = "<group>"; };
 		FB8A67341E6A1276000EE992 /* PictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				FBE710782AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift */,
 				FBE7107A2AF16CD1005A2534 /* PubCrawlDetailTableViewControllerTests.swift */,
 				FB49D0AD2AEEC0F3006E7F9A /* SamplePub.swift */,
+				FB8469212B0BD9C000A18E4D /* FilterTableViewControllerTests.swift */,
 			);
 			path = TableViewControllerTests;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				FBE710792AF15E32005A2534 /* PubCrawlsTableViewControllerTests.swift in Sources */,
 				FB49D0AC2AEEC001006E7F9A /* PubDetailTableViewControllerTests.swift in Sources */,
 				FB49D0AA2AEEA6A5006E7F9A /* SearchBeerTableViewControllerTests.swift in Sources */,
+				FB8469222B0BD9C000A18E4D /* FilterTableViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

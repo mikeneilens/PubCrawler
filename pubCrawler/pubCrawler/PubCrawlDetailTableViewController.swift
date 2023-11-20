@@ -466,21 +466,17 @@ extension PubCrawlDetailTableViewController { //datasource methods
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let (row, section) = indexPath.rowAndSection
-        
         if editingStyle == .delete {
-            
-            switch self.headings[section] {
+            switch self.headings[indexPath.section] {
             case K.PubCrawlHeadings.crawlName:
                  self.deletePubCrawl()
             case K.PubCrawlHeadings.pubs:
-                let pubHeader = self.listOfPubHeaders[row]
+                let pubHeader = self.listOfPubHeaders[indexPath.row]
                 self.removePub(withPubHeader: pubHeader)
             default:
                 break
             }
         }
-        
     }
     
 }

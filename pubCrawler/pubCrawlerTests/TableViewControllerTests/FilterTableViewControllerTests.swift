@@ -7,7 +7,7 @@
 //
 
 import XCTest
-
+@testable import pubCrawler
 final class FilterTableViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -18,12 +18,30 @@ final class FilterTableViewControllerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_no_of_sections_in_tableview_is_1() throws {
+        let filterTableViewController = FilterTableViewController()
+        XCTAssertEqual(filterTableViewController.numberOfSections(in: UITableView()),1)
+    }
+    func test_no_of_rows_equals_number_of_options() throws {
+        let filterTableViewController = FilterTableViewController()
+        filterTableViewController.options = [
+            SearchTerm(qStringName: "o1", key: "k1", value: true, text: "t1"),
+            SearchTerm(qStringName: "o2", key: "k2", value: true, text: "t2")]
+        XCTAssertEqual(filterTableViewController.tableView(UITableView(), numberOfRowsInSection: 0),2)
+    }
+    func test_cell_for_row_is_SettingsTableViewCell_with_properties_from_the_option() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let filterTableViewController = storyboard.instantiateViewController(withIdentifier: "FilterTableViewController") as! FilterTableViewController
+        let cell0 = filterTableViewController.tableView(filterTableViewController.tableView, cellForRowAt:IndexPath(row: 0, section: 0) )
+        XCTAssertTrue(cell0 is SettingsTableViewCell)
+        let settingsTableViewCell0 = cell0 as? SettingsTableViewCell
+        XCTAssertEqual(settingsTableViewCell0?.labelText.text,"Only find pubs selling real ale")
+        XCTAssertEqual(settingsTableViewCell0?.optionSwitch.isOn,true)
+        let cell1 = filterTableViewController.tableView(filterTableViewController.tableView, cellForRowAt:IndexPath(row: 1, section: 0) )
+        XCTAssertTrue(cell1 is SettingsTableViewCell)
+        let settingsTableViewCell1 = cell1 as? SettingsTableViewCell
+        XCTAssertEqual(settingsTableViewCell1?.labelText.text,"Only find pubs")
+        XCTAssertEqual(settingsTableViewCell1?.optionSwitch.isOn,true)
     }
 
     func testPerformanceExample() throws {
